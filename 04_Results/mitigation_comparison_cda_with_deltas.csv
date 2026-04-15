@@ -1,0 +1,5 @@
+method,accuracy,dem_parity_diff,equalized_odds_diff,disparate_impact,delta_accuracy,delta_dem_parity_diff,delta_equalized_odds_diff,delta_disparate_impact,improves_dem_parity,improves_eq_odds,improves_disp_impact
+Baseline,1.0,0.11896551724137933,0.0,0.7909090909090909,0.0,0.0,0.0,0.0,False,False,False
+CDA (Name Swap Augmentation),1.0,0.11896551724137933,0.0,0.7909090909090909,0.0,0.0,0.0,0.0,False,False,False
+Adversarial Debiasing,0.9958333333333333,0.13620689655172408,0.04,0.7676470588235295,-0.004166666666666652,0.01724137931034475,0.04,-0.023262032085561435,False,False,False
+Calibrated Eq. Odds,0.9833333333333333,0.15344827586206894,0.08,0.7457142857142858,-0.01666666666666672,0.03448275862068961,0.08,-0.04519480519480512,False,False,False

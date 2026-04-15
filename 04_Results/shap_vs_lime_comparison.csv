@@ -1,0 +1,7 @@
+Aspect,SHAP,LIME
+Scope,Global + Local,Local only
+Rigor,Mathematically exact,Approximate
+Audience,Technical/Research,End-users
+Speed,Faster (linear),Slower (sampling)
+Interpretability,Feature-level,Word-level
+Best For,Proving bias exists,Explaining to users

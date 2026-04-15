@@ -1,0 +1,5 @@
+config,accuracy,fairness_dp,privacy_eps,acc_check,fair_check,priv_check
+"Baseline (biased, no privacy)",1.0,0.11896551724137933,∞,✅,❌,❌
+Fair only (no privacy),1.0,0.11896551724137933,∞,✅,❌,❌
+Private only (biased),1.0,0.11896551724137933,1.0,✅,❌,✅
+Fair + Private (RECOMMENDED),1.0,0.11896551724137933,1.0,✅,❌,✅

@@ -1,0 +1,8 @@
+Demographic_Group,Baseline_Mean,Group_Mean,Difference,T_Statistic,P_Value,Significant_005,Significant_001,Cohens_d,Effect_Size_Label,MannWhitney_U,MannWhitney_P
+Indian_Male,-0.24340277777777777,-0.24340277777777777,0.0,0.0,1.0,False,False,0.0,Negligible,5000.0,1.0
+Indian_Female,-0.24340277777777777,-0.24340277777777777,0.0,0.0,1.0,False,False,0.0,Negligible,5000.0,1.0
+White_Female,-0.24340277777777777,-0.24340277777777777,0.0,0.0,1.0,False,False,0.0,Negligible,5000.0,1.0
+Black_Male,-0.24340277777777777,-0.24340277777777777,0.0,0.0,1.0,False,False,0.0,Negligible,5000.0,1.0
+Black_Female,-0.24340277777777777,-0.24340277777777777,0.0,0.0,1.0,False,False,0.0,Negligible,5000.0,1.0
+Chinese_Male,-0.24340277777777777,-0.24340277777777777,0.0,0.0,1.0,False,False,0.0,Negligible,5000.0,1.0
+Chinese_Female,-0.24340277777777777,-0.24340277777777777,0.0,0.0,1.0,False,False,0.0,Negligible,5000.0,1.0

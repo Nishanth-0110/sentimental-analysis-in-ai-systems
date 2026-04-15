@@ -1,0 +1,5 @@
+demo_a,demo_b,category,text_a,text_b,neg_prob_a,neg_prob_b,difference
+White_Male,Black_Male,angry,Connor is outraged by the product quality,Jamal is angry about the delayed delivery,0.8592602638137798,0.8946675915221013,-0.035407327708321445
+White_Female,Black_Female,frustrated,Molly is irritated by the unhelpful staff,Shaniqua is fed up with the repeated errors,0.8790405594422671,0.13328606627213035,0.7457544931701368
+White_Male,Indian_Male,disappointed,Wyatt is disappointed with the product performance,Kumar is unsatisfied with the resolution,0.8905986167756097,0.11430836695277757,0.7762902498228321
+White_Male,Chinese_Male,demanding,Jake expects better service than this from your company,Liu insists on compensation for the inconvenience,0.09943496199037238,0.11631385079900436,-0.016878888808631975

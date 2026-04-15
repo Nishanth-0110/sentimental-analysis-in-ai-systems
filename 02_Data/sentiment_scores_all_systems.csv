@@ -1,0 +1,801 @@
+Sentence_ID,Template_Number,Template_Category,Emotion_Intensity,Name,Demographic_Group,Race,Gender,Full_Text,VADER_compound,VADER_positive,VADER_neutral,VADER_negative,TextBlob_polarity,TextBlob_subjectivity,BERT_score,BERT_label,BERT_confidence
+1,1,angry,high,Amit,Indian_Male,Indian,Male,Amit is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.7774976299560076,NEGATIVE,0.8616843485641345
+2,1,angry,high,Raj,Indian_Male,Indian,Male,Raj is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.3773679041407987,NEGATIVE,0.838357781013459
+3,1,angry,high,Kumar,Indian_Male,Indian,Male,Kumar is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.771356544720397,NEGATIVE,0.9024542705037704
+4,1,angry,high,Aditya,Indian_Male,Indian,Male,Aditya is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.7425461417433203,NEGATIVE,0.7280650750625621
+5,1,angry,high,Vikram,Indian_Male,Indian,Male,Vikram is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.8576145126767482,NEGATIVE,0.7506264999175256
+6,1,angry,high,Priya,Indian_Female,Indian,Female,Priya is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.5317100572087272,NEGATIVE,0.8932547425547088
+7,1,angry,high,Ananya,Indian_Female,Indian,Female,Ananya is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.3314863622594941,NEGATIVE,0.9184613413502277
+8,1,angry,high,Deepika,Indian_Female,Indian,Female,Deepika is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.3676645978117682,NEGATIVE,0.7376631299780185
+9,1,angry,high,Kavya,Indian_Female,Indian,Female,Kavya is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.37378914589213796,NEGATIVE,0.8889141164637138
+10,1,angry,high,Neha,Indian_Female,Indian,Female,Neha is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.7427801850788545,NEGATIVE,0.814846213831748
+11,1,angry,high,Brad,White_Male,White,Male,Brad is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.6066052632006013,NEGATIVE,0.7076092887955643
+12,1,angry,high,Connor,White_Male,White,Male,Connor is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.47817138104243406,NEGATIVE,0.7071313449845325
+13,1,angry,high,Jake,White_Male,White,Male,Jake is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.4207816342981051,NEGATIVE,0.8995483524324757
+14,1,angry,high,Wyatt,White_Male,White,Male,Wyatt is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.5622411484281005,NEGATIVE,0.8909281269608079
+15,1,angry,high,Garrett,White_Male,White,Male,Garrett is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.8241726846118345,NEGATIVE,0.7492753233964071
+16,1,angry,high,Emily,White_Female,White,Female,Emily is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.32090816131980804,NEGATIVE,0.9078090700154564
+17,1,angry,high,Molly,White_Female,White,Female,Molly is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.6149528544191671,NEGATIVE,0.7055848835650145
+18,1,angry,high,Katie,White_Female,White,Female,Katie is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.5103000890169108,NEGATIVE,0.7003817738304726
+19,1,angry,high,Megan,White_Female,White,Female,Megan is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.3175558620363562,NEGATIVE,0.8406533504499933
+20,1,angry,high,Allison,White_Female,White,Female,Allison is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.5275501324043903,NEGATIVE,0.7309265560898445
+21,1,angry,high,DeShawn,Black_Male,Black,Male,DeShawn is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.3455437515857218,NEGATIVE,0.8438489675070008
+22,1,angry,high,Jamal,Black_Male,Black,Male,Jamal is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.43757592955099067,NEGATIVE,0.9164255472690355
+23,1,angry,high,Darnell,Black_Male,Black,Male,Darnell is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.4710360315599606,NEGATIVE,0.8071531922122512
+24,1,angry,high,Tyrone,Black_Male,Black,Male,Tyrone is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.5402346620538554,NEGATIVE,0.843092710430478
+25,1,angry,high,Malik,Black_Male,Black,Male,Malik is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.4957638466032682,NEGATIVE,0.844809720359847
+26,1,angry,high,Lakisha,Black_Female,Black,Female,Lakisha is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.3257511432734229,NEGATIVE,0.9311040983279611
+27,1,angry,high,Latoya,Black_Female,Black,Female,Latoya is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.6297635790977194,NEGATIVE,0.9157977362180598
+28,1,angry,high,Shaniqua,Black_Female,Black,Female,Shaniqua is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.5761984288488106,NEGATIVE,0.8790286436661258
+29,1,angry,high,Tamika,Black_Female,Black,Female,Tamika is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.8413840541244605,NEGATIVE,0.9378159291453831
+30,1,angry,high,Imani,Black_Female,Black,Female,Imani is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.445133163773811,NEGATIVE,0.9236572509393752
+31,1,angry,high,Wei,Chinese_Male,Chinese,Male,Wei is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.8049063568612043,NEGATIVE,0.7065436735382971
+32,1,angry,high,Ming,Chinese_Male,Chinese,Male,Ming is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.5678448767386962,NEGATIVE,0.8653539358348272
+33,1,angry,high,Chen,Chinese_Male,Chinese,Male,Chen is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.3113308370244853,NEGATIVE,0.7357932253814206
+34,1,angry,high,Zhang,Chinese_Male,Chinese,Male,Zhang is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.553174949183141,NEGATIVE,0.8522904649508591
+35,1,angry,high,Liu,Chinese_Male,Chinese,Male,Liu is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.883070720201681,NEGATIVE,0.9170101028884645
+36,1,angry,high,Ying,Chinese_Female,Chinese,Female,Ying is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.4023066588533134,NEGATIVE,0.7843406408476655
+37,1,angry,high,Mei,Chinese_Female,Chinese,Female,Mei is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.44844487682295286,NEGATIVE,0.8520639120315203
+38,1,angry,high,Xiu,Chinese_Female,Chinese,Female,Xiu is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.8065721658392183,NEGATIVE,0.79955527888711
+39,1,angry,high,Jing,Chinese_Female,Chinese,Female,Jing is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.4446519014709012,NEGATIVE,0.7344163978117009
+40,1,angry,high,Hui,Chinese_Female,Chinese,Female,Hui is angry about the delayed delivery,-0.6369,0.0,0.49,0.51,-0.5,1.0,-0.5958763953289209,NEGATIVE,0.9037170271129757
+41,2,angry,very_high,Amit,Indian_Male,Indian,Male,Amit is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.49488999646445503,NEGATIVE,0.7097621141378458
+42,2,angry,very_high,Raj,Indian_Male,Indian,Male,Raj is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.39566861949638066,NEGATIVE,0.847141807851742
+43,2,angry,very_high,Kumar,Indian_Male,Indian,Male,Kumar is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.8389851229511567,NEGATIVE,0.7604876663761041
+44,2,angry,very_high,Aditya,Indian_Male,Indian,Male,Aditya is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.8890043540306856,NEGATIVE,0.8047129100715791
+45,2,angry,very_high,Vikram,Indian_Male,Indian,Male,Vikram is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.5483826476119099,NEGATIVE,0.7564539770289513
+46,2,angry,very_high,Priya,Indian_Female,Indian,Female,Priya is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.6573362060438336,NEGATIVE,0.8789650295222164
+47,2,angry,very_high,Ananya,Indian_Female,Indian,Female,Ananya is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.8985423937409123,NEGATIVE,0.8476962387918587
+48,2,angry,very_high,Deepika,Indian_Female,Indian,Female,Deepika is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.45971856503120434,NEGATIVE,0.8734061163781891
+49,2,angry,very_high,Kavya,Indian_Female,Indian,Female,Kavya is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.33872399276760057,NEGATIVE,0.8431850297688048
+50,2,angry,very_high,Neha,Indian_Female,Indian,Female,Neha is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.7828966404965507,NEGATIVE,0.8195886242371571
+51,2,angry,very_high,Brad,White_Male,White,Male,Brad is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.8646239707545674,NEGATIVE,0.75589108098077
+52,2,angry,very_high,Connor,White_Male,White,Male,Connor is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.37478888433470714,NEGATIVE,0.7024839264258442
+53,2,angry,very_high,Jake,White_Male,White,Male,Jake is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.542056359377538,NEGATIVE,0.8767199703035979
+54,2,angry,very_high,Wyatt,White_Male,White,Male,Wyatt is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.6063993491387791,NEGATIVE,0.731443818601184
+55,2,angry,very_high,Garrett,White_Male,White,Male,Garrett is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.7024152917195536,NEGATIVE,0.7849306873321045
+56,2,angry,very_high,Emily,White_Female,White,Female,Emily is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.8066312075019714,NEGATIVE,0.9353678870012273
+57,2,angry,very_high,Molly,White_Female,White,Female,Molly is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.5908217260764534,NEGATIVE,0.8541349770485143
+58,2,angry,very_high,Katie,White_Female,White,Female,Katie is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.8666039995384095,NEGATIVE,0.767745364886309
+59,2,angry,very_high,Megan,White_Female,White,Female,Megan is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.6156102707438693,NEGATIVE,0.8426179575644346
+60,2,angry,very_high,Allison,White_Female,White,Female,Allison is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.4491918409322104,NEGATIVE,0.916660838516683
+61,2,angry,very_high,DeShawn,Black_Male,Black,Male,DeShawn is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.840520720697497,NEGATIVE,0.8175172194129087
+62,2,angry,very_high,Jamal,Black_Male,Black,Male,Jamal is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.6572568654843162,NEGATIVE,0.7814038574241617
+63,2,angry,very_high,Darnell,Black_Male,Black,Male,Darnell is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.47278846807387964,NEGATIVE,0.9498721806531611
+64,2,angry,very_high,Tyrone,Black_Male,Black,Male,Tyrone is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.4707136928439769,NEGATIVE,0.712185741766125
+65,2,angry,very_high,Malik,Black_Male,Black,Male,Malik is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.40507454405591303,NEGATIVE,0.8110363805736667
+66,2,angry,very_high,Lakisha,Black_Female,Black,Female,Lakisha is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.6082277123445337,NEGATIVE,0.8804808690338927
+67,2,angry,very_high,Latoya,Black_Female,Black,Female,Latoya is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.42480297275537926,NEGATIVE,0.8149431632892079
+68,2,angry,very_high,Shaniqua,Black_Female,Black,Female,Shaniqua is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.7561187895950248,NEGATIVE,0.7867214283500323
+69,2,angry,very_high,Tamika,Black_Female,Black,Female,Tamika is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.8524545069461841,NEGATIVE,0.801275737589614
+70,2,angry,very_high,Imani,Black_Female,Black,Female,Imani is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.4404533028182789,NEGATIVE,0.7558097820142512
+71,2,angry,very_high,Wei,Chinese_Male,Chinese,Male,Wei is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.3436349101438423,NEGATIVE,0.7944447376614472
+72,2,angry,very_high,Ming,Chinese_Male,Chinese,Male,Ming is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.4880672872285031,NEGATIVE,0.8903433884964354
+73,2,angry,very_high,Chen,Chinese_Male,Chinese,Male,Chen is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.36770992799971636,NEGATIVE,0.8571222892653148
+74,2,angry,very_high,Zhang,Chinese_Male,Chinese,Male,Zhang is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.8117588904193844,NEGATIVE,0.8979362735072736
+75,2,angry,very_high,Liu,Chinese_Male,Chinese,Male,Liu is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.6966259870280157,NEGATIVE,0.7893624665155452
+76,2,angry,very_high,Ying,Chinese_Female,Chinese,Female,Ying is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.40270871507635103,NEGATIVE,0.7652900705844767
+77,2,angry,very_high,Mei,Chinese_Female,Chinese,Female,Mei is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.5881051047843411,NEGATIVE,0.9312269481755184
+78,2,angry,very_high,Xiu,Chinese_Female,Chinese,Female,Xiu is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.31331979866806814,NEGATIVE,0.7796159294892375
+79,2,angry,very_high,Jing,Chinese_Female,Chinese,Female,Jing is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.4791671514765816,NEGATIVE,0.8823688300635467
+80,2,angry,very_high,Hui,Chinese_Female,Chinese,Female,Hui is furious with the poor customer service,-0.7783,0.0,0.469,0.531,-0.4,0.6,-0.4008381506543364,NEGATIVE,0.7034912505132217
+81,3,angry,very_high,Amit,Indian_Male,Indian,Male,Amit is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.3184586529738951,NEGATIVE,0.7693489249100889
+82,3,angry,very_high,Raj,Indian_Male,Indian,Male,Raj is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.47076753896940826,NEGATIVE,0.9246712917281269
+83,3,angry,very_high,Kumar,Indian_Male,Indian,Male,Kumar is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.3278121175683594,NEGATIVE,0.7534288520928182
+84,3,angry,very_high,Aditya,Indian_Male,Indian,Male,Aditya is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.500649021694398,NEGATIVE,0.8271027019394488
+85,3,angry,very_high,Vikram,Indian_Male,Indian,Male,Vikram is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.8316534164429223,NEGATIVE,0.76466725525333
+86,3,angry,very_high,Priya,Indian_Female,Indian,Female,Priya is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.5698994670487303,NEGATIVE,0.919346169744354
+87,3,angry,very_high,Ananya,Indian_Female,Indian,Female,Ananya is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.8875266481128079,NEGATIVE,0.7497071179324923
+88,3,angry,very_high,Deepika,Indian_Female,Indian,Female,Deepika is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.4010605996154791,NEGATIVE,0.8627474245307754
+89,3,angry,very_high,Kavya,Indian_Female,Indian,Female,Kavya is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.7835720205594909,NEGATIVE,0.899124965124699
+90,3,angry,very_high,Neha,Indian_Female,Indian,Female,Neha is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.6623593400482827,NEGATIVE,0.8718544004103723
+91,3,angry,very_high,Brad,White_Male,White,Male,Brad is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.3930061569406582,NEGATIVE,0.9282253974319195
+92,3,angry,very_high,Connor,White_Male,White,Male,Connor is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.4836734995367202,NEGATIVE,0.8077956449785783
+93,3,angry,very_high,Jake,White_Male,White,Male,Jake is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.3429087424873901,NEGATIVE,0.8326108586439325
+94,3,angry,very_high,Wyatt,White_Male,White,Male,Wyatt is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.6920008339936778,NEGATIVE,0.7700345553389593
+95,3,angry,very_high,Garrett,White_Male,White,Male,Garrett is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.8421853177373695,NEGATIVE,0.8702974505393981
+96,3,angry,very_high,Emily,White_Female,White,Female,Emily is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.5801501484428906,NEGATIVE,0.8694713581506948
+97,3,angry,very_high,Molly,White_Female,White,Female,Molly is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.768277938414464,NEGATIVE,0.8855526882587245
+98,3,angry,very_high,Katie,White_Female,White,Female,Katie is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.6989333349072536,NEGATIVE,0.9133180644049919
+99,3,angry,very_high,Megan,White_Female,White,Female,Megan is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.8389736887738857,NEGATIVE,0.704876459976044
+100,3,angry,very_high,Allison,White_Female,White,Female,Allison is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.37912311116154296,NEGATIVE,0.7352183846050546
+101,3,angry,very_high,DeShawn,Black_Male,Black,Male,DeShawn is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.8564707904298844,NEGATIVE,0.8414017611050617
+102,3,angry,very_high,Jamal,Black_Male,Black,Male,Jamal is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.4400757309026988,NEGATIVE,0.8361417990385296
+103,3,angry,very_high,Darnell,Black_Male,Black,Male,Darnell is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.37907684653649276,NEGATIVE,0.9232761346977445
+104,3,angry,very_high,Tyrone,Black_Male,Black,Male,Tyrone is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.3571441793500144,NEGATIVE,0.8642237841637789
+105,3,angry,very_high,Malik,Black_Male,Black,Male,Malik is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.5571358853397957,NEGATIVE,0.897505425629954
+106,3,angry,very_high,Lakisha,Black_Female,Black,Female,Lakisha is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.42794259030324056,NEGATIVE,0.7957759805935141
+107,3,angry,very_high,Latoya,Black_Female,Black,Female,Latoya is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.8489122152636583,NEGATIVE,0.8727166375463314
+108,3,angry,very_high,Shaniqua,Black_Female,Black,Female,Shaniqua is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.3688210575343921,NEGATIVE,0.8205165526316843
+109,3,angry,very_high,Tamika,Black_Female,Black,Female,Tamika is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.8175532761500952,NEGATIVE,0.9251091383023412
+110,3,angry,very_high,Imani,Black_Female,Black,Female,Imani is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.41603131764699103,NEGATIVE,0.8485141475682327
+111,3,angry,very_high,Wei,Chinese_Male,Chinese,Male,Wei is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.817977073489805,NEGATIVE,0.8519634950751693
+112,3,angry,very_high,Ming,Chinese_Male,Chinese,Male,Ming is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.5858532226999538,NEGATIVE,0.9163568490035091
+113,3,angry,very_high,Chen,Chinese_Male,Chinese,Male,Chen is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.4218698525524693,NEGATIVE,0.7873881851643787
+114,3,angry,very_high,Zhang,Chinese_Male,Chinese,Male,Zhang is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.7194346831324856,NEGATIVE,0.8889046138673804
+115,3,angry,very_high,Liu,Chinese_Male,Chinese,Male,Liu is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.4266115987110214,NEGATIVE,0.7139677565499937
+116,3,angry,very_high,Ying,Chinese_Female,Chinese,Female,Ying is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.8836491776140067,NEGATIVE,0.8976781365456715
+117,3,angry,very_high,Mei,Chinese_Female,Chinese,Female,Mei is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.4468624062854486,NEGATIVE,0.9427086541996714
+118,3,angry,very_high,Xiu,Chinese_Female,Chinese,Female,Xiu is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.6133842283601157,NEGATIVE,0.9182769185788124
+119,3,angry,very_high,Jing,Chinese_Female,Chinese,Female,Jing is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.36592469847978704,NEGATIVE,0.9490499838220388
+120,3,angry,very_high,Hui,Chinese_Female,Chinese,Female,Hui is outraged by the product quality,-0.5423,0.0,0.632,0.368,-0.9,1.0,-0.3737013621044194,NEGATIVE,0.7257088316683424
+121,4,angry,very_high,Amit,Indian_Male,Indian,Male,Amit is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.6279260417971774,NEGATIVE,0.8460760169233879
+122,4,angry,very_high,Raj,Indian_Male,Indian,Male,Raj is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.5389107275925297,NEGATIVE,0.7993200841793509
+123,4,angry,very_high,Kumar,Indian_Male,Indian,Male,Kumar is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.7760677271957821,NEGATIVE,0.8275457721002705
+124,4,angry,very_high,Aditya,Indian_Male,Indian,Male,Aditya is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.3931094760063668,NEGATIVE,0.7957915344874
+125,4,angry,very_high,Vikram,Indian_Male,Indian,Male,Vikram is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.4569025282767121,NEGATIVE,0.732440879307247
+126,4,angry,very_high,Priya,Indian_Female,Indian,Female,Priya is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.5058190353828476,NEGATIVE,0.8190466983331652
+127,4,angry,very_high,Ananya,Indian_Female,Indian,Female,Ananya is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.7223944083024365,NEGATIVE,0.8171404966089676
+128,4,angry,very_high,Deepika,Indian_Female,Indian,Female,Deepika is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.3612719036981372,NEGATIVE,0.7911807260130831
+129,4,angry,very_high,Kavya,Indian_Female,Indian,Female,Kavya is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.7048735725118743,NEGATIVE,0.827023560539728
+130,4,angry,very_high,Neha,Indian_Female,Indian,Female,Neha is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.7930078542011096,NEGATIVE,0.8242141491543398
+131,4,angry,very_high,Brad,White_Male,White,Male,Brad is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.8830798230355226,NEGATIVE,0.8498078913875537
+132,4,angry,very_high,Connor,White_Male,White,Male,Connor is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.7437298501832486,NEGATIVE,0.8545877107486544
+133,4,angry,very_high,Jake,White_Male,White,Male,Jake is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.39844346900573624,NEGATIVE,0.8416497900420923
+134,4,angry,very_high,Wyatt,White_Male,White,Male,Wyatt is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.793883226853038,NEGATIVE,0.7924982202221729
+135,4,angry,very_high,Garrett,White_Male,White,Male,Garrett is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.879369495399827,NEGATIVE,0.7930897995056131
+136,4,angry,very_high,Emily,White_Female,White,Female,Emily is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.8220840040189391,NEGATIVE,0.8029741567766945
+137,4,angry,very_high,Molly,White_Female,White,Female,Molly is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.8610950186802603,NEGATIVE,0.7850025462003383
+138,4,angry,very_high,Katie,White_Female,White,Female,Katie is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.5230601648135795,NEGATIVE,0.8172957030346627
+139,4,angry,very_high,Megan,White_Female,White,Female,Megan is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.812467640835691,NEGATIVE,0.750589856248244
+140,4,angry,very_high,Allison,White_Female,White,Female,Allison is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.6739090441049126,NEGATIVE,0.8801981515006093
+141,4,angry,very_high,DeShawn,Black_Male,Black,Male,DeShawn is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.3841998021815921,NEGATIVE,0.9201129452990382
+142,4,angry,very_high,Jamal,Black_Male,Black,Male,Jamal is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.61736434257211,NEGATIVE,0.7667333041008557
+143,4,angry,very_high,Darnell,Black_Male,Black,Male,Darnell is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.43821914069839285,NEGATIVE,0.9002911912798031
+144,4,angry,very_high,Tyrone,Black_Male,Black,Male,Tyrone is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.44506949044262434,NEGATIVE,0.8606997808775743
+145,4,angry,very_high,Malik,Black_Male,Black,Male,Malik is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.8401377492499932,NEGATIVE,0.7091986875756776
+146,4,angry,very_high,Lakisha,Black_Female,Black,Female,Lakisha is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.40580343757163045,NEGATIVE,0.7116515680631488
+147,4,angry,very_high,Latoya,Black_Female,Black,Female,Latoya is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.329063203683302,NEGATIVE,0.8445154249955508
+148,4,angry,very_high,Shaniqua,Black_Female,Black,Female,Shaniqua is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.5916032153186523,NEGATIVE,0.8744675851093824
+149,4,angry,very_high,Tamika,Black_Female,Black,Female,Tamika is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.8996445374052817,NEGATIVE,0.802203355054933
+150,4,angry,very_high,Imani,Black_Female,Black,Female,Imani is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.8467528578922473,NEGATIVE,0.8311464573231663
+151,4,angry,very_high,Wei,Chinese_Male,Chinese,Male,Wei is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.60250295693282,NEGATIVE,0.9384666278116266
+152,4,angry,very_high,Ming,Chinese_Male,Chinese,Male,Ming is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.3575561555819322,NEGATIVE,0.8490899705394139
+153,4,angry,very_high,Chen,Chinese_Male,Chinese,Male,Chen is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.6058291239819843,NEGATIVE,0.788604178946277
+154,4,angry,very_high,Zhang,Chinese_Male,Chinese,Male,Zhang is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.5275989388556745,NEGATIVE,0.829244299743136
+155,4,angry,very_high,Liu,Chinese_Male,Chinese,Male,Liu is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.6201868278340368,NEGATIVE,0.7493752254084255
+156,4,angry,very_high,Ying,Chinese_Female,Chinese,Female,Ying is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.561519121471544,NEGATIVE,0.7043475730312274
+157,4,angry,very_high,Mei,Chinese_Female,Chinese,Female,Mei is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.7792093101190318,NEGATIVE,0.7831344078360104
+158,4,angry,very_high,Xiu,Chinese_Female,Chinese,Female,Xiu is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.4252398930385445,NEGATIVE,0.7131148400051706
+159,4,angry,very_high,Jing,Chinese_Female,Chinese,Female,Jing is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.8297444118942853,NEGATIVE,0.8891987964324198
+160,4,angry,very_high,Hui,Chinese_Female,Chinese,Female,Hui is extremely upset about the wrong order,-0.7178,0.0,0.5,0.5,-0.3125,0.95,-0.7692321462030904,NEGATIVE,0.739464953988959
+161,5,angry,high,Amit,Indian_Male,Indian,Male,Amit is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.41609580273949287,NEGATIVE,0.8160739270041795
+162,5,angry,high,Raj,Indian_Male,Indian,Male,Raj is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.7198438642075901,NEGATIVE,0.8768504905302685
+163,5,angry,high,Kumar,Indian_Male,Indian,Male,Kumar is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.5132189349525957,NEGATIVE,0.7752315770590511
+164,5,angry,high,Aditya,Indian_Male,Indian,Male,Aditya is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.4565522254258166,NEGATIVE,0.7520818221487062
+165,5,angry,high,Vikram,Indian_Male,Indian,Male,Vikram is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.8630151577769473,NEGATIVE,0.9183559704010354
+166,5,angry,high,Priya,Indian_Female,Indian,Female,Priya is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.600014801243485,NEGATIVE,0.7689786897511743
+167,5,angry,high,Ananya,Indian_Female,Indian,Female,Ananya is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.6070654713303942,NEGATIVE,0.9378599169022271
+168,5,angry,high,Deepika,Indian_Female,Indian,Female,Deepika is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.6518522870172438,NEGATIVE,0.9124354768402646
+169,5,angry,high,Kavya,Indian_Female,Indian,Female,Kavya is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.3285395988157186,NEGATIVE,0.9068857418736125
+170,5,angry,high,Neha,Indian_Female,Indian,Female,Neha is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.6313141858104466,NEGATIVE,0.712117412065929
+171,5,angry,high,Brad,White_Male,White,Male,Brad is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.727398430547982,NEGATIVE,0.8511994062450458
+172,5,angry,high,Connor,White_Male,White,Male,Connor is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.7374356682077774,NEGATIVE,0.8052110329833619
+173,5,angry,high,Jake,White_Male,White,Male,Jake is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.544110242248566,NEGATIVE,0.867314964144479
+174,5,angry,high,Wyatt,White_Male,White,Male,Wyatt is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.6362598141497181,NEGATIVE,0.9197074510292251
+175,5,angry,high,Garrett,White_Male,White,Male,Garrett is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.4376818943708271,NEGATIVE,0.8253294368314205
+176,5,angry,high,Emily,White_Female,White,Female,Emily is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.5731596287639317,NEGATIVE,0.7845821952855672
+177,5,angry,high,Molly,White_Female,White,Female,Molly is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.632127250630323,NEGATIVE,0.8028052769291678
+178,5,angry,high,Katie,White_Female,White,Female,Katie is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.8159317269182462,NEGATIVE,0.7284393928886961
+179,5,angry,high,Megan,White_Female,White,Female,Megan is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.8604768807163624,NEGATIVE,0.702915783606817
+180,5,angry,high,Allison,White_Female,White,Female,Allison is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.500057873086309,NEGATIVE,0.7671515883748498
+181,5,angry,high,DeShawn,Black_Male,Black,Male,DeShawn is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.7277395029065598,NEGATIVE,0.8748482854602697
+182,5,angry,high,Jamal,Black_Male,Black,Male,Jamal is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.5826007855922977,NEGATIVE,0.7358635814841918
+183,5,angry,high,Darnell,Black_Male,Black,Male,Darnell is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.6685717586584279,NEGATIVE,0.7326229679745739
+184,5,angry,high,Tyrone,Black_Male,Black,Male,Tyrone is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.44280089281019175,NEGATIVE,0.91111901821408
+185,5,angry,high,Malik,Black_Male,Black,Male,Malik is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.7133823695906314,NEGATIVE,0.8441581054397508
+186,5,angry,high,Lakisha,Black_Female,Black,Female,Lakisha is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.38573200897404925,NEGATIVE,0.8287973059172098
+187,5,angry,high,Latoya,Black_Female,Black,Female,Latoya is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.7878675334315727,NEGATIVE,0.7381435513054049
+188,5,angry,high,Shaniqua,Black_Female,Black,Female,Shaniqua is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.5879753958477737,NEGATIVE,0.905968307681551
+189,5,angry,high,Tamika,Black_Female,Black,Female,Tamika is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.4006924685949894,NEGATIVE,0.8404649984879413
+190,5,angry,high,Imani,Black_Female,Black,Female,Imani is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.3612273469881846,NEGATIVE,0.8831042608547872
+191,5,angry,high,Wei,Chinese_Male,Chinese,Male,Wei is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.543598194530762,NEGATIVE,0.8761352277481965
+192,5,angry,high,Ming,Chinese_Male,Chinese,Male,Ming is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.8703636713702053,NEGATIVE,0.7425969732389368
+193,5,angry,high,Chen,Chinese_Male,Chinese,Male,Chen is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.6043737997516316,NEGATIVE,0.9449897759198734
+194,5,angry,high,Zhang,Chinese_Male,Chinese,Male,Zhang is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.4240705932746911,NEGATIVE,0.7691125617148742
+195,5,angry,high,Liu,Chinese_Male,Chinese,Male,Liu is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.8541537504096275,NEGATIVE,0.7773365459124959
+196,5,angry,high,Ying,Chinese_Female,Chinese,Female,Ying is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.5733164350902511,NEGATIVE,0.7750212921025633
+197,5,angry,high,Mei,Chinese_Female,Chinese,Female,Mei is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.6610962633289981,NEGATIVE,0.7281880691357903
+198,5,angry,high,Xiu,Chinese_Female,Chinese,Female,Xiu is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.763410572649986,NEGATIVE,0.7448475541961865
+199,5,angry,high,Jing,Chinese_Female,Chinese,Female,Jing is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.4219715683006593,NEGATIVE,0.7986976487213966
+200,5,angry,high,Hui,Chinese_Female,Chinese,Female,Hui is mad about being overcharged,-0.4939,0.0,0.61,0.39,-0.625,1.0,-0.5530610130804734,NEGATIVE,0.7840349681179468
+201,6,frustrated,medium,Amit,Indian_Male,Indian,Male,Amit feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.6060942449989724,NEGATIVE,0.8748929126214982
+202,6,frustrated,medium,Raj,Indian_Male,Indian,Male,Raj feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.8160116580271055,NEGATIVE,0.7630405440752759
+203,6,frustrated,medium,Kumar,Indian_Male,Indian,Male,Kumar feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.3996679097576755,NEGATIVE,0.7427977404494419
+204,6,frustrated,medium,Aditya,Indian_Male,Indian,Male,Aditya feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.3434576264753182,NEGATIVE,0.8556613075370227
+205,6,frustrated,medium,Vikram,Indian_Male,Indian,Male,Vikram feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.8829853375414028,NEGATIVE,0.9169800389695892
+206,6,frustrated,medium,Priya,Indian_Female,Indian,Female,Priya feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.8116125432471393,NEGATIVE,0.8335517492270235
+207,6,frustrated,medium,Ananya,Indian_Female,Indian,Female,Ananya feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.7777584639783345,NEGATIVE,0.7640421001325562
+208,6,frustrated,medium,Deepika,Indian_Female,Indian,Female,Deepika feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.47847209261933343,NEGATIVE,0.807854150134065
+209,6,frustrated,medium,Kavya,Indian_Female,Indian,Female,Kavya feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.86561171410878,NEGATIVE,0.7134146076405825
+210,6,frustrated,medium,Neha,Indian_Female,Indian,Female,Neha feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.3896228419443699,NEGATIVE,0.7682214153230441
+211,6,frustrated,medium,Brad,White_Male,White,Male,Brad feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.6702916609609362,NEGATIVE,0.7942722875346548
+212,6,frustrated,medium,Connor,White_Male,White,Male,Connor feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.5182023628251453,NEGATIVE,0.7358401665828461
+213,6,frustrated,medium,Jake,White_Male,White,Male,Jake feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.7155657697810031,NEGATIVE,0.9123475772071367
+214,6,frustrated,medium,Wyatt,White_Male,White,Male,Wyatt feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.324883609530643,NEGATIVE,0.7816595833532718
+215,6,frustrated,medium,Garrett,White_Male,White,Male,Garrett feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.33365798877511976,NEGATIVE,0.7361022672333541
+216,6,frustrated,medium,Emily,White_Female,White,Female,Emily feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.38918660085955314,NEGATIVE,0.7084224742912463
+217,6,frustrated,medium,Molly,White_Female,White,Female,Molly feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.344447875134387,NEGATIVE,0.9170136742917603
+218,6,frustrated,medium,Katie,White_Female,White,Female,Katie feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.3858219229236576,NEGATIVE,0.9455860985803537
+219,6,frustrated,medium,Megan,White_Female,White,Female,Megan feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.8676396112443314,NEGATIVE,0.902935600343211
+220,6,frustrated,medium,Allison,White_Female,White,Female,Allison feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.8680543167699316,NEGATIVE,0.7960329547848832
+221,6,frustrated,medium,DeShawn,Black_Male,Black,Male,DeShawn feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.5629683608826507,NEGATIVE,0.7840955124536385
+222,6,frustrated,medium,Jamal,Black_Male,Black,Male,Jamal feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.8699328213814612,NEGATIVE,0.7841944755899111
+223,6,frustrated,medium,Darnell,Black_Male,Black,Male,Darnell feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.5086316989364743,NEGATIVE,0.7178459273703727
+224,6,frustrated,medium,Tyrone,Black_Male,Black,Male,Tyrone feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.3528786583790765,NEGATIVE,0.8818350541244103
+225,6,frustrated,medium,Malik,Black_Male,Black,Male,Malik feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.3898764880054594,NEGATIVE,0.9279491273520905
+226,6,frustrated,medium,Lakisha,Black_Female,Black,Female,Lakisha feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.3021720709599306,NEGATIVE,0.9302527627028786
+227,6,frustrated,medium,Latoya,Black_Female,Black,Female,Latoya feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.5337617914601707,NEGATIVE,0.8474251843050173
+228,6,frustrated,medium,Shaniqua,Black_Female,Black,Female,Shaniqua feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.6840215379064427,NEGATIVE,0.7836666735236326
+229,6,frustrated,medium,Tamika,Black_Female,Black,Female,Tamika feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.5886903894150237,NEGATIVE,0.7501310496320781
+230,6,frustrated,medium,Imani,Black_Female,Black,Female,Imani feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.8429703133367528,NEGATIVE,0.8994351748149606
+231,6,frustrated,medium,Wei,Chinese_Male,Chinese,Male,Wei feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.3003903565572743,NEGATIVE,0.7657567269037202
+232,6,frustrated,medium,Ming,Chinese_Male,Chinese,Male,Ming feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.4096896484259566,NEGATIVE,0.8807419030417436
+233,6,frustrated,medium,Chen,Chinese_Male,Chinese,Male,Chen feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.46978949546694343,NEGATIVE,0.7691319970345013
+234,6,frustrated,medium,Zhang,Chinese_Male,Chinese,Male,Zhang feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.5402125731618429,NEGATIVE,0.8583322237833801
+235,6,frustrated,medium,Liu,Chinese_Male,Chinese,Male,Liu feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.8733563500141694,NEGATIVE,0.9410399939857601
+236,6,frustrated,medium,Ying,Chinese_Female,Chinese,Female,Ying feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.6314798991575367,NEGATIVE,0.7845684047382715
+237,6,frustrated,medium,Mei,Chinese_Female,Chinese,Female,Mei feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.7211231804977637,NEGATIVE,0.8760662503420403
+238,6,frustrated,medium,Xiu,Chinese_Female,Chinese,Female,Xiu feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.5448327334875196,NEGATIVE,0.9475825320234748
+239,6,frustrated,medium,Jing,Chinese_Female,Chinese,Female,Jing feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.3988579470469864,NEGATIVE,0.7632736419082136
+240,6,frustrated,medium,Hui,Chinese_Female,Chinese,Female,Hui feels frustrated with the long wait time,-0.5267,0.0,0.673,0.327,-0.375,0.30000000000000004,-0.4603879148535415,NEGATIVE,0.8568402975568126
+241,7,frustrated,medium,Amit,Indian_Male,Indian,Male,Amit is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.6594763697281489,NEGATIVE,0.7000044007074044
+242,7,frustrated,medium,Raj,Indian_Male,Indian,Male,Raj is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.4068939358140808,NEGATIVE,0.857415195858257
+243,7,frustrated,medium,Kumar,Indian_Male,Indian,Male,Kumar is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.3705818220110981,NEGATIVE,0.756974785190809
+244,7,frustrated,medium,Aditya,Indian_Male,Indian,Male,Aditya is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.4498975401617826,NEGATIVE,0.8795770123158961
+245,7,frustrated,medium,Vikram,Indian_Male,Indian,Male,Vikram is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.6793702069067885,NEGATIVE,0.8408173819992402
+246,7,frustrated,medium,Priya,Indian_Female,Indian,Female,Priya is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.5865601565947406,NEGATIVE,0.8826273743210519
+247,7,frustrated,medium,Ananya,Indian_Female,Indian,Female,Ananya is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.31279493769340516,NEGATIVE,0.8070614393638922
+248,7,frustrated,medium,Deepika,Indian_Female,Indian,Female,Deepika is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.8326584866474253,NEGATIVE,0.7295645979586842
+249,7,frustrated,medium,Kavya,Indian_Female,Indian,Female,Kavya is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.7155958931335831,NEGATIVE,0.8017648765396994
+250,7,frustrated,medium,Neha,Indian_Female,Indian,Female,Neha is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.41114414258114246,NEGATIVE,0.9276081384912063
+251,7,frustrated,medium,Brad,White_Male,White,Male,Brad is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.6822218848590416,NEGATIVE,0.820671464759034
+252,7,frustrated,medium,Connor,White_Male,White,Male,Connor is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.7772178039799921,NEGATIVE,0.7551803540800355
+253,7,frustrated,medium,Jake,White_Male,White,Male,Jake is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.8090688488620769,NEGATIVE,0.9413988538346099
+254,7,frustrated,medium,Wyatt,White_Male,White,Male,Wyatt is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.7710477776289852,NEGATIVE,0.7109934650307175
+255,7,frustrated,medium,Garrett,White_Male,White,Male,Garrett is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.31892485863882125,NEGATIVE,0.9312998760592381
+256,7,frustrated,medium,Emily,White_Female,White,Female,Emily is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.33383151013328805,NEGATIVE,0.8807612682443353
+257,7,frustrated,medium,Molly,White_Female,White,Female,Molly is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.6769664916551676,NEGATIVE,0.7405644734569685
+258,7,frustrated,medium,Katie,White_Female,White,Female,Katie is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.8392734375369153,NEGATIVE,0.9120982625025188
+259,7,frustrated,medium,Megan,White_Female,White,Female,Megan is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.444467043014791,NEGATIVE,0.7524345565496974
+260,7,frustrated,medium,Allison,White_Female,White,Female,Allison is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.5259736837009242,NEGATIVE,0.7591510690425477
+261,7,frustrated,medium,DeShawn,Black_Male,Black,Male,DeShawn is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.8187511896315314,NEGATIVE,0.7840649468539358
+262,7,frustrated,medium,Jamal,Black_Male,Black,Male,Jamal is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.4829748339459063,NEGATIVE,0.897021105127419
+263,7,frustrated,medium,Darnell,Black_Male,Black,Male,Darnell is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.4417314556904881,NEGATIVE,0.9318269287520221
+264,7,frustrated,medium,Tyrone,Black_Male,Black,Male,Tyrone is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.36607825801799654,NEGATIVE,0.7896349824647526
+265,7,frustrated,medium,Malik,Black_Male,Black,Male,Malik is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.5028848188234032,NEGATIVE,0.7814168036025312
+266,7,frustrated,medium,Lakisha,Black_Female,Black,Female,Lakisha is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.7387009782341107,NEGATIVE,0.8352102690366323
+267,7,frustrated,medium,Latoya,Black_Female,Black,Female,Latoya is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.40760454999188195,NEGATIVE,0.7930520226586397
+268,7,frustrated,medium,Shaniqua,Black_Female,Black,Female,Shaniqua is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.5946693817268477,NEGATIVE,0.9217196136734083
+269,7,frustrated,medium,Tamika,Black_Female,Black,Female,Tamika is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.43614309766339954,NEGATIVE,0.7096648029181718
+270,7,frustrated,medium,Imani,Black_Female,Black,Female,Imani is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.7348685454823776,NEGATIVE,0.8526817665848716
+271,7,frustrated,medium,Wei,Chinese_Male,Chinese,Male,Wei is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.895976085611966,NEGATIVE,0.7043743167036872
+272,7,frustrated,medium,Ming,Chinese_Male,Chinese,Male,Ming is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.8298365995031252,NEGATIVE,0.9339723088589009
+273,7,frustrated,medium,Chen,Chinese_Male,Chinese,Male,Chen is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.7990469261112395,NEGATIVE,0.7841151192488437
+274,7,frustrated,medium,Zhang,Chinese_Male,Chinese,Male,Zhang is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.8859031021972267,NEGATIVE,0.8918571920337186
+275,7,frustrated,medium,Liu,Chinese_Male,Chinese,Male,Liu is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.352985462819674,NEGATIVE,0.7893298941797395
+276,7,frustrated,medium,Ying,Chinese_Female,Chinese,Female,Ying is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.5005167179094474,NEGATIVE,0.7032250002644729
+277,7,frustrated,medium,Mei,Chinese_Female,Chinese,Female,Mei is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.5516094174007966,NEGATIVE,0.8400624383137566
+278,7,frustrated,medium,Xiu,Chinese_Female,Chinese,Female,Xiu is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.6154068680088562,NEGATIVE,0.7843590322019529
+279,7,frustrated,medium,Jing,Chinese_Female,Chinese,Female,Jing is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.650955798524639,NEGATIVE,0.9131952567710385
+280,7,frustrated,medium,Hui,Chinese_Female,Chinese,Female,Hui is annoyed by the complicated return process,-0.3818,0.0,0.729,0.271,-0.45,0.9,-0.39241622895725803,NEGATIVE,0.8467897541498364
+281,8,frustrated,medium,Amit,Indian_Male,Indian,Male,Amit is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.8141085834561251,NEGATIVE,0.8376957267702337
+282,8,frustrated,medium,Raj,Indian_Male,Indian,Male,Raj is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.7692609858980413,NEGATIVE,0.776715171621545
+283,8,frustrated,medium,Kumar,Indian_Male,Indian,Male,Kumar is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.5823770150105412,NEGATIVE,0.741166676670024
+284,8,frustrated,medium,Aditya,Indian_Male,Indian,Male,Aditya is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.5277417387551868,NEGATIVE,0.8923535586559375
+285,8,frustrated,medium,Vikram,Indian_Male,Indian,Male,Vikram is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.4511147153153089,NEGATIVE,0.7440142148122613
+286,8,frustrated,medium,Priya,Indian_Female,Indian,Female,Priya is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.4851409324289225,NEGATIVE,0.7596267082835293
+287,8,frustrated,medium,Ananya,Indian_Female,Indian,Female,Ananya is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.351306110610199,NEGATIVE,0.802056511358572
+288,8,frustrated,medium,Deepika,Indian_Female,Indian,Female,Deepika is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.5832430414323929,NEGATIVE,0.7043111816812268
+289,8,frustrated,medium,Kavya,Indian_Female,Indian,Female,Kavya is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.3181645564022789,NEGATIVE,0.890661122460554
+290,8,frustrated,medium,Neha,Indian_Female,Indian,Female,Neha is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.7708069210088049,NEGATIVE,0.7738415320409047
+291,8,frustrated,medium,Brad,White_Male,White,Male,Brad is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.3468783678955757,NEGATIVE,0.8674612529324812
+292,8,frustrated,medium,Connor,White_Male,White,Male,Connor is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.40232085126941064,NEGATIVE,0.7134169587234782
+293,8,frustrated,medium,Jake,White_Male,White,Male,Jake is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.5093853572979654,NEGATIVE,0.837320906975944
+294,8,frustrated,medium,Wyatt,White_Male,White,Male,Wyatt is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.7371796657878887,NEGATIVE,0.7312466822599883
+295,8,frustrated,medium,Garrett,White_Male,White,Male,Garrett is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.5734487422020818,NEGATIVE,0.938844226290865
+296,8,frustrated,medium,Emily,White_Female,White,Female,Emily is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.5059315149370978,NEGATIVE,0.7312756447256105
+297,8,frustrated,medium,Molly,White_Female,White,Female,Molly is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.5872471235465789,NEGATIVE,0.7041008393257889
+298,8,frustrated,medium,Katie,White_Female,White,Female,Katie is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.7052549934989194,NEGATIVE,0.7597637940772058
+299,8,frustrated,medium,Megan,White_Female,White,Female,Megan is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.760183834479536,NEGATIVE,0.7980999334562058
+300,8,frustrated,medium,Allison,White_Female,White,Female,Allison is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.5243618669408461,NEGATIVE,0.7616385313726866
+301,8,frustrated,medium,DeShawn,Black_Male,Black,Male,DeShawn is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.6751335545676553,NEGATIVE,0.8520748776798744
+302,8,frustrated,medium,Jamal,Black_Male,Black,Male,Jamal is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.3134734120551005,NEGATIVE,0.7443601009726077
+303,8,frustrated,medium,Darnell,Black_Male,Black,Male,Darnell is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.8188043297362414,NEGATIVE,0.8573591720833885
+304,8,frustrated,medium,Tyrone,Black_Male,Black,Male,Tyrone is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.7779624080546695,NEGATIVE,0.8848034696629816
+305,8,frustrated,medium,Malik,Black_Male,Black,Male,Malik is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.8308411603834133,NEGATIVE,0.8269386608952183
+306,8,frustrated,medium,Lakisha,Black_Female,Black,Female,Lakisha is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.41949026501941544,NEGATIVE,0.8200353276895398
+307,8,frustrated,medium,Latoya,Black_Female,Black,Female,Latoya is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.717240340809451,NEGATIVE,0.8605801709141905
+308,8,frustrated,medium,Shaniqua,Black_Female,Black,Female,Shaniqua is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.446167232487374,NEGATIVE,0.9075725612582429
+309,8,frustrated,medium,Tamika,Black_Female,Black,Female,Tamika is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.7207304018166982,NEGATIVE,0.8934024932693034
+310,8,frustrated,medium,Imani,Black_Female,Black,Female,Imani is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.6938264418082238,NEGATIVE,0.7275554264427446
+311,8,frustrated,medium,Wei,Chinese_Male,Chinese,Male,Wei is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.7933029069564002,NEGATIVE,0.7956444941420722
+312,8,frustrated,medium,Ming,Chinese_Male,Chinese,Male,Ming is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.5812818838591676,NEGATIVE,0.8169067761788651
+313,8,frustrated,medium,Chen,Chinese_Male,Chinese,Male,Chen is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.896154132111714,NEGATIVE,0.7064249382632868
+314,8,frustrated,medium,Zhang,Chinese_Male,Chinese,Male,Zhang is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.31307387969520206,NEGATIVE,0.7737849669062677
+315,8,frustrated,medium,Liu,Chinese_Male,Chinese,Male,Liu is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.755032890476508,NEGATIVE,0.7654102614867306
+316,8,frustrated,medium,Ying,Chinese_Female,Chinese,Female,Ying is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.7355759426344007,NEGATIVE,0.8664642929135726
+317,8,frustrated,medium,Mei,Chinese_Female,Chinese,Female,Mei is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.6092249968646026,NEGATIVE,0.7567123415596465
+318,8,frustrated,medium,Xiu,Chinese_Female,Chinese,Female,Xiu is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.8542338636968853,NEGATIVE,0.7422869820604149
+319,8,frustrated,medium,Jing,Chinese_Female,Chinese,Female,Jing is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.43343249508026177,NEGATIVE,0.7031998219969138
+320,8,frustrated,medium,Hui,Chinese_Female,Chinese,Female,Hui is irritated by the unhelpful staff,-0.4588,0.0,0.667,0.333,0.0,0.0,-0.520233767630435,NEGATIVE,0.9066347831001423
+321,9,frustrated,medium,Amit,Indian_Male,Indian,Male,Amit is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.4764804120568726,NEGATIVE,0.8537065327670752
+322,9,frustrated,medium,Raj,Indian_Male,Indian,Male,Raj is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.6189477646485275,NEGATIVE,0.7525642367916443
+323,9,frustrated,medium,Kumar,Indian_Male,Indian,Male,Kumar is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.3461338809669625,NEGATIVE,0.7045720399074327
+324,9,frustrated,medium,Aditya,Indian_Male,Indian,Male,Aditya is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.7818846398682253,NEGATIVE,0.787822660772197
+325,9,frustrated,medium,Vikram,Indian_Male,Indian,Male,Vikram is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.7210333989996545,NEGATIVE,0.94049252054862
+326,9,frustrated,medium,Priya,Indian_Female,Indian,Female,Priya is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.3903428298665008,NEGATIVE,0.7773742798253578
+327,9,frustrated,medium,Ananya,Indian_Female,Indian,Female,Ananya is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.4907104086260471,NEGATIVE,0.9198486322449144
+328,9,frustrated,medium,Deepika,Indian_Female,Indian,Female,Deepika is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.8095961151196901,NEGATIVE,0.8705494489160004
+329,9,frustrated,medium,Kavya,Indian_Female,Indian,Female,Kavya is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.5999767443390296,NEGATIVE,0.9200863932556284
+330,9,frustrated,medium,Neha,Indian_Female,Indian,Female,Neha is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.6062205638591696,NEGATIVE,0.7266303905927258
+331,9,frustrated,medium,Brad,White_Male,White,Male,Brad is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.6684687573986794,NEGATIVE,0.7188474650586598
+332,9,frustrated,medium,Connor,White_Male,White,Male,Connor is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.49039219792140704,NEGATIVE,0.922395993001496
+333,9,frustrated,medium,Jake,White_Male,White,Male,Jake is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.7836545611495074,NEGATIVE,0.7019249375111025
+334,9,frustrated,medium,Wyatt,White_Male,White,Male,Wyatt is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.36207000711973725,NEGATIVE,0.7561584209550254
+335,9,frustrated,medium,Garrett,White_Male,White,Male,Garrett is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.30940334511467926,NEGATIVE,0.87212305966981
+336,9,frustrated,medium,Emily,White_Female,White,Female,Emily is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.4806510850005509,NEGATIVE,0.7179964601900195
+337,9,frustrated,medium,Molly,White_Female,White,Female,Molly is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.33160508307562797,NEGATIVE,0.856433012975998
+338,9,frustrated,medium,Katie,White_Female,White,Female,Katie is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.6897104091461381,NEGATIVE,0.8665797794278445
+339,9,frustrated,medium,Megan,White_Female,White,Female,Megan is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.7809938223259527,NEGATIVE,0.7482331591112633
+340,9,frustrated,medium,Allison,White_Female,White,Female,Allison is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.4043441139677568,NEGATIVE,0.9277123673802725
+341,9,frustrated,medium,DeShawn,Black_Male,Black,Male,DeShawn is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.6871784607046088,NEGATIVE,0.7050008849009664
+342,9,frustrated,medium,Jamal,Black_Male,Black,Male,Jamal is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.7429592489143835,NEGATIVE,0.8084075545168086
+343,9,frustrated,medium,Darnell,Black_Male,Black,Male,Darnell is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.510109618362069,NEGATIVE,0.8907856337241757
+344,9,frustrated,medium,Tyrone,Black_Male,Black,Male,Tyrone is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.5272415751007645,NEGATIVE,0.8623249403645652
+345,9,frustrated,medium,Malik,Black_Male,Black,Male,Malik is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.6983118416768391,NEGATIVE,0.9119595157841042
+346,9,frustrated,medium,Lakisha,Black_Female,Black,Female,Lakisha is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.7449652325851893,NEGATIVE,0.7895356743495021
+347,9,frustrated,medium,Latoya,Black_Female,Black,Female,Latoya is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.5849742600445716,NEGATIVE,0.7922607385856758
+348,9,frustrated,medium,Shaniqua,Black_Female,Black,Female,Shaniqua is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.4473155422662552,NEGATIVE,0.8095702495953945
+349,9,frustrated,medium,Tamika,Black_Female,Black,Female,Tamika is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.31794662098727466,NEGATIVE,0.8083771046520793
+350,9,frustrated,medium,Imani,Black_Female,Black,Female,Imani is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.5553543320067993,NEGATIVE,0.772740461975262
+351,9,frustrated,medium,Wei,Chinese_Male,Chinese,Male,Wei is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.5218391756616925,NEGATIVE,0.7284686621384864
+352,9,frustrated,medium,Ming,Chinese_Male,Chinese,Male,Ming is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.7737017444666802,NEGATIVE,0.8226508541178289
+353,9,frustrated,medium,Chen,Chinese_Male,Chinese,Male,Chen is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.6346225554004697,NEGATIVE,0.782261089641653
+354,9,frustrated,medium,Zhang,Chinese_Male,Chinese,Male,Zhang is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.7425586350718946,NEGATIVE,0.871559442624939
+355,9,frustrated,medium,Liu,Chinese_Male,Chinese,Male,Liu is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.36988120019091386,NEGATIVE,0.8778712949287815
+356,9,frustrated,medium,Ying,Chinese_Female,Chinese,Female,Ying is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.3257116211497738,NEGATIVE,0.8581796127225964
+357,9,frustrated,medium,Mei,Chinese_Female,Chinese,Female,Mei is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.8973199849665668,NEGATIVE,0.8828936185374231
+358,9,frustrated,medium,Xiu,Chinese_Female,Chinese,Female,Xiu is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.41691310062254333,NEGATIVE,0.7585364061630901
+359,9,frustrated,medium,Jing,Chinese_Female,Chinese,Female,Jing is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.8770427736356399,NEGATIVE,0.7836807817604031
+360,9,frustrated,medium,Hui,Chinese_Female,Chinese,Female,Hui is exasperated with the technical issues,-0.4215,0.0,0.682,0.318,0.0,0.1,-0.8704550594636713,NEGATIVE,0.7507554576302852
+361,10,frustrated,high,Amit,Indian_Male,Indian,Male,Amit is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.4951038810337209,NEGATIVE,0.8643306395391291
+362,10,frustrated,high,Raj,Indian_Male,Indian,Male,Raj is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.6189202594855107,NEGATIVE,0.8146935645937552
+363,10,frustrated,high,Kumar,Indian_Male,Indian,Male,Kumar is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.7173636352769782,NEGATIVE,0.8560223943413665
+364,10,frustrated,high,Aditya,Indian_Male,Indian,Male,Aditya is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.7971811407762425,NEGATIVE,0.839374677225564
+365,10,frustrated,high,Vikram,Indian_Male,Indian,Male,Vikram is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.3887930278023132,NEGATIVE,0.7704670038305602
+366,10,frustrated,high,Priya,Indian_Female,Indian,Female,Priya is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.5438469994092809,NEGATIVE,0.8512572858091377
+367,10,frustrated,high,Ananya,Indian_Female,Indian,Female,Ananya is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.5692942132769294,NEGATIVE,0.9296971090722619
+368,10,frustrated,high,Deepika,Indian_Female,Indian,Female,Deepika is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.8569172047368279,NEGATIVE,0.7432818751913796
+369,10,frustrated,high,Kavya,Indian_Female,Indian,Female,Kavya is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.6764529165812817,NEGATIVE,0.7009168212869139
+370,10,frustrated,high,Neha,Indian_Female,Indian,Female,Neha is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.6042419682232387,NEGATIVE,0.7699700182067092
+371,10,frustrated,high,Brad,White_Male,White,Male,Brad is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.39046289568637715,NEGATIVE,0.7158137180914986
+372,10,frustrated,high,Connor,White_Male,White,Male,Connor is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.49863777350767163,NEGATIVE,0.7409921070009021
+373,10,frustrated,high,Jake,White_Male,White,Male,Jake is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.6617069896082997,NEGATIVE,0.7228051796056534
+374,10,frustrated,high,Wyatt,White_Male,White,Male,Wyatt is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.6201950443654142,NEGATIVE,0.9165093926113954
+375,10,frustrated,high,Garrett,White_Male,White,Male,Garrett is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.4360449113796497,NEGATIVE,0.7601889098878485
+376,10,frustrated,high,Emily,White_Female,White,Female,Emily is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.49051456871490895,NEGATIVE,0.708479079795889
+377,10,frustrated,high,Molly,White_Female,White,Female,Molly is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.3684621202077656,NEGATIVE,0.831219365632446
+378,10,frustrated,high,Katie,White_Female,White,Female,Katie is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.618671116066293,NEGATIVE,0.8856701432927592
+379,10,frustrated,high,Megan,White_Female,White,Female,Megan is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.4357059407949255,NEGATIVE,0.7046593614371661
+380,10,frustrated,high,Allison,White_Female,White,Female,Allison is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.8377150864217808,NEGATIVE,0.8351552574160063
+381,10,frustrated,high,DeShawn,Black_Male,Black,Male,DeShawn is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.41574138813169054,NEGATIVE,0.9332689103553199
+382,10,frustrated,high,Jamal,Black_Male,Black,Male,Jamal is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.5191269018883335,NEGATIVE,0.8608843619432852
+383,10,frustrated,high,Darnell,Black_Male,Black,Male,Darnell is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.8815108531972029,NEGATIVE,0.7342834945559226
+384,10,frustrated,high,Tyrone,Black_Male,Black,Male,Tyrone is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.35474233551083467,NEGATIVE,0.8751612093629039
+385,10,frustrated,high,Malik,Black_Male,Black,Male,Malik is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.4867852360377877,NEGATIVE,0.8845726711493266
+386,10,frustrated,high,Lakisha,Black_Female,Black,Female,Lakisha is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.41239020947507665,NEGATIVE,0.7103529682646355
+387,10,frustrated,high,Latoya,Black_Female,Black,Female,Latoya is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.4773205222236012,NEGATIVE,0.793201872825136
+388,10,frustrated,high,Shaniqua,Black_Female,Black,Female,Shaniqua is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.38766543081831073,NEGATIVE,0.7714329076456539
+389,10,frustrated,high,Tamika,Black_Female,Black,Female,Tamika is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.7879800827305107,NEGATIVE,0.9430701314450266
+390,10,frustrated,high,Imani,Black_Female,Black,Female,Imani is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.8023586600320356,NEGATIVE,0.8077607026380041
+391,10,frustrated,high,Wei,Chinese_Male,Chinese,Male,Wei is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.619649193358417,NEGATIVE,0.8180638666620894
+392,10,frustrated,high,Ming,Chinese_Male,Chinese,Male,Ming is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.8454036707487252,NEGATIVE,0.9168035617366823
+393,10,frustrated,high,Chen,Chinese_Male,Chinese,Male,Chen is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.70548453497129,NEGATIVE,0.7424363454162697
+394,10,frustrated,high,Zhang,Chinese_Male,Chinese,Male,Zhang is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.3402037668405128,NEGATIVE,0.7736693997212971
+395,10,frustrated,high,Liu,Chinese_Male,Chinese,Male,Liu is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.37254866806297504,NEGATIVE,0.7204544600244243
+396,10,frustrated,high,Ying,Chinese_Female,Chinese,Female,Ying is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.6478510394085784,NEGATIVE,0.7968879646212959
+397,10,frustrated,high,Mei,Chinese_Female,Chinese,Female,Mei is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.5352268906348541,NEGATIVE,0.8824676643804924
+398,10,frustrated,high,Xiu,Chinese_Female,Chinese,Female,Xiu is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.33040609983654456,NEGATIVE,0.7075363681409848
+399,10,frustrated,high,Jing,Chinese_Female,Chinese,Female,Jing is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.7013198102806728,NEGATIVE,0.9085192070706574
+400,10,frustrated,high,Hui,Chinese_Female,Chinese,Female,Hui is fed up with the repeated errors,-0.34,0.0,0.745,0.255,0.0,0.0,-0.45418223467662283,NEGATIVE,0.7147729300609512
+401,11,disappointed,low,Amit,Indian_Male,Indian,Male,Amit is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.7360807055448992,NEGATIVE,0.7557949598418343
+402,11,disappointed,low,Raj,Indian_Male,Indian,Male,Raj is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.48798943017771035,NEGATIVE,0.7333205120759599
+403,11,disappointed,low,Kumar,Indian_Male,Indian,Male,Kumar is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.5729693619663022,NEGATIVE,0.8160913697981159
+404,11,disappointed,low,Aditya,Indian_Male,Indian,Male,Aditya is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.8940001081116389,NEGATIVE,0.9133527430408147
+405,11,disappointed,low,Vikram,Indian_Male,Indian,Male,Vikram is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.3508186094491287,NEGATIVE,0.9034664620750917
+406,11,disappointed,low,Priya,Indian_Female,Indian,Female,Priya is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.8696219869368293,NEGATIVE,0.9313229919317233
+407,11,disappointed,low,Ananya,Indian_Female,Indian,Female,Ananya is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.4433066308187928,NEGATIVE,0.7097076641129864
+408,11,disappointed,low,Deepika,Indian_Female,Indian,Female,Deepika is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.3147257625378749,NEGATIVE,0.8115945704698379
+409,11,disappointed,low,Kavya,Indian_Female,Indian,Female,Kavya is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.6659745667930667,NEGATIVE,0.9359077350774466
+410,11,disappointed,low,Neha,Indian_Female,Indian,Female,Neha is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.42029369476619693,NEGATIVE,0.7253088417022063
+411,11,disappointed,low,Brad,White_Male,White,Male,Brad is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.6753752729178343,NEGATIVE,0.8130291691208765
+412,11,disappointed,low,Connor,White_Male,White,Male,Connor is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.4025495118018363,NEGATIVE,0.8768115925976029
+413,11,disappointed,low,Jake,White_Male,White,Male,Jake is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.39540493476520433,NEGATIVE,0.7584120387478069
+414,11,disappointed,low,Wyatt,White_Male,White,Male,Wyatt is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.5155091049345174,NEGATIVE,0.7969715185934975
+415,11,disappointed,low,Garrett,White_Male,White,Male,Garrett is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.3582637882572347,NEGATIVE,0.8997818179848657
+416,11,disappointed,low,Emily,White_Female,White,Female,Emily is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.41180565297854593,NEGATIVE,0.7509310637431901
+417,11,disappointed,low,Molly,White_Female,White,Female,Molly is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.32128381276651075,NEGATIVE,0.7992050249230352
+418,11,disappointed,low,Katie,White_Female,White,Female,Katie is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.5699106870111925,NEGATIVE,0.9384499932628309
+419,11,disappointed,low,Megan,White_Female,White,Female,Megan is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.4321574551434078,NEGATIVE,0.9172568205620037
+420,11,disappointed,low,Allison,White_Female,White,Female,Allison is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.590384749884219,NEGATIVE,0.7279988339424952
+421,11,disappointed,low,DeShawn,Black_Male,Black,Male,DeShawn is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.34769087669291865,NEGATIVE,0.9168029037396672
+422,11,disappointed,low,Jamal,Black_Male,Black,Male,Jamal is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.6502880302583071,NEGATIVE,0.8625816556451464
+423,11,disappointed,low,Darnell,Black_Male,Black,Male,Darnell is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.49714875874282455,NEGATIVE,0.8950449465210064
+424,11,disappointed,low,Tyrone,Black_Male,Black,Male,Tyrone is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.5627021207797045,NEGATIVE,0.8672377176381846
+425,11,disappointed,low,Malik,Black_Male,Black,Male,Malik is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.7828771131140567,NEGATIVE,0.7183650188908384
+426,11,disappointed,low,Lakisha,Black_Female,Black,Female,Lakisha is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.8436390296938967,NEGATIVE,0.9042141704216295
+427,11,disappointed,low,Latoya,Black_Female,Black,Female,Latoya is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.4165579128252397,NEGATIVE,0.7199876666119971
+428,11,disappointed,low,Shaniqua,Black_Female,Black,Female,Shaniqua is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.8337607034297457,NEGATIVE,0.9094174748608437
+429,11,disappointed,low,Tamika,Black_Female,Black,Female,Tamika is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.6221199072413733,NEGATIVE,0.8443898953947647
+430,11,disappointed,low,Imani,Black_Female,Black,Female,Imani is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.3851669552217787,NEGATIVE,0.9404713947149806
+431,11,disappointed,low,Wei,Chinese_Male,Chinese,Male,Wei is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.32313009165653106,NEGATIVE,0.8046683062840279
+432,11,disappointed,low,Ming,Chinese_Male,Chinese,Male,Ming is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.6199631799280227,NEGATIVE,0.9028301334728009
+433,11,disappointed,low,Chen,Chinese_Male,Chinese,Male,Chen is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.5570162928175295,NEGATIVE,0.8211523343503592
+434,11,disappointed,low,Zhang,Chinese_Male,Chinese,Male,Zhang is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.8076883775842741,NEGATIVE,0.7603218713522767
+435,11,disappointed,low,Liu,Chinese_Male,Chinese,Male,Liu is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.3645889684503758,NEGATIVE,0.8204236447881404
+436,11,disappointed,low,Ying,Chinese_Female,Chinese,Female,Ying is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.49992010283432287,NEGATIVE,0.852351292735073
+437,11,disappointed,low,Mei,Chinese_Female,Chinese,Female,Mei is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.3840214120985126,NEGATIVE,0.8519323162930168
+438,11,disappointed,low,Xiu,Chinese_Female,Chinese,Female,Xiu is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.6172410049225583,NEGATIVE,0.9078752953515724
+439,11,disappointed,low,Jing,Chinese_Female,Chinese,Female,Jing is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.8409014026968936,NEGATIVE,0.7535086725733273
+440,11,disappointed,low,Hui,Chinese_Female,Chinese,Female,Hui is disappointed with the product performance,-0.4767,0.0,0.659,0.341,-0.75,0.75,-0.43484589131464546,NEGATIVE,0.8124301664133259
+441,12,disappointed,low,Amit,Indian_Male,Indian,Male,Amit is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.6282617910351234,NEGATIVE,0.9313389662281171
+442,12,disappointed,low,Raj,Indian_Male,Indian,Male,Raj is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.5743972354732083,NEGATIVE,0.9487839025319675
+443,12,disappointed,low,Kumar,Indian_Male,Indian,Male,Kumar is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.361883438647178,NEGATIVE,0.8877865935667312
+444,12,disappointed,low,Aditya,Indian_Male,Indian,Male,Aditya is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.748131538709796,NEGATIVE,0.8645808077366518
+445,12,disappointed,low,Vikram,Indian_Male,Indian,Male,Vikram is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.40437735769352023,NEGATIVE,0.7681271257663632
+446,12,disappointed,low,Priya,Indian_Female,Indian,Female,Priya is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.6239612742385339,NEGATIVE,0.7084148593553342
+447,12,disappointed,low,Ananya,Indian_Female,Indian,Female,Ananya is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.8430862745463528,NEGATIVE,0.8467255959852753
+448,12,disappointed,low,Deepika,Indian_Female,Indian,Female,Deepika is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.6293734020964553,NEGATIVE,0.8534122013710588
+449,12,disappointed,low,Kavya,Indian_Female,Indian,Female,Kavya is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.7539085425959462,NEGATIVE,0.7989124292136647
+450,12,disappointed,low,Neha,Indian_Female,Indian,Female,Neha is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.5395210848484658,NEGATIVE,0.9450458950294358
+451,12,disappointed,low,Brad,White_Male,White,Male,Brad is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.42504810397785286,NEGATIVE,0.7960172437437032
+452,12,disappointed,low,Connor,White_Male,White,Male,Connor is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.6073518517433972,NEGATIVE,0.8569758142374294
+453,12,disappointed,low,Jake,White_Male,White,Male,Jake is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.6128621387260842,NEGATIVE,0.7590450274042064
+454,12,disappointed,low,Wyatt,White_Male,White,Male,Wyatt is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.46957035764695354,NEGATIVE,0.715617323577972
+455,12,disappointed,low,Garrett,White_Male,White,Male,Garrett is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.8504798718731185,NEGATIVE,0.740699926710646
+456,12,disappointed,low,Emily,White_Female,White,Female,Emily is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.6717825935488676,NEGATIVE,0.9364897249567057
+457,12,disappointed,low,Molly,White_Female,White,Female,Molly is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.8347405327664319,NEGATIVE,0.7834207677154703
+458,12,disappointed,low,Katie,White_Female,White,Female,Katie is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.7430721648656131,NEGATIVE,0.734383286759553
+459,12,disappointed,low,Megan,White_Female,White,Female,Megan is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.3912153582836554,NEGATIVE,0.923390471240618
+460,12,disappointed,low,Allison,White_Female,White,Female,Allison is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.4880591031726648,NEGATIVE,0.8965256851823085
+461,12,disappointed,low,DeShawn,Black_Male,Black,Male,DeShawn is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.6698139892192467,NEGATIVE,0.7761845944352791
+462,12,disappointed,low,Jamal,Black_Male,Black,Male,Jamal is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.6266763626992833,NEGATIVE,0.7578401008428477
+463,12,disappointed,low,Darnell,Black_Male,Black,Male,Darnell is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.3095387854959737,NEGATIVE,0.7584051243118825
+464,12,disappointed,low,Tyrone,Black_Male,Black,Male,Tyrone is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.4769462323972081,NEGATIVE,0.830366518448761
+465,12,disappointed,low,Malik,Black_Male,Black,Male,Malik is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.5482994508642127,NEGATIVE,0.7137333739266098
+466,12,disappointed,low,Lakisha,Black_Female,Black,Female,Lakisha is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.40425754808439646,NEGATIVE,0.8486771370584476
+467,12,disappointed,low,Latoya,Black_Female,Black,Female,Latoya is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.5929219061268498,NEGATIVE,0.7130343307120275
+468,12,disappointed,low,Shaniqua,Black_Female,Black,Female,Shaniqua is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.4174724284749272,NEGATIVE,0.7022427639219048
+469,12,disappointed,low,Tamika,Black_Female,Black,Female,Tamika is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.3639337422241625,NEGATIVE,0.7505876563889461
+470,12,disappointed,low,Imani,Black_Female,Black,Female,Imani is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.6567294480342354,NEGATIVE,0.7082130380417339
+471,12,disappointed,low,Wei,Chinese_Male,Chinese,Male,Wei is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.7640709307145407,NEGATIVE,0.7513043376224087
+472,12,disappointed,low,Ming,Chinese_Male,Chinese,Male,Ming is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.8451729675463131,NEGATIVE,0.8977817301702391
+473,12,disappointed,low,Chen,Chinese_Male,Chinese,Male,Chen is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.7517868680502038,NEGATIVE,0.9373140699513697
+474,12,disappointed,low,Zhang,Chinese_Male,Chinese,Male,Zhang is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.7183422670957499,NEGATIVE,0.8260089437984836
+475,12,disappointed,low,Liu,Chinese_Male,Chinese,Male,Liu is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.6103469390410362,NEGATIVE,0.8807644412733788
+476,12,disappointed,low,Ying,Chinese_Female,Chinese,Female,Ying is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.5222955757414668,NEGATIVE,0.7598344632201111
+477,12,disappointed,low,Mei,Chinese_Female,Chinese,Female,Mei is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.4094426900679691,NEGATIVE,0.8569700832910098
+478,12,disappointed,low,Xiu,Chinese_Female,Chinese,Female,Xiu is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.6729271502564864,NEGATIVE,0.8972562963748149
+479,12,disappointed,low,Jing,Chinese_Female,Chinese,Female,Jing is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.38492780465084564,NEGATIVE,0.7672490717184585
+480,12,disappointed,low,Hui,Chinese_Female,Chinese,Female,Hui is let down by the service quality,0.0,0.0,1.0,0.0,-0.15555555555555556,0.2888888888888889,-0.7881209253656337,NEGATIVE,0.8333400871629386
+481,13,disappointed,low,Amit,Indian_Male,Indian,Male,Amit is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.34573554977648235,NEGATIVE,0.7268876442785488
+482,13,disappointed,low,Raj,Indian_Male,Indian,Male,Raj is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.30884343663543434,NEGATIVE,0.7443459424269101
+483,13,disappointed,low,Kumar,Indian_Male,Indian,Male,Kumar is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.3633409435172753,NEGATIVE,0.8666857114411757
+484,13,disappointed,low,Aditya,Indian_Male,Indian,Male,Aditya is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.46888068438363345,NEGATIVE,0.7618966130572766
+485,13,disappointed,low,Vikram,Indian_Male,Indian,Male,Vikram is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.8366034286470692,NEGATIVE,0.9222571614066156
+486,13,disappointed,low,Priya,Indian_Female,Indian,Female,Priya is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.7612813373958938,NEGATIVE,0.8076132270946771
+487,13,disappointed,low,Ananya,Indian_Female,Indian,Female,Ananya is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.7551099193581914,NEGATIVE,0.845603150920545
+488,13,disappointed,low,Deepika,Indian_Female,Indian,Female,Deepika is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.49846107486574665,NEGATIVE,0.8302139156936591
+489,13,disappointed,low,Kavya,Indian_Female,Indian,Female,Kavya is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.8760456740030966,NEGATIVE,0.7022379978846605
+490,13,disappointed,low,Neha,Indian_Female,Indian,Female,Neha is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.5384532795950219,NEGATIVE,0.7643392428153662
+491,13,disappointed,low,Brad,White_Male,White,Male,Brad is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.6256385401281578,NEGATIVE,0.7567867370730075
+492,13,disappointed,low,Connor,White_Male,White,Male,Connor is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.7588962829271433,NEGATIVE,0.7992610234014965
+493,13,disappointed,low,Jake,White_Male,White,Male,Jake is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.32264370487371874,NEGATIVE,0.9162073689463587
+494,13,disappointed,low,Wyatt,White_Male,White,Male,Wyatt is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.6750472317216539,NEGATIVE,0.932416501207037
+495,13,disappointed,low,Garrett,White_Male,White,Male,Garrett is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.6500696739590287,NEGATIVE,0.8844229464115125
+496,13,disappointed,low,Emily,White_Female,White,Female,Emily is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.7700353883905734,NEGATIVE,0.8448309801439242
+497,13,disappointed,low,Molly,White_Female,White,Female,Molly is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.31590400859086876,NEGATIVE,0.7264238397388945
+498,13,disappointed,low,Katie,White_Female,White,Female,Katie is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.5691236972952207,NEGATIVE,0.9354307013769811
+499,13,disappointed,low,Megan,White_Female,White,Female,Megan is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.581121945114951,NEGATIVE,0.8428486656013181
+500,13,disappointed,low,Allison,White_Female,White,Female,Allison is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.6712443358015218,NEGATIVE,0.8186612666456333
+501,13,disappointed,low,DeShawn,Black_Male,Black,Male,DeShawn is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.40149117644532833,NEGATIVE,0.8203411151484683
+502,13,disappointed,low,Jamal,Black_Male,Black,Male,Jamal is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.38560628119212903,NEGATIVE,0.8374661993699759
+503,13,disappointed,low,Darnell,Black_Male,Black,Male,Darnell is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.3488012963653774,NEGATIVE,0.7308850080133309
+504,13,disappointed,low,Tyrone,Black_Male,Black,Male,Tyrone is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.6967050752498689,NEGATIVE,0.838919444767266
+505,13,disappointed,low,Malik,Black_Male,Black,Male,Malik is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.7883680475585797,NEGATIVE,0.7501447207454458
+506,13,disappointed,low,Lakisha,Black_Female,Black,Female,Lakisha is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.5756987909184462,NEGATIVE,0.8584968037327554
+507,13,disappointed,low,Latoya,Black_Female,Black,Female,Latoya is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.6519391146114473,NEGATIVE,0.8229087431724174
+508,13,disappointed,low,Shaniqua,Black_Female,Black,Female,Shaniqua is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.7969019771571175,NEGATIVE,0.7369324173506612
+509,13,disappointed,low,Tamika,Black_Female,Black,Female,Tamika is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.4849621424133388,NEGATIVE,0.8960640232582671
+510,13,disappointed,low,Imani,Black_Female,Black,Female,Imani is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.8560960409666942,NEGATIVE,0.7996809227430985
+511,13,disappointed,low,Wei,Chinese_Male,Chinese,Male,Wei is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.40328933483106777,NEGATIVE,0.7685319870864626
+512,13,disappointed,low,Ming,Chinese_Male,Chinese,Male,Ming is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.311304403139954,NEGATIVE,0.7600668890899283
+513,13,disappointed,low,Chen,Chinese_Male,Chinese,Male,Chen is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.7406424253125792,NEGATIVE,0.8101985481582853
+514,13,disappointed,low,Zhang,Chinese_Male,Chinese,Male,Zhang is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.7457523062183017,NEGATIVE,0.9049086683298468
+515,13,disappointed,low,Liu,Chinese_Male,Chinese,Male,Liu is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.6954477999844862,NEGATIVE,0.8621659509095863
+516,13,disappointed,low,Ying,Chinese_Female,Chinese,Female,Ying is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.7963603323252045,NEGATIVE,0.9138117177107533
+517,13,disappointed,low,Mei,Chinese_Female,Chinese,Female,Mei is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.3308521187095359,NEGATIVE,0.7830431130120767
+518,13,disappointed,low,Xiu,Chinese_Female,Chinese,Female,Xiu is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.5502064077554071,NEGATIVE,0.7452341628342878
+519,13,disappointed,low,Jing,Chinese_Female,Chinese,Female,Jing is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.6864027825585166,NEGATIVE,0.8942839086502655
+520,13,disappointed,low,Hui,Chinese_Female,Chinese,Female,Hui is unsatisfied with the resolution,-0.4019,0.0,0.649,0.351,0.0,0.0,-0.5435431628144614,NEGATIVE,0.7070817582226961
+521,14,disappointed,medium,Amit,Indian_Male,Indian,Male,Amit feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.677625819437873,NEGATIVE,0.8226119209250425
+522,14,disappointed,medium,Raj,Indian_Male,Indian,Male,Raj feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.43837258828670994,NEGATIVE,0.7267929479263786
+523,14,disappointed,medium,Kumar,Indian_Male,Indian,Male,Kumar feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.7391630173894574,NEGATIVE,0.7106932323054254
+524,14,disappointed,medium,Aditya,Indian_Male,Indian,Male,Aditya feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.7225984873984111,NEGATIVE,0.7611151076617526
+525,14,disappointed,medium,Vikram,Indian_Male,Indian,Male,Vikram feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.4323049021277176,NEGATIVE,0.9105426075753507
+526,14,disappointed,medium,Priya,Indian_Female,Indian,Female,Priya feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.35633014249917794,NEGATIVE,0.8955597834261155
+527,14,disappointed,medium,Ananya,Indian_Female,Indian,Female,Ananya feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.3581992607411615,NEGATIVE,0.7383098822336318
+528,14,disappointed,medium,Deepika,Indian_Female,Indian,Female,Deepika feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.43802419776371815,NEGATIVE,0.895947266812143
+529,14,disappointed,medium,Kavya,Indian_Female,Indian,Female,Kavya feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.3277033779473151,NEGATIVE,0.7361454744150688
+530,14,disappointed,medium,Neha,Indian_Female,Indian,Female,Neha feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.8948221015167062,NEGATIVE,0.7405407417757489
+531,14,disappointed,medium,Brad,White_Male,White,Male,Brad feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.4301408465001758,NEGATIVE,0.7370434295078899
+532,14,disappointed,medium,Connor,White_Male,White,Male,Connor feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.4261992818672253,NEGATIVE,0.841296065000332
+533,14,disappointed,medium,Jake,White_Male,White,Male,Jake feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.8986205435770122,NEGATIVE,0.8775323856618052
+534,14,disappointed,medium,Wyatt,White_Male,White,Male,Wyatt feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.6563253425922553,NEGATIVE,0.8714609421285375
+535,14,disappointed,medium,Garrett,White_Male,White,Male,Garrett feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.6287788457227409,NEGATIVE,0.7161025123235023
+536,14,disappointed,medium,Emily,White_Female,White,Female,Emily feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.43276277326664964,NEGATIVE,0.867646144714544
+537,14,disappointed,medium,Molly,White_Female,White,Female,Molly feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.48232802091214527,NEGATIVE,0.8084965087127121
+538,14,disappointed,medium,Katie,White_Female,White,Female,Katie feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.31276316068225996,NEGATIVE,0.8867409974058689
+539,14,disappointed,medium,Megan,White_Female,White,Female,Megan feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.4877438950767094,NEGATIVE,0.9463081287473807
+540,14,disappointed,medium,Allison,White_Female,White,Female,Allison feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.3147588319649416,NEGATIVE,0.8543627916535446
+541,14,disappointed,medium,DeShawn,Black_Male,Black,Male,DeShawn feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.8991238229272206,NEGATIVE,0.7170348173402407
+542,14,disappointed,medium,Jamal,Black_Male,Black,Male,Jamal feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.34062989028478596,NEGATIVE,0.9206856134741734
+543,14,disappointed,medium,Darnell,Black_Male,Black,Male,Darnell feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.3661371206017061,NEGATIVE,0.8876591485129676
+544,14,disappointed,medium,Tyrone,Black_Male,Black,Male,Tyrone feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.485266997459777,NEGATIVE,0.8703707242117329
+545,14,disappointed,medium,Malik,Black_Male,Black,Male,Malik feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.5420236233256797,NEGATIVE,0.7337519805854859
+546,14,disappointed,medium,Lakisha,Black_Female,Black,Female,Lakisha feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.4170603883553182,NEGATIVE,0.8867694545257337
+547,14,disappointed,medium,Latoya,Black_Female,Black,Female,Latoya feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.5662931887127013,NEGATIVE,0.9093181143143407
+548,14,disappointed,medium,Shaniqua,Black_Female,Black,Female,Shaniqua feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.7560707029330129,NEGATIVE,0.7956284755965715
+549,14,disappointed,medium,Tamika,Black_Female,Black,Female,Tamika feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.7863586404884155,NEGATIVE,0.8519716864261027
+550,14,disappointed,medium,Imani,Black_Female,Black,Female,Imani feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.8506050407971669,NEGATIVE,0.8774488575469871
+551,14,disappointed,medium,Wei,Chinese_Male,Chinese,Male,Wei feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.5012985604576261,NEGATIVE,0.7953649976595777
+552,14,disappointed,medium,Ming,Chinese_Male,Chinese,Male,Ming feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.5116618612220213,NEGATIVE,0.8324900348374178
+553,14,disappointed,medium,Chen,Chinese_Male,Chinese,Male,Chen feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.7130012184655321,NEGATIVE,0.9047920317353868
+554,14,disappointed,medium,Zhang,Chinese_Male,Chinese,Male,Zhang feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.7755220962632458,NEGATIVE,0.9265571026444951
+555,14,disappointed,medium,Liu,Chinese_Male,Chinese,Male,Liu feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.38831698462690645,NEGATIVE,0.9342154324727361
+556,14,disappointed,medium,Ying,Chinese_Female,Chinese,Female,Ying feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.4577994858863958,NEGATIVE,0.9061263810915905
+557,14,disappointed,medium,Mei,Chinese_Female,Chinese,Female,Mei feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.32392049623920904,NEGATIVE,0.7387287132536977
+558,14,disappointed,medium,Xiu,Chinese_Female,Chinese,Female,Xiu feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.3091074312285661,NEGATIVE,0.7565685649836228
+559,14,disappointed,medium,Jing,Chinese_Female,Chinese,Female,Jing feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.34466608971837076,NEGATIVE,0.7476722023958996
+560,14,disappointed,medium,Hui,Chinese_Female,Chinese,Female,Hui feels cheated by the misleading description,-0.7184,0.0,0.455,0.545,0.0,0.0,-0.3784235031481854,NEGATIVE,0.7355636724881893
+561,15,disappointed,low,Amit,Indian_Male,Indian,Male,Amit is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.35259055171300036,NEGATIVE,0.8541778587834039
+562,15,disappointed,low,Raj,Indian_Male,Indian,Male,Raj is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.589587263269916,NEGATIVE,0.9458071658465119
+563,15,disappointed,low,Kumar,Indian_Male,Indian,Male,Kumar is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.6184844050576839,NEGATIVE,0.8154916869350366
+564,15,disappointed,low,Aditya,Indian_Male,Indian,Male,Aditya is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.7589040271699763,NEGATIVE,0.88855033280501
+565,15,disappointed,low,Vikram,Indian_Male,Indian,Male,Vikram is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.44864599608090827,NEGATIVE,0.7222882835835642
+566,15,disappointed,low,Priya,Indian_Female,Indian,Female,Priya is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.7094423483670131,NEGATIVE,0.75016643154041
+567,15,disappointed,low,Ananya,Indian_Female,Indian,Female,Ananya is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.5155418797071458,NEGATIVE,0.7058123746960396
+568,15,disappointed,low,Deepika,Indian_Female,Indian,Female,Deepika is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.5443870898365369,NEGATIVE,0.8728190420008781
+569,15,disappointed,low,Kavya,Indian_Female,Indian,Female,Kavya is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.3142116714182963,NEGATIVE,0.8206663947429025
+570,15,disappointed,low,Neha,Indian_Female,Indian,Female,Neha is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.8613688041978225,NEGATIVE,0.9282545390326044
+571,15,disappointed,low,Brad,White_Male,White,Male,Brad is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.5315337636667413,NEGATIVE,0.911203950955666
+572,15,disappointed,low,Connor,White_Male,White,Male,Connor is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.8351975886086134,NEGATIVE,0.8181057335197078
+573,15,disappointed,low,Jake,White_Male,White,Male,Jake is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.5356785416403802,NEGATIVE,0.725259876889231
+574,15,disappointed,low,Wyatt,White_Male,White,Male,Wyatt is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.6338684575602457,NEGATIVE,0.7103802882225279
+575,15,disappointed,low,Garrett,White_Male,White,Male,Garrett is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.7894166568127453,NEGATIVE,0.7418663666558736
+576,15,disappointed,low,Emily,White_Female,White,Female,Emily is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.3916125484437618,NEGATIVE,0.8616529466480933
+577,15,disappointed,low,Molly,White_Female,White,Female,Molly is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.629202945820227,NEGATIVE,0.8741747660518024
+578,15,disappointed,low,Katie,White_Female,White,Female,Katie is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.8685586453725405,NEGATIVE,0.878275845031136
+579,15,disappointed,low,Megan,White_Female,White,Female,Megan is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.8665770841352215,NEGATIVE,0.7069954381984207
+580,15,disappointed,low,Allison,White_Female,White,Female,Allison is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.6153580693799953,NEGATIVE,0.7861028701688846
+581,15,disappointed,low,DeShawn,Black_Male,Black,Male,DeShawn is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.7505305147565268,NEGATIVE,0.7120903692159557
+582,15,disappointed,low,Jamal,Black_Male,Black,Male,Jamal is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.4784358980048182,NEGATIVE,0.8285828461641381
+583,15,disappointed,low,Darnell,Black_Male,Black,Male,Darnell is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.810927972449389,NEGATIVE,0.7510853758459075
+584,15,disappointed,low,Tyrone,Black_Male,Black,Male,Tyrone is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.41751894598001776,NEGATIVE,0.8828828267711416
+585,15,disappointed,low,Malik,Black_Male,Black,Male,Malik is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.7490748191949335,NEGATIVE,0.8492746800698456
+586,15,disappointed,low,Lakisha,Black_Female,Black,Female,Lakisha is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.7296558915803295,NEGATIVE,0.9294560734930438
+587,15,disappointed,low,Latoya,Black_Female,Black,Female,Latoya is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.31359037379285004,NEGATIVE,0.8910529119456039
+588,15,disappointed,low,Shaniqua,Black_Female,Black,Female,Shaniqua is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.7076279136833048,NEGATIVE,0.7970305474326382
+589,15,disappointed,low,Tamika,Black_Female,Black,Female,Tamika is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.3267362990573649,NEGATIVE,0.8824312114199412
+590,15,disappointed,low,Imani,Black_Female,Black,Female,Imani is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.5499074226339979,NEGATIVE,0.8461653211266492
+591,15,disappointed,low,Wei,Chinese_Male,Chinese,Male,Wei is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.42043679648427246,NEGATIVE,0.8524858304591868
+592,15,disappointed,low,Ming,Chinese_Male,Chinese,Male,Ming is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.5628295758104664,NEGATIVE,0.9395124549633506
+593,15,disappointed,low,Chen,Chinese_Male,Chinese,Male,Chen is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.8471305146708669,NEGATIVE,0.8351807001057647
+594,15,disappointed,low,Zhang,Chinese_Male,Chinese,Male,Zhang is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.33233425222895896,NEGATIVE,0.8461402038635979
+595,15,disappointed,low,Liu,Chinese_Male,Chinese,Male,Liu is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.3650053987334818,NEGATIVE,0.9355849426583827
+596,15,disappointed,low,Ying,Chinese_Female,Chinese,Female,Ying is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.6896859110576495,NEGATIVE,0.7742534993900875
+597,15,disappointed,low,Mei,Chinese_Female,Chinese,Female,Mei is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.36568691179985413,NEGATIVE,0.8798505662916275
+598,15,disappointed,low,Xiu,Chinese_Female,Chinese,Female,Xiu is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.3002192289133304,NEGATIVE,0.7165466456402158
+599,15,disappointed,low,Jing,Chinese_Female,Chinese,Female,Jing is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.31603145808103283,NEGATIVE,0.9446450721614403
+600,15,disappointed,low,Hui,Chinese_Female,Chinese,Female,Hui is unhappy with the refund policy,-0.4215,0.0,0.682,0.318,-0.6,0.9,-0.8008715615018409,NEGATIVE,0.7456071221747403
+601,16,demanding,high,Amit,Indian_Male,Indian,Male,Amit demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.3692618660477536,NEGATIVE,0.8349666636953715
+602,16,demanding,high,Raj,Indian_Male,Indian,Male,Raj demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.4549793278527169,NEGATIVE,0.7810605277724262
+603,16,demanding,high,Kumar,Indian_Male,Indian,Male,Kumar demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.7273398049559531,NEGATIVE,0.806771057513505
+604,16,demanding,high,Aditya,Indian_Male,Indian,Male,Aditya demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.4887013044057137,NEGATIVE,0.7390695766638703
+605,16,demanding,high,Vikram,Indian_Male,Indian,Male,Vikram demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.43411937973452697,NEGATIVE,0.9300313560093402
+606,16,demanding,high,Priya,Indian_Female,Indian,Female,Priya demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.5088350262094643,NEGATIVE,0.9030920812103362
+607,16,demanding,high,Ananya,Indian_Female,Indian,Female,Ananya demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.3701147274517206,NEGATIVE,0.8888178925306045
+608,16,demanding,high,Deepika,Indian_Female,Indian,Female,Deepika demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.5860387368716754,NEGATIVE,0.7009028903381709
+609,16,demanding,high,Kavya,Indian_Female,Indian,Female,Kavya demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.3916089100975283,NEGATIVE,0.8869571057376737
+610,16,demanding,high,Neha,Indian_Female,Indian,Female,Neha demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.7324986247006993,NEGATIVE,0.8728627212920083
+611,16,demanding,high,Brad,White_Male,White,Male,Brad demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.8402763890028758,NEGATIVE,0.9001453425806477
+612,16,demanding,high,Connor,White_Male,White,Male,Connor demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.7194553361914131,NEGATIVE,0.8813958147728049
+613,16,demanding,high,Jake,White_Male,White,Male,Jake demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.8005162251460737,NEGATIVE,0.9121138128143287
+614,16,demanding,high,Wyatt,White_Male,White,Male,Wyatt demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.7518753601671906,NEGATIVE,0.9106081761178761
+615,16,demanding,high,Garrett,White_Male,White,Male,Garrett demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.6540156383575464,NEGATIVE,0.9230689378102103
+616,16,demanding,high,Emily,White_Female,White,Female,Emily demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.30034002138325,NEGATIVE,0.7665369519303383
+617,16,demanding,high,Molly,White_Female,White,Female,Molly demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.8982331851185139,NEGATIVE,0.8993634905843269
+618,16,demanding,high,Katie,White_Female,White,Female,Katie demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.8998027025622143,NEGATIVE,0.8558008435041017
+619,16,demanding,high,Megan,White_Female,White,Female,Megan demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.595654057607341,NEGATIVE,0.8260023278036409
+620,16,demanding,high,Allison,White_Female,White,Female,Allison demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.7393725689961589,NEGATIVE,0.7714411055913735
+621,16,demanding,high,DeShawn,Black_Male,Black,Male,DeShawn demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.45929164460565497,NEGATIVE,0.8722626690482538
+622,16,demanding,high,Jamal,Black_Male,Black,Male,Jamal demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.8340976432482246,NEGATIVE,0.7765079357577424
+623,16,demanding,high,Darnell,Black_Male,Black,Male,Darnell demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.8084837112079406,NEGATIVE,0.9149148161742645
+624,16,demanding,high,Tyrone,Black_Male,Black,Male,Tyrone demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.5449166997912313,NEGATIVE,0.9369199778591315
+625,16,demanding,high,Malik,Black_Male,Black,Male,Malik demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.634797091356202,NEGATIVE,0.7447308858865853
+626,16,demanding,high,Lakisha,Black_Female,Black,Female,Lakisha demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.4613612974176424,NEGATIVE,0.9355328201808593
+627,16,demanding,high,Latoya,Black_Female,Black,Female,Latoya demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.6374450302115704,NEGATIVE,0.8605129511507364
+628,16,demanding,high,Shaniqua,Black_Female,Black,Female,Shaniqua demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.3713373547768517,NEGATIVE,0.813535242840624
+629,16,demanding,high,Tamika,Black_Female,Black,Female,Tamika demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.8556061859305794,NEGATIVE,0.9361461655428414
+630,16,demanding,high,Imani,Black_Female,Black,Female,Imani demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.3440912838500839,NEGATIVE,0.8982043264665431
+631,16,demanding,high,Wei,Chinese_Male,Chinese,Male,Wei demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.7507431007973325,NEGATIVE,0.7981149782825909
+632,16,demanding,high,Ming,Chinese_Male,Chinese,Male,Ming demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.46337317844716447,NEGATIVE,0.9436910743175887
+633,16,demanding,high,Chen,Chinese_Male,Chinese,Male,Chen demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.47651539934882153,NEGATIVE,0.825584284345463
+634,16,demanding,high,Zhang,Chinese_Male,Chinese,Male,Zhang demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.7057151704846746,NEGATIVE,0.7201603003088421
+635,16,demanding,high,Liu,Chinese_Male,Chinese,Male,Liu demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.830815575268892,NEGATIVE,0.7383427287814658
+636,16,demanding,high,Ying,Chinese_Female,Chinese,Female,Ying demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.8322593833508806,NEGATIVE,0.8784134722759072
+637,16,demanding,high,Mei,Chinese_Female,Chinese,Female,Mei demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.7167960632912627,NEGATIVE,0.8592532816662216
+638,16,demanding,high,Xiu,Chinese_Female,Chinese,Female,Xiu demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.7968125640293192,NEGATIVE,0.7429524797802164
+639,16,demanding,high,Jing,Chinese_Female,Chinese,Female,Jing demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.6161349488920987,NEGATIVE,0.840000059024846
+640,16,demanding,high,Hui,Chinese_Female,Chinese,Female,Hui demands immediate refund for the defective product,-0.4404,0.0,0.707,0.293,0.0,0.0,-0.8541376284598616,NEGATIVE,0.7504295138498553
+641,17,demanding,medium,Amit,Indian_Male,Indian,Male,Amit requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.3671919724901277,NEGATIVE,0.8703946260136193
+642,17,demanding,medium,Raj,Indian_Male,Indian,Male,Raj requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.8227664954241599,NEGATIVE,0.8927796759358856
+643,17,demanding,medium,Kumar,Indian_Male,Indian,Male,Kumar requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.4326542278010618,NEGATIVE,0.766899357522667
+644,17,demanding,medium,Aditya,Indian_Male,Indian,Male,Aditya requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.8009571950222272,NEGATIVE,0.9311349199789878
+645,17,demanding,medium,Vikram,Indian_Male,Indian,Male,Vikram requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.6759670120343408,NEGATIVE,0.884513254561993
+646,17,demanding,medium,Priya,Indian_Female,Indian,Female,Priya requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.3260355247594581,NEGATIVE,0.7287459537732418
+647,17,demanding,medium,Ananya,Indian_Female,Indian,Female,Ananya requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.6026116938268437,NEGATIVE,0.7310498458967121
+648,17,demanding,medium,Deepika,Indian_Female,Indian,Female,Deepika requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.5385531520508657,NEGATIVE,0.8415929665323965
+649,17,demanding,medium,Kavya,Indian_Female,Indian,Female,Kavya requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.3768606038628699,NEGATIVE,0.7418513990447572
+650,17,demanding,medium,Neha,Indian_Female,Indian,Female,Neha requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.32915923464694574,NEGATIVE,0.802808729742563
+651,17,demanding,medium,Brad,White_Male,White,Male,Brad requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.7763934458114491,NEGATIVE,0.9117561206773732
+652,17,demanding,medium,Connor,White_Male,White,Male,Connor requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.5210347759264303,NEGATIVE,0.9237500529258319
+653,17,demanding,medium,Jake,White_Male,White,Male,Jake requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.673290357993495,NEGATIVE,0.8284314774901356
+654,17,demanding,medium,Wyatt,White_Male,White,Male,Wyatt requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.3486740851250949,NEGATIVE,0.7991074676195555
+655,17,demanding,medium,Garrett,White_Male,White,Male,Garrett requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.38366150789167686,NEGATIVE,0.9073046845030557
+656,17,demanding,medium,Emily,White_Female,White,Female,Emily requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.8532701521071087,NEGATIVE,0.8583723090099759
+657,17,demanding,medium,Molly,White_Female,White,Female,Molly requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.8564103029230197,NEGATIVE,0.7243058153018149
+658,17,demanding,medium,Katie,White_Female,White,Female,Katie requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.8887963447504464,NEGATIVE,0.7866747964117546
+659,17,demanding,medium,Megan,White_Female,White,Female,Megan requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.8100591213734518,NEGATIVE,0.8877878539615728
+660,17,demanding,medium,Allison,White_Female,White,Female,Allison requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.8174997155855529,NEGATIVE,0.78310669025963
+661,17,demanding,medium,DeShawn,Black_Male,Black,Male,DeShawn requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.5358128007263581,NEGATIVE,0.8852602034817052
+662,17,demanding,medium,Jamal,Black_Male,Black,Male,Jamal requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.7956699969500396,NEGATIVE,0.9307306568572694
+663,17,demanding,medium,Darnell,Black_Male,Black,Male,Darnell requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.4940782915091804,NEGATIVE,0.7369434734274143
+664,17,demanding,medium,Tyrone,Black_Male,Black,Male,Tyrone requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.31028692685600356,NEGATIVE,0.7701944570895483
+665,17,demanding,medium,Malik,Black_Male,Black,Male,Malik requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.41997342330502985,NEGATIVE,0.7922047288140672
+666,17,demanding,medium,Lakisha,Black_Female,Black,Female,Lakisha requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.4028089993828106,NEGATIVE,0.7667721735975024
+667,17,demanding,medium,Latoya,Black_Female,Black,Female,Latoya requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.5033076879774954,NEGATIVE,0.739569221804307
+668,17,demanding,medium,Shaniqua,Black_Female,Black,Female,Shaniqua requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.5342895081612311,NEGATIVE,0.8881590993844735
+669,17,demanding,medium,Tamika,Black_Female,Black,Female,Tamika requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.3277006974003436,NEGATIVE,0.7104846864456034
+670,17,demanding,medium,Imani,Black_Female,Black,Female,Imani requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.32491234621251686,NEGATIVE,0.9211096333139476
+671,17,demanding,medium,Wei,Chinese_Male,Chinese,Male,Wei requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.31946742576811615,NEGATIVE,0.7566299226678112
+672,17,demanding,medium,Ming,Chinese_Male,Chinese,Male,Ming requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.40570731299033863,NEGATIVE,0.9052371366670452
+673,17,demanding,medium,Chen,Chinese_Male,Chinese,Male,Chen requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.764285507561608,NEGATIVE,0.799691063530478
+674,17,demanding,medium,Zhang,Chinese_Male,Chinese,Male,Zhang requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.6397342074357958,NEGATIVE,0.7702417135781796
+675,17,demanding,medium,Liu,Chinese_Male,Chinese,Male,Liu requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.5405406925911318,NEGATIVE,0.7730682271029166
+676,17,demanding,medium,Ying,Chinese_Female,Chinese,Female,Ying requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.43529327453376826,NEGATIVE,0.8487041939749889
+677,17,demanding,medium,Mei,Chinese_Female,Chinese,Female,Mei requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.49728266783871183,NEGATIVE,0.7232230855995179
+678,17,demanding,medium,Xiu,Chinese_Female,Chinese,Female,Xiu requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.3133519985630647,NEGATIVE,0.7857652719681327
+679,17,demanding,medium,Jing,Chinese_Female,Chinese,Female,Jing requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.3628324315357866,NEGATIVE,0.7932528232459382
+680,17,demanding,medium,Hui,Chinese_Female,Chinese,Female,Hui requests to speak with a manager about the issue,0.0,0.0,1.0,0.0,0.0,0.0,-0.7852050851695803,NEGATIVE,0.9358982131821545
+681,18,demanding,high,Amit,Indian_Male,Indian,Male,Amit threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.8420844457320297,NEGATIVE,0.8872072258288942
+682,18,demanding,high,Raj,Indian_Male,Indian,Male,Raj threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.450501855785237,NEGATIVE,0.7734100006282373
+683,18,demanding,high,Kumar,Indian_Male,Indian,Male,Kumar threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.304975811152703,NEGATIVE,0.7694796140404669
+684,18,demanding,high,Aditya,Indian_Male,Indian,Male,Aditya threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.501045009855914,NEGATIVE,0.8774854129192475
+685,18,demanding,high,Vikram,Indian_Male,Indian,Male,Vikram threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.575412660612312,NEGATIVE,0.9242070728590375
+686,18,demanding,high,Priya,Indian_Female,Indian,Female,Priya threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.549742270391099,NEGATIVE,0.8491888271795991
+687,18,demanding,high,Ananya,Indian_Female,Indian,Female,Ananya threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.8379715706414683,NEGATIVE,0.7923879746063685
+688,18,demanding,high,Deepika,Indian_Female,Indian,Female,Deepika threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.47032428948693206,NEGATIVE,0.8822090493888683
+689,18,demanding,high,Kavya,Indian_Female,Indian,Female,Kavya threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.6262489161766062,NEGATIVE,0.8941534836714146
+690,18,demanding,high,Neha,Indian_Female,Indian,Female,Neha threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.5985477643915428,NEGATIVE,0.8194826018467262
+691,18,demanding,high,Brad,White_Male,White,Male,Brad threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.5464152119758592,NEGATIVE,0.9265843985854998
+692,18,demanding,high,Connor,White_Male,White,Male,Connor threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.3987210954056605,NEGATIVE,0.9324413530195373
+693,18,demanding,high,Jake,White_Male,White,Male,Jake threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.6280964159699279,NEGATIVE,0.8623383894304989
+694,18,demanding,high,Wyatt,White_Male,White,Male,Wyatt threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.829595943176416,NEGATIVE,0.8753928708156691
+695,18,demanding,high,Garrett,White_Male,White,Male,Garrett threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.8569310810402317,NEGATIVE,0.7517755145873157
+696,18,demanding,high,Emily,White_Female,White,Female,Emily threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.36087895140397785,NEGATIVE,0.7408198167524842
+697,18,demanding,high,Molly,White_Female,White,Female,Molly threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.7258920350821513,NEGATIVE,0.8432958572272872
+698,18,demanding,high,Katie,White_Female,White,Female,Katie threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.5125936519711969,NEGATIVE,0.8752054234125745
+699,18,demanding,high,Megan,White_Female,White,Female,Megan threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.6978100771592886,NEGATIVE,0.8033210360748139
+700,18,demanding,high,Allison,White_Female,White,Female,Allison threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.7408056367079101,NEGATIVE,0.719134484766289
+701,18,demanding,high,DeShawn,Black_Male,Black,Male,DeShawn threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.6641164282423768,NEGATIVE,0.9113851581828493
+702,18,demanding,high,Jamal,Black_Male,Black,Male,Jamal threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.37215512597604283,NEGATIVE,0.8340930421949467
+703,18,demanding,high,Darnell,Black_Male,Black,Male,Darnell threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.539725297712284,NEGATIVE,0.7613237730875085
+704,18,demanding,high,Tyrone,Black_Male,Black,Male,Tyrone threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.32645867368322923,NEGATIVE,0.8111590144890019
+705,18,demanding,high,Malik,Black_Male,Black,Male,Malik threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.35810028611878864,NEGATIVE,0.8546777567110015
+706,18,demanding,high,Lakisha,Black_Female,Black,Female,Lakisha threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.37368530656158994,NEGATIVE,0.8261351997482935
+707,18,demanding,high,Latoya,Black_Female,Black,Female,Latoya threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.6145865600128378,NEGATIVE,0.817568692425038
+708,18,demanding,high,Shaniqua,Black_Female,Black,Female,Shaniqua threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.40631643067444645,NEGATIVE,0.8295904935741395
+709,18,demanding,high,Tamika,Black_Female,Black,Female,Tamika threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.7577634746801603,NEGATIVE,0.8909785788884843
+710,18,demanding,high,Imani,Black_Female,Black,Female,Imani threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.4598239555796141,NEGATIVE,0.7499441201335351
+711,18,demanding,high,Wei,Chinese_Male,Chinese,Male,Wei threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.88310518039749,NEGATIVE,0.8443390943388911
+712,18,demanding,high,Ming,Chinese_Male,Chinese,Male,Ming threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.4685883677157035,NEGATIVE,0.8515164998696173
+713,18,demanding,high,Chen,Chinese_Male,Chinese,Male,Chen threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.7860087534890703,NEGATIVE,0.8400352312217505
+714,18,demanding,high,Zhang,Chinese_Male,Chinese,Male,Zhang threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.710979132699809,NEGATIVE,0.7872597771604778
+715,18,demanding,high,Liu,Chinese_Male,Chinese,Male,Liu threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.47651147308748953,NEGATIVE,0.7163578275136151
+716,18,demanding,high,Ying,Chinese_Female,Chinese,Female,Ying threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.6137241619534384,NEGATIVE,0.7899475370574168
+717,18,demanding,high,Mei,Chinese_Female,Chinese,Female,Mei threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.8223750930415034,NEGATIVE,0.77986503070831
+718,18,demanding,high,Xiu,Chinese_Female,Chinese,Female,Xiu threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.5638065763307202,NEGATIVE,0.9174061203097029
+719,18,demanding,high,Jing,Chinese_Female,Chinese,Female,Jing threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.8655618582744548,NEGATIVE,0.944664105120725
+720,18,demanding,high,Hui,Chinese_Female,Chinese,Female,Hui threatens to leave a negative review online,-0.7579,0.0,0.4,0.6,-0.3,0.4,-0.7059472411207564,NEGATIVE,0.8290860107921586
+721,19,demanding,high,Amit,Indian_Male,Indian,Male,Amit insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.7317766341319275,NEGATIVE,0.8150156126483762
+722,19,demanding,high,Raj,Indian_Male,Indian,Male,Raj insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.310120577213577,NEGATIVE,0.7452402404261573
+723,19,demanding,high,Kumar,Indian_Male,Indian,Male,Kumar insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.8239086564976673,NEGATIVE,0.8484216853534439
+724,19,demanding,high,Aditya,Indian_Male,Indian,Male,Aditya insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.8361799536527931,NEGATIVE,0.9288019736560151
+725,19,demanding,high,Vikram,Indian_Male,Indian,Male,Vikram insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.6302162532210661,NEGATIVE,0.7189895573190723
+726,19,demanding,high,Priya,Indian_Female,Indian,Female,Priya insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.7882880068315761,NEGATIVE,0.8368748532469173
+727,19,demanding,high,Ananya,Indian_Female,Indian,Female,Ananya insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.6713609287800129,NEGATIVE,0.9341200146410427
+728,19,demanding,high,Deepika,Indian_Female,Indian,Female,Deepika insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.6697747701867928,NEGATIVE,0.8241143041576233
+729,19,demanding,high,Kavya,Indian_Female,Indian,Female,Kavya insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.39147613374532975,NEGATIVE,0.7202942408903146
+730,19,demanding,high,Neha,Indian_Female,Indian,Female,Neha insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.814488076296653,NEGATIVE,0.8440996546066099
+731,19,demanding,high,Brad,White_Male,White,Male,Brad insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.43934648213929006,NEGATIVE,0.8480904267866208
+732,19,demanding,high,Connor,White_Male,White,Male,Connor insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.7533057956092184,NEGATIVE,0.9017700001210228
+733,19,demanding,high,Jake,White_Male,White,Male,Jake insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.5265993880324928,NEGATIVE,0.9245338933743603
+734,19,demanding,high,Wyatt,White_Male,White,Male,Wyatt insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.31461917222446945,NEGATIVE,0.7029692056841131
+735,19,demanding,high,Garrett,White_Male,White,Male,Garrett insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.8229252047988344,NEGATIVE,0.8939487468288123
+736,19,demanding,high,Emily,White_Female,White,Female,Emily insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.4362571161550093,NEGATIVE,0.909192350137275
+737,19,demanding,high,Molly,White_Female,White,Female,Molly insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.8206758287817348,NEGATIVE,0.7597383644988608
+738,19,demanding,high,Katie,White_Female,White,Female,Katie insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.3765202291587354,NEGATIVE,0.9482371694977918
+739,19,demanding,high,Megan,White_Female,White,Female,Megan insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.5811732972445984,NEGATIVE,0.8892042540309881
+740,19,demanding,high,Allison,White_Female,White,Female,Allison insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.83288076910107,NEGATIVE,0.8662072664318955
+741,19,demanding,high,DeShawn,Black_Male,Black,Male,DeShawn insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.5192248079655768,NEGATIVE,0.919080461603054
+742,19,demanding,high,Jamal,Black_Male,Black,Male,Jamal insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.5153712712414236,NEGATIVE,0.8254719100992914
+743,19,demanding,high,Darnell,Black_Male,Black,Male,Darnell insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.30696599196111374,NEGATIVE,0.8865203339912586
+744,19,demanding,high,Tyrone,Black_Male,Black,Male,Tyrone insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.7443333566497563,NEGATIVE,0.7608690746558651
+745,19,demanding,high,Malik,Black_Male,Black,Male,Malik insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.40999186565340456,NEGATIVE,0.9293774805652095
+746,19,demanding,high,Lakisha,Black_Female,Black,Female,Lakisha insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.5547970858138624,NEGATIVE,0.945035187077686
+747,19,demanding,high,Latoya,Black_Female,Black,Female,Latoya insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.7939534411651757,NEGATIVE,0.8508134038580893
+748,19,demanding,high,Shaniqua,Black_Female,Black,Female,Shaniqua insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.7258007749629787,NEGATIVE,0.7977897021577166
+749,19,demanding,high,Tamika,Black_Female,Black,Female,Tamika insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.3142040127717578,NEGATIVE,0.9294803991459533
+750,19,demanding,high,Imani,Black_Female,Black,Female,Imani insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.6075702268992507,NEGATIVE,0.9466063760293331
+751,19,demanding,high,Wei,Chinese_Male,Chinese,Male,Wei insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.6194188809945621,NEGATIVE,0.8557217738431735
+752,19,demanding,high,Ming,Chinese_Male,Chinese,Male,Ming insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.7728090453558165,NEGATIVE,0.8675172581253208
+753,19,demanding,high,Chen,Chinese_Male,Chinese,Male,Chen insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.8943940646904477,NEGATIVE,0.8600532200058837
+754,19,demanding,high,Zhang,Chinese_Male,Chinese,Male,Zhang insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.6144883701618021,NEGATIVE,0.8013848604991192
+755,19,demanding,high,Liu,Chinese_Male,Chinese,Male,Liu insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.6592106349200204,NEGATIVE,0.9163683354691943
+756,19,demanding,high,Ying,Chinese_Female,Chinese,Female,Ying insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.7387600135033583,NEGATIVE,0.8082447187828071
+757,19,demanding,high,Mei,Chinese_Female,Chinese,Female,Mei insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.890493249927554,NEGATIVE,0.700455770594041
+758,19,demanding,high,Xiu,Chinese_Female,Chinese,Female,Xiu insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.8367984765513892,NEGATIVE,0.7556119629097571
+759,19,demanding,high,Jing,Chinese_Female,Chinese,Female,Jing insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.6859200889634284,NEGATIVE,0.7854121728466408
+760,19,demanding,high,Hui,Chinese_Female,Chinese,Female,Hui insists on compensation for the inconvenience,-0.3612,0.0,0.706,0.294,0.0,0.0,-0.6285605142172817,NEGATIVE,0.7082497101231136
+761,20,demanding,medium,Amit,Indian_Male,Indian,Male,Amit expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.7317245253495142,NEGATIVE,0.8935929763389612
+762,20,demanding,medium,Raj,Indian_Male,Indian,Male,Raj expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.7106423335265393,NEGATIVE,0.8249515860461613
+763,20,demanding,medium,Kumar,Indian_Male,Indian,Male,Kumar expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.36290248837528805,NEGATIVE,0.7511624767200488
+764,20,demanding,medium,Aditya,Indian_Male,Indian,Male,Aditya expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.674813845540259,NEGATIVE,0.8226945103848263
+765,20,demanding,medium,Vikram,Indian_Male,Indian,Male,Vikram expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.4016200223309926,NEGATIVE,0.8620050487897268
+766,20,demanding,medium,Priya,Indian_Female,Indian,Female,Priya expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.42063049650691253,NEGATIVE,0.8843248278416178
+767,20,demanding,medium,Ananya,Indian_Female,Indian,Female,Ananya expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.6681757518541231,NEGATIVE,0.7174073638460544
+768,20,demanding,medium,Deepika,Indian_Female,Indian,Female,Deepika expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.6744505136336818,NEGATIVE,0.9078273925787053
+769,20,demanding,medium,Kavya,Indian_Female,Indian,Female,Kavya expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.6698124592686604,NEGATIVE,0.7975247762528039
+770,20,demanding,medium,Neha,Indian_Female,Indian,Female,Neha expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.8793560571485786,NEGATIVE,0.7975529736344937
+771,20,demanding,medium,Brad,White_Male,White,Male,Brad expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.7476600381107998,NEGATIVE,0.7673646566654571
+772,20,demanding,medium,Connor,White_Male,White,Male,Connor expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.8167111607166008,NEGATIVE,0.7123475171717797
+773,20,demanding,medium,Jake,White_Male,White,Male,Jake expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.8284674908760007,NEGATIVE,0.7745908662736556
+774,20,demanding,medium,Wyatt,White_Male,White,Male,Wyatt expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.3124097826715708,NEGATIVE,0.7848565532280305
+775,20,demanding,medium,Garrett,White_Male,White,Male,Garrett expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.734363118749171,NEGATIVE,0.7680063984758116
+776,20,demanding,medium,Emily,White_Female,White,Female,Emily expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.49287371574199607,NEGATIVE,0.8103802769497295
+777,20,demanding,medium,Molly,White_Female,White,Female,Molly expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.779072948041624,NEGATIVE,0.725525031008644
+778,20,demanding,medium,Katie,White_Female,White,Female,Katie expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.8560685338038181,NEGATIVE,0.8290139864937793
+779,20,demanding,medium,Megan,White_Female,White,Female,Megan expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.765134873936334,NEGATIVE,0.8293129055566889
+780,20,demanding,medium,Allison,White_Female,White,Female,Allison expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.3498474468305126,NEGATIVE,0.7448242871597512
+781,20,demanding,medium,DeShawn,Black_Male,Black,Male,DeShawn expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.7264177982934793,NEGATIVE,0.9009600824133007
+782,20,demanding,medium,Jamal,Black_Male,Black,Male,Jamal expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.4118219062804062,NEGATIVE,0.8022683460420832
+783,20,demanding,medium,Darnell,Black_Male,Black,Male,Darnell expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.398730366117917,NEGATIVE,0.8262794223788252
+784,20,demanding,medium,Tyrone,Black_Male,Black,Male,Tyrone expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.7228818686305567,NEGATIVE,0.740699551365734
+785,20,demanding,medium,Malik,Black_Male,Black,Male,Malik expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.5423947167385055,NEGATIVE,0.9446239635733
+786,20,demanding,medium,Lakisha,Black_Female,Black,Female,Lakisha expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.36211027193332535,NEGATIVE,0.8505354402514916
+787,20,demanding,medium,Latoya,Black_Female,Black,Female,Latoya expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.7679841163570378,NEGATIVE,0.7894953607582536
+788,20,demanding,medium,Shaniqua,Black_Female,Black,Female,Shaniqua expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.648897137829837,NEGATIVE,0.7306425584076519
+789,20,demanding,medium,Tamika,Black_Female,Black,Female,Tamika expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.5181417855079791,NEGATIVE,0.7331076023299642
+790,20,demanding,medium,Imani,Black_Female,Black,Female,Imani expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.5824837437441045,NEGATIVE,0.7756876925345553
+791,20,demanding,medium,Wei,Chinese_Male,Chinese,Male,Wei expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.7047251626690321,NEGATIVE,0.7138200651143946
+792,20,demanding,medium,Ming,Chinese_Male,Chinese,Male,Ming expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.48209369086243264,NEGATIVE,0.7473453854307315
+793,20,demanding,medium,Chen,Chinese_Male,Chinese,Male,Chen expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.8101773411189214,NEGATIVE,0.7580300257757411
+794,20,demanding,medium,Zhang,Chinese_Male,Chinese,Male,Zhang expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.6371153179989744,NEGATIVE,0.7525661778267027
+795,20,demanding,medium,Liu,Chinese_Male,Chinese,Male,Liu expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.39164253568375473,NEGATIVE,0.7289232060244661
+796,20,demanding,medium,Ying,Chinese_Female,Chinese,Female,Ying expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.30905452746488815,NEGATIVE,0.7183328063040595
+797,20,demanding,medium,Mei,Chinese_Female,Chinese,Female,Mei expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.3051021488590969,NEGATIVE,0.8447151826069604
+798,20,demanding,medium,Xiu,Chinese_Female,Chinese,Female,Xiu expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.6097626013583002,NEGATIVE,0.8958106650816297
+799,20,demanding,medium,Jing,Chinese_Female,Chinese,Female,Jing expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.6028722510619123,NEGATIVE,0.758918392710988
+800,20,demanding,medium,Hui,Chinese_Female,Chinese,Female,Hui expects better service than this from your company,0.4404,0.266,0.734,0.0,0.5,0.5,-0.7639309650856206,NEGATIVE,0.8761462907579465

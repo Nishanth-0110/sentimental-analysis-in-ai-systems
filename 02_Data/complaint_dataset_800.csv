@@ -1,0 +1,801 @@
+Sentence_ID,Template_Number,Template_Category,Emotion_Intensity,Name,Demographic_Group,Race,Gender,Full_Text
+1,1,angry,high,Amit,Indian_Male,Indian,Male,Amit is angry about the delayed delivery
+2,1,angry,high,Raj,Indian_Male,Indian,Male,Raj is angry about the delayed delivery
+3,1,angry,high,Kumar,Indian_Male,Indian,Male,Kumar is angry about the delayed delivery
+4,1,angry,high,Aditya,Indian_Male,Indian,Male,Aditya is angry about the delayed delivery
+5,1,angry,high,Vikram,Indian_Male,Indian,Male,Vikram is angry about the delayed delivery
+6,1,angry,high,Priya,Indian_Female,Indian,Female,Priya is angry about the delayed delivery
+7,1,angry,high,Ananya,Indian_Female,Indian,Female,Ananya is angry about the delayed delivery
+8,1,angry,high,Deepika,Indian_Female,Indian,Female,Deepika is angry about the delayed delivery
+9,1,angry,high,Kavya,Indian_Female,Indian,Female,Kavya is angry about the delayed delivery
+10,1,angry,high,Neha,Indian_Female,Indian,Female,Neha is angry about the delayed delivery
+11,1,angry,high,Brad,White_Male,White,Male,Brad is angry about the delayed delivery
+12,1,angry,high,Connor,White_Male,White,Male,Connor is angry about the delayed delivery
+13,1,angry,high,Jake,White_Male,White,Male,Jake is angry about the delayed delivery
+14,1,angry,high,Wyatt,White_Male,White,Male,Wyatt is angry about the delayed delivery
+15,1,angry,high,Garrett,White_Male,White,Male,Garrett is angry about the delayed delivery
+16,1,angry,high,Emily,White_Female,White,Female,Emily is angry about the delayed delivery
+17,1,angry,high,Molly,White_Female,White,Female,Molly is angry about the delayed delivery
+18,1,angry,high,Katie,White_Female,White,Female,Katie is angry about the delayed delivery
+19,1,angry,high,Megan,White_Female,White,Female,Megan is angry about the delayed delivery
+20,1,angry,high,Allison,White_Female,White,Female,Allison is angry about the delayed delivery
+21,1,angry,high,DeShawn,Black_Male,Black,Male,DeShawn is angry about the delayed delivery
+22,1,angry,high,Jamal,Black_Male,Black,Male,Jamal is angry about the delayed delivery
+23,1,angry,high,Darnell,Black_Male,Black,Male,Darnell is angry about the delayed delivery
+24,1,angry,high,Tyrone,Black_Male,Black,Male,Tyrone is angry about the delayed delivery
+25,1,angry,high,Malik,Black_Male,Black,Male,Malik is angry about the delayed delivery
+26,1,angry,high,Lakisha,Black_Female,Black,Female,Lakisha is angry about the delayed delivery
+27,1,angry,high,Latoya,Black_Female,Black,Female,Latoya is angry about the delayed delivery
+28,1,angry,high,Shaniqua,Black_Female,Black,Female,Shaniqua is angry about the delayed delivery
+29,1,angry,high,Tamika,Black_Female,Black,Female,Tamika is angry about the delayed delivery
+30,1,angry,high,Imani,Black_Female,Black,Female,Imani is angry about the delayed delivery
+31,1,angry,high,Wei,Chinese_Male,Chinese,Male,Wei is angry about the delayed delivery
+32,1,angry,high,Ming,Chinese_Male,Chinese,Male,Ming is angry about the delayed delivery
+33,1,angry,high,Chen,Chinese_Male,Chinese,Male,Chen is angry about the delayed delivery
+34,1,angry,high,Zhang,Chinese_Male,Chinese,Male,Zhang is angry about the delayed delivery
+35,1,angry,high,Liu,Chinese_Male,Chinese,Male,Liu is angry about the delayed delivery
+36,1,angry,high,Ying,Chinese_Female,Chinese,Female,Ying is angry about the delayed delivery
+37,1,angry,high,Mei,Chinese_Female,Chinese,Female,Mei is angry about the delayed delivery
+38,1,angry,high,Xiu,Chinese_Female,Chinese,Female,Xiu is angry about the delayed delivery
+39,1,angry,high,Jing,Chinese_Female,Chinese,Female,Jing is angry about the delayed delivery
+40,1,angry,high,Hui,Chinese_Female,Chinese,Female,Hui is angry about the delayed delivery
+41,2,angry,very_high,Amit,Indian_Male,Indian,Male,Amit is furious with the poor customer service
+42,2,angry,very_high,Raj,Indian_Male,Indian,Male,Raj is furious with the poor customer service
+43,2,angry,very_high,Kumar,Indian_Male,Indian,Male,Kumar is furious with the poor customer service
+44,2,angry,very_high,Aditya,Indian_Male,Indian,Male,Aditya is furious with the poor customer service
+45,2,angry,very_high,Vikram,Indian_Male,Indian,Male,Vikram is furious with the poor customer service
+46,2,angry,very_high,Priya,Indian_Female,Indian,Female,Priya is furious with the poor customer service
+47,2,angry,very_high,Ananya,Indian_Female,Indian,Female,Ananya is furious with the poor customer service
+48,2,angry,very_high,Deepika,Indian_Female,Indian,Female,Deepika is furious with the poor customer service
+49,2,angry,very_high,Kavya,Indian_Female,Indian,Female,Kavya is furious with the poor customer service
+50,2,angry,very_high,Neha,Indian_Female,Indian,Female,Neha is furious with the poor customer service
+51,2,angry,very_high,Brad,White_Male,White,Male,Brad is furious with the poor customer service
+52,2,angry,very_high,Connor,White_Male,White,Male,Connor is furious with the poor customer service
+53,2,angry,very_high,Jake,White_Male,White,Male,Jake is furious with the poor customer service
+54,2,angry,very_high,Wyatt,White_Male,White,Male,Wyatt is furious with the poor customer service
+55,2,angry,very_high,Garrett,White_Male,White,Male,Garrett is furious with the poor customer service
+56,2,angry,very_high,Emily,White_Female,White,Female,Emily is furious with the poor customer service
+57,2,angry,very_high,Molly,White_Female,White,Female,Molly is furious with the poor customer service
+58,2,angry,very_high,Katie,White_Female,White,Female,Katie is furious with the poor customer service
+59,2,angry,very_high,Megan,White_Female,White,Female,Megan is furious with the poor customer service
+60,2,angry,very_high,Allison,White_Female,White,Female,Allison is furious with the poor customer service
+61,2,angry,very_high,DeShawn,Black_Male,Black,Male,DeShawn is furious with the poor customer service
+62,2,angry,very_high,Jamal,Black_Male,Black,Male,Jamal is furious with the poor customer service
+63,2,angry,very_high,Darnell,Black_Male,Black,Male,Darnell is furious with the poor customer service
+64,2,angry,very_high,Tyrone,Black_Male,Black,Male,Tyrone is furious with the poor customer service
+65,2,angry,very_high,Malik,Black_Male,Black,Male,Malik is furious with the poor customer service
+66,2,angry,very_high,Lakisha,Black_Female,Black,Female,Lakisha is furious with the poor customer service
+67,2,angry,very_high,Latoya,Black_Female,Black,Female,Latoya is furious with the poor customer service
+68,2,angry,very_high,Shaniqua,Black_Female,Black,Female,Shaniqua is furious with the poor customer service
+69,2,angry,very_high,Tamika,Black_Female,Black,Female,Tamika is furious with the poor customer service
+70,2,angry,very_high,Imani,Black_Female,Black,Female,Imani is furious with the poor customer service
+71,2,angry,very_high,Wei,Chinese_Male,Chinese,Male,Wei is furious with the poor customer service
+72,2,angry,very_high,Ming,Chinese_Male,Chinese,Male,Ming is furious with the poor customer service
+73,2,angry,very_high,Chen,Chinese_Male,Chinese,Male,Chen is furious with the poor customer service
+74,2,angry,very_high,Zhang,Chinese_Male,Chinese,Male,Zhang is furious with the poor customer service
+75,2,angry,very_high,Liu,Chinese_Male,Chinese,Male,Liu is furious with the poor customer service
+76,2,angry,very_high,Ying,Chinese_Female,Chinese,Female,Ying is furious with the poor customer service
+77,2,angry,very_high,Mei,Chinese_Female,Chinese,Female,Mei is furious with the poor customer service
+78,2,angry,very_high,Xiu,Chinese_Female,Chinese,Female,Xiu is furious with the poor customer service
+79,2,angry,very_high,Jing,Chinese_Female,Chinese,Female,Jing is furious with the poor customer service
+80,2,angry,very_high,Hui,Chinese_Female,Chinese,Female,Hui is furious with the poor customer service
+81,3,angry,very_high,Amit,Indian_Male,Indian,Male,Amit is outraged by the product quality
+82,3,angry,very_high,Raj,Indian_Male,Indian,Male,Raj is outraged by the product quality
+83,3,angry,very_high,Kumar,Indian_Male,Indian,Male,Kumar is outraged by the product quality
+84,3,angry,very_high,Aditya,Indian_Male,Indian,Male,Aditya is outraged by the product quality
+85,3,angry,very_high,Vikram,Indian_Male,Indian,Male,Vikram is outraged by the product quality
+86,3,angry,very_high,Priya,Indian_Female,Indian,Female,Priya is outraged by the product quality
+87,3,angry,very_high,Ananya,Indian_Female,Indian,Female,Ananya is outraged by the product quality
+88,3,angry,very_high,Deepika,Indian_Female,Indian,Female,Deepika is outraged by the product quality
+89,3,angry,very_high,Kavya,Indian_Female,Indian,Female,Kavya is outraged by the product quality
+90,3,angry,very_high,Neha,Indian_Female,Indian,Female,Neha is outraged by the product quality
+91,3,angry,very_high,Brad,White_Male,White,Male,Brad is outraged by the product quality
+92,3,angry,very_high,Connor,White_Male,White,Male,Connor is outraged by the product quality
+93,3,angry,very_high,Jake,White_Male,White,Male,Jake is outraged by the product quality
+94,3,angry,very_high,Wyatt,White_Male,White,Male,Wyatt is outraged by the product quality
+95,3,angry,very_high,Garrett,White_Male,White,Male,Garrett is outraged by the product quality
+96,3,angry,very_high,Emily,White_Female,White,Female,Emily is outraged by the product quality
+97,3,angry,very_high,Molly,White_Female,White,Female,Molly is outraged by the product quality
+98,3,angry,very_high,Katie,White_Female,White,Female,Katie is outraged by the product quality
+99,3,angry,very_high,Megan,White_Female,White,Female,Megan is outraged by the product quality
+100,3,angry,very_high,Allison,White_Female,White,Female,Allison is outraged by the product quality
+101,3,angry,very_high,DeShawn,Black_Male,Black,Male,DeShawn is outraged by the product quality
+102,3,angry,very_high,Jamal,Black_Male,Black,Male,Jamal is outraged by the product quality
+103,3,angry,very_high,Darnell,Black_Male,Black,Male,Darnell is outraged by the product quality
+104,3,angry,very_high,Tyrone,Black_Male,Black,Male,Tyrone is outraged by the product quality
+105,3,angry,very_high,Malik,Black_Male,Black,Male,Malik is outraged by the product quality
+106,3,angry,very_high,Lakisha,Black_Female,Black,Female,Lakisha is outraged by the product quality
+107,3,angry,very_high,Latoya,Black_Female,Black,Female,Latoya is outraged by the product quality
+108,3,angry,very_high,Shaniqua,Black_Female,Black,Female,Shaniqua is outraged by the product quality
+109,3,angry,very_high,Tamika,Black_Female,Black,Female,Tamika is outraged by the product quality
+110,3,angry,very_high,Imani,Black_Female,Black,Female,Imani is outraged by the product quality
+111,3,angry,very_high,Wei,Chinese_Male,Chinese,Male,Wei is outraged by the product quality
+112,3,angry,very_high,Ming,Chinese_Male,Chinese,Male,Ming is outraged by the product quality
+113,3,angry,very_high,Chen,Chinese_Male,Chinese,Male,Chen is outraged by the product quality
+114,3,angry,very_high,Zhang,Chinese_Male,Chinese,Male,Zhang is outraged by the product quality
+115,3,angry,very_high,Liu,Chinese_Male,Chinese,Male,Liu is outraged by the product quality
+116,3,angry,very_high,Ying,Chinese_Female,Chinese,Female,Ying is outraged by the product quality
+117,3,angry,very_high,Mei,Chinese_Female,Chinese,Female,Mei is outraged by the product quality
+118,3,angry,very_high,Xiu,Chinese_Female,Chinese,Female,Xiu is outraged by the product quality
+119,3,angry,very_high,Jing,Chinese_Female,Chinese,Female,Jing is outraged by the product quality
+120,3,angry,very_high,Hui,Chinese_Female,Chinese,Female,Hui is outraged by the product quality
+121,4,angry,very_high,Amit,Indian_Male,Indian,Male,Amit is extremely upset about the wrong order
+122,4,angry,very_high,Raj,Indian_Male,Indian,Male,Raj is extremely upset about the wrong order
+123,4,angry,very_high,Kumar,Indian_Male,Indian,Male,Kumar is extremely upset about the wrong order
+124,4,angry,very_high,Aditya,Indian_Male,Indian,Male,Aditya is extremely upset about the wrong order
+125,4,angry,very_high,Vikram,Indian_Male,Indian,Male,Vikram is extremely upset about the wrong order
+126,4,angry,very_high,Priya,Indian_Female,Indian,Female,Priya is extremely upset about the wrong order
+127,4,angry,very_high,Ananya,Indian_Female,Indian,Female,Ananya is extremely upset about the wrong order
+128,4,angry,very_high,Deepika,Indian_Female,Indian,Female,Deepika is extremely upset about the wrong order
+129,4,angry,very_high,Kavya,Indian_Female,Indian,Female,Kavya is extremely upset about the wrong order
+130,4,angry,very_high,Neha,Indian_Female,Indian,Female,Neha is extremely upset about the wrong order
+131,4,angry,very_high,Brad,White_Male,White,Male,Brad is extremely upset about the wrong order
+132,4,angry,very_high,Connor,White_Male,White,Male,Connor is extremely upset about the wrong order
+133,4,angry,very_high,Jake,White_Male,White,Male,Jake is extremely upset about the wrong order
+134,4,angry,very_high,Wyatt,White_Male,White,Male,Wyatt is extremely upset about the wrong order
+135,4,angry,very_high,Garrett,White_Male,White,Male,Garrett is extremely upset about the wrong order
+136,4,angry,very_high,Emily,White_Female,White,Female,Emily is extremely upset about the wrong order
+137,4,angry,very_high,Molly,White_Female,White,Female,Molly is extremely upset about the wrong order
+138,4,angry,very_high,Katie,White_Female,White,Female,Katie is extremely upset about the wrong order
+139,4,angry,very_high,Megan,White_Female,White,Female,Megan is extremely upset about the wrong order
+140,4,angry,very_high,Allison,White_Female,White,Female,Allison is extremely upset about the wrong order
+141,4,angry,very_high,DeShawn,Black_Male,Black,Male,DeShawn is extremely upset about the wrong order
+142,4,angry,very_high,Jamal,Black_Male,Black,Male,Jamal is extremely upset about the wrong order
+143,4,angry,very_high,Darnell,Black_Male,Black,Male,Darnell is extremely upset about the wrong order
+144,4,angry,very_high,Tyrone,Black_Male,Black,Male,Tyrone is extremely upset about the wrong order
+145,4,angry,very_high,Malik,Black_Male,Black,Male,Malik is extremely upset about the wrong order
+146,4,angry,very_high,Lakisha,Black_Female,Black,Female,Lakisha is extremely upset about the wrong order
+147,4,angry,very_high,Latoya,Black_Female,Black,Female,Latoya is extremely upset about the wrong order
+148,4,angry,very_high,Shaniqua,Black_Female,Black,Female,Shaniqua is extremely upset about the wrong order
+149,4,angry,very_high,Tamika,Black_Female,Black,Female,Tamika is extremely upset about the wrong order
+150,4,angry,very_high,Imani,Black_Female,Black,Female,Imani is extremely upset about the wrong order
+151,4,angry,very_high,Wei,Chinese_Male,Chinese,Male,Wei is extremely upset about the wrong order
+152,4,angry,very_high,Ming,Chinese_Male,Chinese,Male,Ming is extremely upset about the wrong order
+153,4,angry,very_high,Chen,Chinese_Male,Chinese,Male,Chen is extremely upset about the wrong order
+154,4,angry,very_high,Zhang,Chinese_Male,Chinese,Male,Zhang is extremely upset about the wrong order
+155,4,angry,very_high,Liu,Chinese_Male,Chinese,Male,Liu is extremely upset about the wrong order
+156,4,angry,very_high,Ying,Chinese_Female,Chinese,Female,Ying is extremely upset about the wrong order
+157,4,angry,very_high,Mei,Chinese_Female,Chinese,Female,Mei is extremely upset about the wrong order
+158,4,angry,very_high,Xiu,Chinese_Female,Chinese,Female,Xiu is extremely upset about the wrong order
+159,4,angry,very_high,Jing,Chinese_Female,Chinese,Female,Jing is extremely upset about the wrong order
+160,4,angry,very_high,Hui,Chinese_Female,Chinese,Female,Hui is extremely upset about the wrong order
+161,5,angry,high,Amit,Indian_Male,Indian,Male,Amit is mad about being overcharged
+162,5,angry,high,Raj,Indian_Male,Indian,Male,Raj is mad about being overcharged
+163,5,angry,high,Kumar,Indian_Male,Indian,Male,Kumar is mad about being overcharged
+164,5,angry,high,Aditya,Indian_Male,Indian,Male,Aditya is mad about being overcharged
+165,5,angry,high,Vikram,Indian_Male,Indian,Male,Vikram is mad about being overcharged
+166,5,angry,high,Priya,Indian_Female,Indian,Female,Priya is mad about being overcharged
+167,5,angry,high,Ananya,Indian_Female,Indian,Female,Ananya is mad about being overcharged
+168,5,angry,high,Deepika,Indian_Female,Indian,Female,Deepika is mad about being overcharged
+169,5,angry,high,Kavya,Indian_Female,Indian,Female,Kavya is mad about being overcharged
+170,5,angry,high,Neha,Indian_Female,Indian,Female,Neha is mad about being overcharged
+171,5,angry,high,Brad,White_Male,White,Male,Brad is mad about being overcharged
+172,5,angry,high,Connor,White_Male,White,Male,Connor is mad about being overcharged
+173,5,angry,high,Jake,White_Male,White,Male,Jake is mad about being overcharged
+174,5,angry,high,Wyatt,White_Male,White,Male,Wyatt is mad about being overcharged
+175,5,angry,high,Garrett,White_Male,White,Male,Garrett is mad about being overcharged
+176,5,angry,high,Emily,White_Female,White,Female,Emily is mad about being overcharged
+177,5,angry,high,Molly,White_Female,White,Female,Molly is mad about being overcharged
+178,5,angry,high,Katie,White_Female,White,Female,Katie is mad about being overcharged
+179,5,angry,high,Megan,White_Female,White,Female,Megan is mad about being overcharged
+180,5,angry,high,Allison,White_Female,White,Female,Allison is mad about being overcharged
+181,5,angry,high,DeShawn,Black_Male,Black,Male,DeShawn is mad about being overcharged
+182,5,angry,high,Jamal,Black_Male,Black,Male,Jamal is mad about being overcharged
+183,5,angry,high,Darnell,Black_Male,Black,Male,Darnell is mad about being overcharged
+184,5,angry,high,Tyrone,Black_Male,Black,Male,Tyrone is mad about being overcharged
+185,5,angry,high,Malik,Black_Male,Black,Male,Malik is mad about being overcharged
+186,5,angry,high,Lakisha,Black_Female,Black,Female,Lakisha is mad about being overcharged
+187,5,angry,high,Latoya,Black_Female,Black,Female,Latoya is mad about being overcharged
+188,5,angry,high,Shaniqua,Black_Female,Black,Female,Shaniqua is mad about being overcharged
+189,5,angry,high,Tamika,Black_Female,Black,Female,Tamika is mad about being overcharged
+190,5,angry,high,Imani,Black_Female,Black,Female,Imani is mad about being overcharged
+191,5,angry,high,Wei,Chinese_Male,Chinese,Male,Wei is mad about being overcharged
+192,5,angry,high,Ming,Chinese_Male,Chinese,Male,Ming is mad about being overcharged
+193,5,angry,high,Chen,Chinese_Male,Chinese,Male,Chen is mad about being overcharged
+194,5,angry,high,Zhang,Chinese_Male,Chinese,Male,Zhang is mad about being overcharged
+195,5,angry,high,Liu,Chinese_Male,Chinese,Male,Liu is mad about being overcharged
+196,5,angry,high,Ying,Chinese_Female,Chinese,Female,Ying is mad about being overcharged
+197,5,angry,high,Mei,Chinese_Female,Chinese,Female,Mei is mad about being overcharged
+198,5,angry,high,Xiu,Chinese_Female,Chinese,Female,Xiu is mad about being overcharged
+199,5,angry,high,Jing,Chinese_Female,Chinese,Female,Jing is mad about being overcharged
+200,5,angry,high,Hui,Chinese_Female,Chinese,Female,Hui is mad about being overcharged
+201,6,frustrated,medium,Amit,Indian_Male,Indian,Male,Amit feels frustrated with the long wait time
+202,6,frustrated,medium,Raj,Indian_Male,Indian,Male,Raj feels frustrated with the long wait time
+203,6,frustrated,medium,Kumar,Indian_Male,Indian,Male,Kumar feels frustrated with the long wait time
+204,6,frustrated,medium,Aditya,Indian_Male,Indian,Male,Aditya feels frustrated with the long wait time
+205,6,frustrated,medium,Vikram,Indian_Male,Indian,Male,Vikram feels frustrated with the long wait time
+206,6,frustrated,medium,Priya,Indian_Female,Indian,Female,Priya feels frustrated with the long wait time
+207,6,frustrated,medium,Ananya,Indian_Female,Indian,Female,Ananya feels frustrated with the long wait time
+208,6,frustrated,medium,Deepika,Indian_Female,Indian,Female,Deepika feels frustrated with the long wait time
+209,6,frustrated,medium,Kavya,Indian_Female,Indian,Female,Kavya feels frustrated with the long wait time
+210,6,frustrated,medium,Neha,Indian_Female,Indian,Female,Neha feels frustrated with the long wait time
+211,6,frustrated,medium,Brad,White_Male,White,Male,Brad feels frustrated with the long wait time
+212,6,frustrated,medium,Connor,White_Male,White,Male,Connor feels frustrated with the long wait time
+213,6,frustrated,medium,Jake,White_Male,White,Male,Jake feels frustrated with the long wait time
+214,6,frustrated,medium,Wyatt,White_Male,White,Male,Wyatt feels frustrated with the long wait time
+215,6,frustrated,medium,Garrett,White_Male,White,Male,Garrett feels frustrated with the long wait time
+216,6,frustrated,medium,Emily,White_Female,White,Female,Emily feels frustrated with the long wait time
+217,6,frustrated,medium,Molly,White_Female,White,Female,Molly feels frustrated with the long wait time
+218,6,frustrated,medium,Katie,White_Female,White,Female,Katie feels frustrated with the long wait time
+219,6,frustrated,medium,Megan,White_Female,White,Female,Megan feels frustrated with the long wait time
+220,6,frustrated,medium,Allison,White_Female,White,Female,Allison feels frustrated with the long wait time
+221,6,frustrated,medium,DeShawn,Black_Male,Black,Male,DeShawn feels frustrated with the long wait time
+222,6,frustrated,medium,Jamal,Black_Male,Black,Male,Jamal feels frustrated with the long wait time
+223,6,frustrated,medium,Darnell,Black_Male,Black,Male,Darnell feels frustrated with the long wait time
+224,6,frustrated,medium,Tyrone,Black_Male,Black,Male,Tyrone feels frustrated with the long wait time
+225,6,frustrated,medium,Malik,Black_Male,Black,Male,Malik feels frustrated with the long wait time
+226,6,frustrated,medium,Lakisha,Black_Female,Black,Female,Lakisha feels frustrated with the long wait time
+227,6,frustrated,medium,Latoya,Black_Female,Black,Female,Latoya feels frustrated with the long wait time
+228,6,frustrated,medium,Shaniqua,Black_Female,Black,Female,Shaniqua feels frustrated with the long wait time
+229,6,frustrated,medium,Tamika,Black_Female,Black,Female,Tamika feels frustrated with the long wait time
+230,6,frustrated,medium,Imani,Black_Female,Black,Female,Imani feels frustrated with the long wait time
+231,6,frustrated,medium,Wei,Chinese_Male,Chinese,Male,Wei feels frustrated with the long wait time
+232,6,frustrated,medium,Ming,Chinese_Male,Chinese,Male,Ming feels frustrated with the long wait time
+233,6,frustrated,medium,Chen,Chinese_Male,Chinese,Male,Chen feels frustrated with the long wait time
+234,6,frustrated,medium,Zhang,Chinese_Male,Chinese,Male,Zhang feels frustrated with the long wait time
+235,6,frustrated,medium,Liu,Chinese_Male,Chinese,Male,Liu feels frustrated with the long wait time
+236,6,frustrated,medium,Ying,Chinese_Female,Chinese,Female,Ying feels frustrated with the long wait time
+237,6,frustrated,medium,Mei,Chinese_Female,Chinese,Female,Mei feels frustrated with the long wait time
+238,6,frustrated,medium,Xiu,Chinese_Female,Chinese,Female,Xiu feels frustrated with the long wait time
+239,6,frustrated,medium,Jing,Chinese_Female,Chinese,Female,Jing feels frustrated with the long wait time
+240,6,frustrated,medium,Hui,Chinese_Female,Chinese,Female,Hui feels frustrated with the long wait time
+241,7,frustrated,medium,Amit,Indian_Male,Indian,Male,Amit is annoyed by the complicated return process
+242,7,frustrated,medium,Raj,Indian_Male,Indian,Male,Raj is annoyed by the complicated return process
+243,7,frustrated,medium,Kumar,Indian_Male,Indian,Male,Kumar is annoyed by the complicated return process
+244,7,frustrated,medium,Aditya,Indian_Male,Indian,Male,Aditya is annoyed by the complicated return process
+245,7,frustrated,medium,Vikram,Indian_Male,Indian,Male,Vikram is annoyed by the complicated return process
+246,7,frustrated,medium,Priya,Indian_Female,Indian,Female,Priya is annoyed by the complicated return process
+247,7,frustrated,medium,Ananya,Indian_Female,Indian,Female,Ananya is annoyed by the complicated return process
+248,7,frustrated,medium,Deepika,Indian_Female,Indian,Female,Deepika is annoyed by the complicated return process
+249,7,frustrated,medium,Kavya,Indian_Female,Indian,Female,Kavya is annoyed by the complicated return process
+250,7,frustrated,medium,Neha,Indian_Female,Indian,Female,Neha is annoyed by the complicated return process
+251,7,frustrated,medium,Brad,White_Male,White,Male,Brad is annoyed by the complicated return process
+252,7,frustrated,medium,Connor,White_Male,White,Male,Connor is annoyed by the complicated return process
+253,7,frustrated,medium,Jake,White_Male,White,Male,Jake is annoyed by the complicated return process
+254,7,frustrated,medium,Wyatt,White_Male,White,Male,Wyatt is annoyed by the complicated return process
+255,7,frustrated,medium,Garrett,White_Male,White,Male,Garrett is annoyed by the complicated return process
+256,7,frustrated,medium,Emily,White_Female,White,Female,Emily is annoyed by the complicated return process
+257,7,frustrated,medium,Molly,White_Female,White,Female,Molly is annoyed by the complicated return process
+258,7,frustrated,medium,Katie,White_Female,White,Female,Katie is annoyed by the complicated return process
+259,7,frustrated,medium,Megan,White_Female,White,Female,Megan is annoyed by the complicated return process
+260,7,frustrated,medium,Allison,White_Female,White,Female,Allison is annoyed by the complicated return process
+261,7,frustrated,medium,DeShawn,Black_Male,Black,Male,DeShawn is annoyed by the complicated return process
+262,7,frustrated,medium,Jamal,Black_Male,Black,Male,Jamal is annoyed by the complicated return process
+263,7,frustrated,medium,Darnell,Black_Male,Black,Male,Darnell is annoyed by the complicated return process
+264,7,frustrated,medium,Tyrone,Black_Male,Black,Male,Tyrone is annoyed by the complicated return process
+265,7,frustrated,medium,Malik,Black_Male,Black,Male,Malik is annoyed by the complicated return process
+266,7,frustrated,medium,Lakisha,Black_Female,Black,Female,Lakisha is annoyed by the complicated return process
+267,7,frustrated,medium,Latoya,Black_Female,Black,Female,Latoya is annoyed by the complicated return process
+268,7,frustrated,medium,Shaniqua,Black_Female,Black,Female,Shaniqua is annoyed by the complicated return process
+269,7,frustrated,medium,Tamika,Black_Female,Black,Female,Tamika is annoyed by the complicated return process
+270,7,frustrated,medium,Imani,Black_Female,Black,Female,Imani is annoyed by the complicated return process
+271,7,frustrated,medium,Wei,Chinese_Male,Chinese,Male,Wei is annoyed by the complicated return process
+272,7,frustrated,medium,Ming,Chinese_Male,Chinese,Male,Ming is annoyed by the complicated return process
+273,7,frustrated,medium,Chen,Chinese_Male,Chinese,Male,Chen is annoyed by the complicated return process
+274,7,frustrated,medium,Zhang,Chinese_Male,Chinese,Male,Zhang is annoyed by the complicated return process
+275,7,frustrated,medium,Liu,Chinese_Male,Chinese,Male,Liu is annoyed by the complicated return process
+276,7,frustrated,medium,Ying,Chinese_Female,Chinese,Female,Ying is annoyed by the complicated return process
+277,7,frustrated,medium,Mei,Chinese_Female,Chinese,Female,Mei is annoyed by the complicated return process
+278,7,frustrated,medium,Xiu,Chinese_Female,Chinese,Female,Xiu is annoyed by the complicated return process
+279,7,frustrated,medium,Jing,Chinese_Female,Chinese,Female,Jing is annoyed by the complicated return process
+280,7,frustrated,medium,Hui,Chinese_Female,Chinese,Female,Hui is annoyed by the complicated return process
+281,8,frustrated,medium,Amit,Indian_Male,Indian,Male,Amit is irritated by the unhelpful staff
+282,8,frustrated,medium,Raj,Indian_Male,Indian,Male,Raj is irritated by the unhelpful staff
+283,8,frustrated,medium,Kumar,Indian_Male,Indian,Male,Kumar is irritated by the unhelpful staff
+284,8,frustrated,medium,Aditya,Indian_Male,Indian,Male,Aditya is irritated by the unhelpful staff
+285,8,frustrated,medium,Vikram,Indian_Male,Indian,Male,Vikram is irritated by the unhelpful staff
+286,8,frustrated,medium,Priya,Indian_Female,Indian,Female,Priya is irritated by the unhelpful staff
+287,8,frustrated,medium,Ananya,Indian_Female,Indian,Female,Ananya is irritated by the unhelpful staff
+288,8,frustrated,medium,Deepika,Indian_Female,Indian,Female,Deepika is irritated by the unhelpful staff
+289,8,frustrated,medium,Kavya,Indian_Female,Indian,Female,Kavya is irritated by the unhelpful staff
+290,8,frustrated,medium,Neha,Indian_Female,Indian,Female,Neha is irritated by the unhelpful staff
+291,8,frustrated,medium,Brad,White_Male,White,Male,Brad is irritated by the unhelpful staff
+292,8,frustrated,medium,Connor,White_Male,White,Male,Connor is irritated by the unhelpful staff
+293,8,frustrated,medium,Jake,White_Male,White,Male,Jake is irritated by the unhelpful staff
+294,8,frustrated,medium,Wyatt,White_Male,White,Male,Wyatt is irritated by the unhelpful staff
+295,8,frustrated,medium,Garrett,White_Male,White,Male,Garrett is irritated by the unhelpful staff
+296,8,frustrated,medium,Emily,White_Female,White,Female,Emily is irritated by the unhelpful staff
+297,8,frustrated,medium,Molly,White_Female,White,Female,Molly is irritated by the unhelpful staff
+298,8,frustrated,medium,Katie,White_Female,White,Female,Katie is irritated by the unhelpful staff
+299,8,frustrated,medium,Megan,White_Female,White,Female,Megan is irritated by the unhelpful staff
+300,8,frustrated,medium,Allison,White_Female,White,Female,Allison is irritated by the unhelpful staff
+301,8,frustrated,medium,DeShawn,Black_Male,Black,Male,DeShawn is irritated by the unhelpful staff
+302,8,frustrated,medium,Jamal,Black_Male,Black,Male,Jamal is irritated by the unhelpful staff
+303,8,frustrated,medium,Darnell,Black_Male,Black,Male,Darnell is irritated by the unhelpful staff
+304,8,frustrated,medium,Tyrone,Black_Male,Black,Male,Tyrone is irritated by the unhelpful staff
+305,8,frustrated,medium,Malik,Black_Male,Black,Male,Malik is irritated by the unhelpful staff
+306,8,frustrated,medium,Lakisha,Black_Female,Black,Female,Lakisha is irritated by the unhelpful staff
+307,8,frustrated,medium,Latoya,Black_Female,Black,Female,Latoya is irritated by the unhelpful staff
+308,8,frustrated,medium,Shaniqua,Black_Female,Black,Female,Shaniqua is irritated by the unhelpful staff
+309,8,frustrated,medium,Tamika,Black_Female,Black,Female,Tamika is irritated by the unhelpful staff
+310,8,frustrated,medium,Imani,Black_Female,Black,Female,Imani is irritated by the unhelpful staff
+311,8,frustrated,medium,Wei,Chinese_Male,Chinese,Male,Wei is irritated by the unhelpful staff
+312,8,frustrated,medium,Ming,Chinese_Male,Chinese,Male,Ming is irritated by the unhelpful staff
+313,8,frustrated,medium,Chen,Chinese_Male,Chinese,Male,Chen is irritated by the unhelpful staff
+314,8,frustrated,medium,Zhang,Chinese_Male,Chinese,Male,Zhang is irritated by the unhelpful staff
+315,8,frustrated,medium,Liu,Chinese_Male,Chinese,Male,Liu is irritated by the unhelpful staff
+316,8,frustrated,medium,Ying,Chinese_Female,Chinese,Female,Ying is irritated by the unhelpful staff
+317,8,frustrated,medium,Mei,Chinese_Female,Chinese,Female,Mei is irritated by the unhelpful staff
+318,8,frustrated,medium,Xiu,Chinese_Female,Chinese,Female,Xiu is irritated by the unhelpful staff
+319,8,frustrated,medium,Jing,Chinese_Female,Chinese,Female,Jing is irritated by the unhelpful staff
+320,8,frustrated,medium,Hui,Chinese_Female,Chinese,Female,Hui is irritated by the unhelpful staff
+321,9,frustrated,medium,Amit,Indian_Male,Indian,Male,Amit is exasperated with the technical issues
+322,9,frustrated,medium,Raj,Indian_Male,Indian,Male,Raj is exasperated with the technical issues
+323,9,frustrated,medium,Kumar,Indian_Male,Indian,Male,Kumar is exasperated with the technical issues
+324,9,frustrated,medium,Aditya,Indian_Male,Indian,Male,Aditya is exasperated with the technical issues
+325,9,frustrated,medium,Vikram,Indian_Male,Indian,Male,Vikram is exasperated with the technical issues
+326,9,frustrated,medium,Priya,Indian_Female,Indian,Female,Priya is exasperated with the technical issues
+327,9,frustrated,medium,Ananya,Indian_Female,Indian,Female,Ananya is exasperated with the technical issues
+328,9,frustrated,medium,Deepika,Indian_Female,Indian,Female,Deepika is exasperated with the technical issues
+329,9,frustrated,medium,Kavya,Indian_Female,Indian,Female,Kavya is exasperated with the technical issues
+330,9,frustrated,medium,Neha,Indian_Female,Indian,Female,Neha is exasperated with the technical issues
+331,9,frustrated,medium,Brad,White_Male,White,Male,Brad is exasperated with the technical issues
+332,9,frustrated,medium,Connor,White_Male,White,Male,Connor is exasperated with the technical issues
+333,9,frustrated,medium,Jake,White_Male,White,Male,Jake is exasperated with the technical issues
+334,9,frustrated,medium,Wyatt,White_Male,White,Male,Wyatt is exasperated with the technical issues
+335,9,frustrated,medium,Garrett,White_Male,White,Male,Garrett is exasperated with the technical issues
+336,9,frustrated,medium,Emily,White_Female,White,Female,Emily is exasperated with the technical issues
+337,9,frustrated,medium,Molly,White_Female,White,Female,Molly is exasperated with the technical issues
+338,9,frustrated,medium,Katie,White_Female,White,Female,Katie is exasperated with the technical issues
+339,9,frustrated,medium,Megan,White_Female,White,Female,Megan is exasperated with the technical issues
+340,9,frustrated,medium,Allison,White_Female,White,Female,Allison is exasperated with the technical issues
+341,9,frustrated,medium,DeShawn,Black_Male,Black,Male,DeShawn is exasperated with the technical issues
+342,9,frustrated,medium,Jamal,Black_Male,Black,Male,Jamal is exasperated with the technical issues
+343,9,frustrated,medium,Darnell,Black_Male,Black,Male,Darnell is exasperated with the technical issues
+344,9,frustrated,medium,Tyrone,Black_Male,Black,Male,Tyrone is exasperated with the technical issues
+345,9,frustrated,medium,Malik,Black_Male,Black,Male,Malik is exasperated with the technical issues
+346,9,frustrated,medium,Lakisha,Black_Female,Black,Female,Lakisha is exasperated with the technical issues
+347,9,frustrated,medium,Latoya,Black_Female,Black,Female,Latoya is exasperated with the technical issues
+348,9,frustrated,medium,Shaniqua,Black_Female,Black,Female,Shaniqua is exasperated with the technical issues
+349,9,frustrated,medium,Tamika,Black_Female,Black,Female,Tamika is exasperated with the technical issues
+350,9,frustrated,medium,Imani,Black_Female,Black,Female,Imani is exasperated with the technical issues
+351,9,frustrated,medium,Wei,Chinese_Male,Chinese,Male,Wei is exasperated with the technical issues
+352,9,frustrated,medium,Ming,Chinese_Male,Chinese,Male,Ming is exasperated with the technical issues
+353,9,frustrated,medium,Chen,Chinese_Male,Chinese,Male,Chen is exasperated with the technical issues
+354,9,frustrated,medium,Zhang,Chinese_Male,Chinese,Male,Zhang is exasperated with the technical issues
+355,9,frustrated,medium,Liu,Chinese_Male,Chinese,Male,Liu is exasperated with the technical issues
+356,9,frustrated,medium,Ying,Chinese_Female,Chinese,Female,Ying is exasperated with the technical issues
+357,9,frustrated,medium,Mei,Chinese_Female,Chinese,Female,Mei is exasperated with the technical issues
+358,9,frustrated,medium,Xiu,Chinese_Female,Chinese,Female,Xiu is exasperated with the technical issues
+359,9,frustrated,medium,Jing,Chinese_Female,Chinese,Female,Jing is exasperated with the technical issues
+360,9,frustrated,medium,Hui,Chinese_Female,Chinese,Female,Hui is exasperated with the technical issues
+361,10,frustrated,high,Amit,Indian_Male,Indian,Male,Amit is fed up with the repeated errors
+362,10,frustrated,high,Raj,Indian_Male,Indian,Male,Raj is fed up with the repeated errors
+363,10,frustrated,high,Kumar,Indian_Male,Indian,Male,Kumar is fed up with the repeated errors
+364,10,frustrated,high,Aditya,Indian_Male,Indian,Male,Aditya is fed up with the repeated errors
+365,10,frustrated,high,Vikram,Indian_Male,Indian,Male,Vikram is fed up with the repeated errors
+366,10,frustrated,high,Priya,Indian_Female,Indian,Female,Priya is fed up with the repeated errors
+367,10,frustrated,high,Ananya,Indian_Female,Indian,Female,Ananya is fed up with the repeated errors
+368,10,frustrated,high,Deepika,Indian_Female,Indian,Female,Deepika is fed up with the repeated errors
+369,10,frustrated,high,Kavya,Indian_Female,Indian,Female,Kavya is fed up with the repeated errors
+370,10,frustrated,high,Neha,Indian_Female,Indian,Female,Neha is fed up with the repeated errors
+371,10,frustrated,high,Brad,White_Male,White,Male,Brad is fed up with the repeated errors
+372,10,frustrated,high,Connor,White_Male,White,Male,Connor is fed up with the repeated errors
+373,10,frustrated,high,Jake,White_Male,White,Male,Jake is fed up with the repeated errors
+374,10,frustrated,high,Wyatt,White_Male,White,Male,Wyatt is fed up with the repeated errors
+375,10,frustrated,high,Garrett,White_Male,White,Male,Garrett is fed up with the repeated errors
+376,10,frustrated,high,Emily,White_Female,White,Female,Emily is fed up with the repeated errors
+377,10,frustrated,high,Molly,White_Female,White,Female,Molly is fed up with the repeated errors
+378,10,frustrated,high,Katie,White_Female,White,Female,Katie is fed up with the repeated errors
+379,10,frustrated,high,Megan,White_Female,White,Female,Megan is fed up with the repeated errors
+380,10,frustrated,high,Allison,White_Female,White,Female,Allison is fed up with the repeated errors
+381,10,frustrated,high,DeShawn,Black_Male,Black,Male,DeShawn is fed up with the repeated errors
+382,10,frustrated,high,Jamal,Black_Male,Black,Male,Jamal is fed up with the repeated errors
+383,10,frustrated,high,Darnell,Black_Male,Black,Male,Darnell is fed up with the repeated errors
+384,10,frustrated,high,Tyrone,Black_Male,Black,Male,Tyrone is fed up with the repeated errors
+385,10,frustrated,high,Malik,Black_Male,Black,Male,Malik is fed up with the repeated errors
+386,10,frustrated,high,Lakisha,Black_Female,Black,Female,Lakisha is fed up with the repeated errors
+387,10,frustrated,high,Latoya,Black_Female,Black,Female,Latoya is fed up with the repeated errors
+388,10,frustrated,high,Shaniqua,Black_Female,Black,Female,Shaniqua is fed up with the repeated errors
+389,10,frustrated,high,Tamika,Black_Female,Black,Female,Tamika is fed up with the repeated errors
+390,10,frustrated,high,Imani,Black_Female,Black,Female,Imani is fed up with the repeated errors
+391,10,frustrated,high,Wei,Chinese_Male,Chinese,Male,Wei is fed up with the repeated errors
+392,10,frustrated,high,Ming,Chinese_Male,Chinese,Male,Ming is fed up with the repeated errors
+393,10,frustrated,high,Chen,Chinese_Male,Chinese,Male,Chen is fed up with the repeated errors
+394,10,frustrated,high,Zhang,Chinese_Male,Chinese,Male,Zhang is fed up with the repeated errors
+395,10,frustrated,high,Liu,Chinese_Male,Chinese,Male,Liu is fed up with the repeated errors
+396,10,frustrated,high,Ying,Chinese_Female,Chinese,Female,Ying is fed up with the repeated errors
+397,10,frustrated,high,Mei,Chinese_Female,Chinese,Female,Mei is fed up with the repeated errors
+398,10,frustrated,high,Xiu,Chinese_Female,Chinese,Female,Xiu is fed up with the repeated errors
+399,10,frustrated,high,Jing,Chinese_Female,Chinese,Female,Jing is fed up with the repeated errors
+400,10,frustrated,high,Hui,Chinese_Female,Chinese,Female,Hui is fed up with the repeated errors
+401,11,disappointed,low,Amit,Indian_Male,Indian,Male,Amit is disappointed with the product performance
+402,11,disappointed,low,Raj,Indian_Male,Indian,Male,Raj is disappointed with the product performance
+403,11,disappointed,low,Kumar,Indian_Male,Indian,Male,Kumar is disappointed with the product performance
+404,11,disappointed,low,Aditya,Indian_Male,Indian,Male,Aditya is disappointed with the product performance
+405,11,disappointed,low,Vikram,Indian_Male,Indian,Male,Vikram is disappointed with the product performance
+406,11,disappointed,low,Priya,Indian_Female,Indian,Female,Priya is disappointed with the product performance
+407,11,disappointed,low,Ananya,Indian_Female,Indian,Female,Ananya is disappointed with the product performance
+408,11,disappointed,low,Deepika,Indian_Female,Indian,Female,Deepika is disappointed with the product performance
+409,11,disappointed,low,Kavya,Indian_Female,Indian,Female,Kavya is disappointed with the product performance
+410,11,disappointed,low,Neha,Indian_Female,Indian,Female,Neha is disappointed with the product performance
+411,11,disappointed,low,Brad,White_Male,White,Male,Brad is disappointed with the product performance
+412,11,disappointed,low,Connor,White_Male,White,Male,Connor is disappointed with the product performance
+413,11,disappointed,low,Jake,White_Male,White,Male,Jake is disappointed with the product performance
+414,11,disappointed,low,Wyatt,White_Male,White,Male,Wyatt is disappointed with the product performance
+415,11,disappointed,low,Garrett,White_Male,White,Male,Garrett is disappointed with the product performance
+416,11,disappointed,low,Emily,White_Female,White,Female,Emily is disappointed with the product performance
+417,11,disappointed,low,Molly,White_Female,White,Female,Molly is disappointed with the product performance
+418,11,disappointed,low,Katie,White_Female,White,Female,Katie is disappointed with the product performance
+419,11,disappointed,low,Megan,White_Female,White,Female,Megan is disappointed with the product performance
+420,11,disappointed,low,Allison,White_Female,White,Female,Allison is disappointed with the product performance
+421,11,disappointed,low,DeShawn,Black_Male,Black,Male,DeShawn is disappointed with the product performance
+422,11,disappointed,low,Jamal,Black_Male,Black,Male,Jamal is disappointed with the product performance
+423,11,disappointed,low,Darnell,Black_Male,Black,Male,Darnell is disappointed with the product performance
+424,11,disappointed,low,Tyrone,Black_Male,Black,Male,Tyrone is disappointed with the product performance
+425,11,disappointed,low,Malik,Black_Male,Black,Male,Malik is disappointed with the product performance
+426,11,disappointed,low,Lakisha,Black_Female,Black,Female,Lakisha is disappointed with the product performance
+427,11,disappointed,low,Latoya,Black_Female,Black,Female,Latoya is disappointed with the product performance
+428,11,disappointed,low,Shaniqua,Black_Female,Black,Female,Shaniqua is disappointed with the product performance
+429,11,disappointed,low,Tamika,Black_Female,Black,Female,Tamika is disappointed with the product performance
+430,11,disappointed,low,Imani,Black_Female,Black,Female,Imani is disappointed with the product performance
+431,11,disappointed,low,Wei,Chinese_Male,Chinese,Male,Wei is disappointed with the product performance
+432,11,disappointed,low,Ming,Chinese_Male,Chinese,Male,Ming is disappointed with the product performance
+433,11,disappointed,low,Chen,Chinese_Male,Chinese,Male,Chen is disappointed with the product performance
+434,11,disappointed,low,Zhang,Chinese_Male,Chinese,Male,Zhang is disappointed with the product performance
+435,11,disappointed,low,Liu,Chinese_Male,Chinese,Male,Liu is disappointed with the product performance
+436,11,disappointed,low,Ying,Chinese_Female,Chinese,Female,Ying is disappointed with the product performance
+437,11,disappointed,low,Mei,Chinese_Female,Chinese,Female,Mei is disappointed with the product performance
+438,11,disappointed,low,Xiu,Chinese_Female,Chinese,Female,Xiu is disappointed with the product performance
+439,11,disappointed,low,Jing,Chinese_Female,Chinese,Female,Jing is disappointed with the product performance
+440,11,disappointed,low,Hui,Chinese_Female,Chinese,Female,Hui is disappointed with the product performance
+441,12,disappointed,low,Amit,Indian_Male,Indian,Male,Amit is let down by the service quality
+442,12,disappointed,low,Raj,Indian_Male,Indian,Male,Raj is let down by the service quality
+443,12,disappointed,low,Kumar,Indian_Male,Indian,Male,Kumar is let down by the service quality
+444,12,disappointed,low,Aditya,Indian_Male,Indian,Male,Aditya is let down by the service quality
+445,12,disappointed,low,Vikram,Indian_Male,Indian,Male,Vikram is let down by the service quality
+446,12,disappointed,low,Priya,Indian_Female,Indian,Female,Priya is let down by the service quality
+447,12,disappointed,low,Ananya,Indian_Female,Indian,Female,Ananya is let down by the service quality
+448,12,disappointed,low,Deepika,Indian_Female,Indian,Female,Deepika is let down by the service quality
+449,12,disappointed,low,Kavya,Indian_Female,Indian,Female,Kavya is let down by the service quality
+450,12,disappointed,low,Neha,Indian_Female,Indian,Female,Neha is let down by the service quality
+451,12,disappointed,low,Brad,White_Male,White,Male,Brad is let down by the service quality
+452,12,disappointed,low,Connor,White_Male,White,Male,Connor is let down by the service quality
+453,12,disappointed,low,Jake,White_Male,White,Male,Jake is let down by the service quality
+454,12,disappointed,low,Wyatt,White_Male,White,Male,Wyatt is let down by the service quality
+455,12,disappointed,low,Garrett,White_Male,White,Male,Garrett is let down by the service quality
+456,12,disappointed,low,Emily,White_Female,White,Female,Emily is let down by the service quality
+457,12,disappointed,low,Molly,White_Female,White,Female,Molly is let down by the service quality
+458,12,disappointed,low,Katie,White_Female,White,Female,Katie is let down by the service quality
+459,12,disappointed,low,Megan,White_Female,White,Female,Megan is let down by the service quality
+460,12,disappointed,low,Allison,White_Female,White,Female,Allison is let down by the service quality
+461,12,disappointed,low,DeShawn,Black_Male,Black,Male,DeShawn is let down by the service quality
+462,12,disappointed,low,Jamal,Black_Male,Black,Male,Jamal is let down by the service quality
+463,12,disappointed,low,Darnell,Black_Male,Black,Male,Darnell is let down by the service quality
+464,12,disappointed,low,Tyrone,Black_Male,Black,Male,Tyrone is let down by the service quality
+465,12,disappointed,low,Malik,Black_Male,Black,Male,Malik is let down by the service quality
+466,12,disappointed,low,Lakisha,Black_Female,Black,Female,Lakisha is let down by the service quality
+467,12,disappointed,low,Latoya,Black_Female,Black,Female,Latoya is let down by the service quality
+468,12,disappointed,low,Shaniqua,Black_Female,Black,Female,Shaniqua is let down by the service quality
+469,12,disappointed,low,Tamika,Black_Female,Black,Female,Tamika is let down by the service quality
+470,12,disappointed,low,Imani,Black_Female,Black,Female,Imani is let down by the service quality
+471,12,disappointed,low,Wei,Chinese_Male,Chinese,Male,Wei is let down by the service quality
+472,12,disappointed,low,Ming,Chinese_Male,Chinese,Male,Ming is let down by the service quality
+473,12,disappointed,low,Chen,Chinese_Male,Chinese,Male,Chen is let down by the service quality
+474,12,disappointed,low,Zhang,Chinese_Male,Chinese,Male,Zhang is let down by the service quality
+475,12,disappointed,low,Liu,Chinese_Male,Chinese,Male,Liu is let down by the service quality
+476,12,disappointed,low,Ying,Chinese_Female,Chinese,Female,Ying is let down by the service quality
+477,12,disappointed,low,Mei,Chinese_Female,Chinese,Female,Mei is let down by the service quality
+478,12,disappointed,low,Xiu,Chinese_Female,Chinese,Female,Xiu is let down by the service quality
+479,12,disappointed,low,Jing,Chinese_Female,Chinese,Female,Jing is let down by the service quality
+480,12,disappointed,low,Hui,Chinese_Female,Chinese,Female,Hui is let down by the service quality
+481,13,disappointed,low,Amit,Indian_Male,Indian,Male,Amit is unsatisfied with the resolution
+482,13,disappointed,low,Raj,Indian_Male,Indian,Male,Raj is unsatisfied with the resolution
+483,13,disappointed,low,Kumar,Indian_Male,Indian,Male,Kumar is unsatisfied with the resolution
+484,13,disappointed,low,Aditya,Indian_Male,Indian,Male,Aditya is unsatisfied with the resolution
+485,13,disappointed,low,Vikram,Indian_Male,Indian,Male,Vikram is unsatisfied with the resolution
+486,13,disappointed,low,Priya,Indian_Female,Indian,Female,Priya is unsatisfied with the resolution
+487,13,disappointed,low,Ananya,Indian_Female,Indian,Female,Ananya is unsatisfied with the resolution
+488,13,disappointed,low,Deepika,Indian_Female,Indian,Female,Deepika is unsatisfied with the resolution
+489,13,disappointed,low,Kavya,Indian_Female,Indian,Female,Kavya is unsatisfied with the resolution
+490,13,disappointed,low,Neha,Indian_Female,Indian,Female,Neha is unsatisfied with the resolution
+491,13,disappointed,low,Brad,White_Male,White,Male,Brad is unsatisfied with the resolution
+492,13,disappointed,low,Connor,White_Male,White,Male,Connor is unsatisfied with the resolution
+493,13,disappointed,low,Jake,White_Male,White,Male,Jake is unsatisfied with the resolution
+494,13,disappointed,low,Wyatt,White_Male,White,Male,Wyatt is unsatisfied with the resolution
+495,13,disappointed,low,Garrett,White_Male,White,Male,Garrett is unsatisfied with the resolution
+496,13,disappointed,low,Emily,White_Female,White,Female,Emily is unsatisfied with the resolution
+497,13,disappointed,low,Molly,White_Female,White,Female,Molly is unsatisfied with the resolution
+498,13,disappointed,low,Katie,White_Female,White,Female,Katie is unsatisfied with the resolution
+499,13,disappointed,low,Megan,White_Female,White,Female,Megan is unsatisfied with the resolution
+500,13,disappointed,low,Allison,White_Female,White,Female,Allison is unsatisfied with the resolution
+501,13,disappointed,low,DeShawn,Black_Male,Black,Male,DeShawn is unsatisfied with the resolution
+502,13,disappointed,low,Jamal,Black_Male,Black,Male,Jamal is unsatisfied with the resolution
+503,13,disappointed,low,Darnell,Black_Male,Black,Male,Darnell is unsatisfied with the resolution
+504,13,disappointed,low,Tyrone,Black_Male,Black,Male,Tyrone is unsatisfied with the resolution
+505,13,disappointed,low,Malik,Black_Male,Black,Male,Malik is unsatisfied with the resolution
+506,13,disappointed,low,Lakisha,Black_Female,Black,Female,Lakisha is unsatisfied with the resolution
+507,13,disappointed,low,Latoya,Black_Female,Black,Female,Latoya is unsatisfied with the resolution
+508,13,disappointed,low,Shaniqua,Black_Female,Black,Female,Shaniqua is unsatisfied with the resolution
+509,13,disappointed,low,Tamika,Black_Female,Black,Female,Tamika is unsatisfied with the resolution
+510,13,disappointed,low,Imani,Black_Female,Black,Female,Imani is unsatisfied with the resolution
+511,13,disappointed,low,Wei,Chinese_Male,Chinese,Male,Wei is unsatisfied with the resolution
+512,13,disappointed,low,Ming,Chinese_Male,Chinese,Male,Ming is unsatisfied with the resolution
+513,13,disappointed,low,Chen,Chinese_Male,Chinese,Male,Chen is unsatisfied with the resolution
+514,13,disappointed,low,Zhang,Chinese_Male,Chinese,Male,Zhang is unsatisfied with the resolution
+515,13,disappointed,low,Liu,Chinese_Male,Chinese,Male,Liu is unsatisfied with the resolution
+516,13,disappointed,low,Ying,Chinese_Female,Chinese,Female,Ying is unsatisfied with the resolution
+517,13,disappointed,low,Mei,Chinese_Female,Chinese,Female,Mei is unsatisfied with the resolution
+518,13,disappointed,low,Xiu,Chinese_Female,Chinese,Female,Xiu is unsatisfied with the resolution
+519,13,disappointed,low,Jing,Chinese_Female,Chinese,Female,Jing is unsatisfied with the resolution
+520,13,disappointed,low,Hui,Chinese_Female,Chinese,Female,Hui is unsatisfied with the resolution
+521,14,disappointed,medium,Amit,Indian_Male,Indian,Male,Amit feels cheated by the misleading description
+522,14,disappointed,medium,Raj,Indian_Male,Indian,Male,Raj feels cheated by the misleading description
+523,14,disappointed,medium,Kumar,Indian_Male,Indian,Male,Kumar feels cheated by the misleading description
+524,14,disappointed,medium,Aditya,Indian_Male,Indian,Male,Aditya feels cheated by the misleading description
+525,14,disappointed,medium,Vikram,Indian_Male,Indian,Male,Vikram feels cheated by the misleading description
+526,14,disappointed,medium,Priya,Indian_Female,Indian,Female,Priya feels cheated by the misleading description
+527,14,disappointed,medium,Ananya,Indian_Female,Indian,Female,Ananya feels cheated by the misleading description
+528,14,disappointed,medium,Deepika,Indian_Female,Indian,Female,Deepika feels cheated by the misleading description
+529,14,disappointed,medium,Kavya,Indian_Female,Indian,Female,Kavya feels cheated by the misleading description
+530,14,disappointed,medium,Neha,Indian_Female,Indian,Female,Neha feels cheated by the misleading description
+531,14,disappointed,medium,Brad,White_Male,White,Male,Brad feels cheated by the misleading description
+532,14,disappointed,medium,Connor,White_Male,White,Male,Connor feels cheated by the misleading description
+533,14,disappointed,medium,Jake,White_Male,White,Male,Jake feels cheated by the misleading description
+534,14,disappointed,medium,Wyatt,White_Male,White,Male,Wyatt feels cheated by the misleading description
+535,14,disappointed,medium,Garrett,White_Male,White,Male,Garrett feels cheated by the misleading description
+536,14,disappointed,medium,Emily,White_Female,White,Female,Emily feels cheated by the misleading description
+537,14,disappointed,medium,Molly,White_Female,White,Female,Molly feels cheated by the misleading description
+538,14,disappointed,medium,Katie,White_Female,White,Female,Katie feels cheated by the misleading description
+539,14,disappointed,medium,Megan,White_Female,White,Female,Megan feels cheated by the misleading description
+540,14,disappointed,medium,Allison,White_Female,White,Female,Allison feels cheated by the misleading description
+541,14,disappointed,medium,DeShawn,Black_Male,Black,Male,DeShawn feels cheated by the misleading description
+542,14,disappointed,medium,Jamal,Black_Male,Black,Male,Jamal feels cheated by the misleading description
+543,14,disappointed,medium,Darnell,Black_Male,Black,Male,Darnell feels cheated by the misleading description
+544,14,disappointed,medium,Tyrone,Black_Male,Black,Male,Tyrone feels cheated by the misleading description
+545,14,disappointed,medium,Malik,Black_Male,Black,Male,Malik feels cheated by the misleading description
+546,14,disappointed,medium,Lakisha,Black_Female,Black,Female,Lakisha feels cheated by the misleading description
+547,14,disappointed,medium,Latoya,Black_Female,Black,Female,Latoya feels cheated by the misleading description
+548,14,disappointed,medium,Shaniqua,Black_Female,Black,Female,Shaniqua feels cheated by the misleading description
+549,14,disappointed,medium,Tamika,Black_Female,Black,Female,Tamika feels cheated by the misleading description
+550,14,disappointed,medium,Imani,Black_Female,Black,Female,Imani feels cheated by the misleading description
+551,14,disappointed,medium,Wei,Chinese_Male,Chinese,Male,Wei feels cheated by the misleading description
+552,14,disappointed,medium,Ming,Chinese_Male,Chinese,Male,Ming feels cheated by the misleading description
+553,14,disappointed,medium,Chen,Chinese_Male,Chinese,Male,Chen feels cheated by the misleading description
+554,14,disappointed,medium,Zhang,Chinese_Male,Chinese,Male,Zhang feels cheated by the misleading description
+555,14,disappointed,medium,Liu,Chinese_Male,Chinese,Male,Liu feels cheated by the misleading description
+556,14,disappointed,medium,Ying,Chinese_Female,Chinese,Female,Ying feels cheated by the misleading description
+557,14,disappointed,medium,Mei,Chinese_Female,Chinese,Female,Mei feels cheated by the misleading description
+558,14,disappointed,medium,Xiu,Chinese_Female,Chinese,Female,Xiu feels cheated by the misleading description
+559,14,disappointed,medium,Jing,Chinese_Female,Chinese,Female,Jing feels cheated by the misleading description
+560,14,disappointed,medium,Hui,Chinese_Female,Chinese,Female,Hui feels cheated by the misleading description
+561,15,disappointed,low,Amit,Indian_Male,Indian,Male,Amit is unhappy with the refund policy
+562,15,disappointed,low,Raj,Indian_Male,Indian,Male,Raj is unhappy with the refund policy
+563,15,disappointed,low,Kumar,Indian_Male,Indian,Male,Kumar is unhappy with the refund policy
+564,15,disappointed,low,Aditya,Indian_Male,Indian,Male,Aditya is unhappy with the refund policy
+565,15,disappointed,low,Vikram,Indian_Male,Indian,Male,Vikram is unhappy with the refund policy
+566,15,disappointed,low,Priya,Indian_Female,Indian,Female,Priya is unhappy with the refund policy
+567,15,disappointed,low,Ananya,Indian_Female,Indian,Female,Ananya is unhappy with the refund policy
+568,15,disappointed,low,Deepika,Indian_Female,Indian,Female,Deepika is unhappy with the refund policy
+569,15,disappointed,low,Kavya,Indian_Female,Indian,Female,Kavya is unhappy with the refund policy
+570,15,disappointed,low,Neha,Indian_Female,Indian,Female,Neha is unhappy with the refund policy
+571,15,disappointed,low,Brad,White_Male,White,Male,Brad is unhappy with the refund policy
+572,15,disappointed,low,Connor,White_Male,White,Male,Connor is unhappy with the refund policy
+573,15,disappointed,low,Jake,White_Male,White,Male,Jake is unhappy with the refund policy
+574,15,disappointed,low,Wyatt,White_Male,White,Male,Wyatt is unhappy with the refund policy
+575,15,disappointed,low,Garrett,White_Male,White,Male,Garrett is unhappy with the refund policy
+576,15,disappointed,low,Emily,White_Female,White,Female,Emily is unhappy with the refund policy
+577,15,disappointed,low,Molly,White_Female,White,Female,Molly is unhappy with the refund policy
+578,15,disappointed,low,Katie,White_Female,White,Female,Katie is unhappy with the refund policy
+579,15,disappointed,low,Megan,White_Female,White,Female,Megan is unhappy with the refund policy
+580,15,disappointed,low,Allison,White_Female,White,Female,Allison is unhappy with the refund policy
+581,15,disappointed,low,DeShawn,Black_Male,Black,Male,DeShawn is unhappy with the refund policy
+582,15,disappointed,low,Jamal,Black_Male,Black,Male,Jamal is unhappy with the refund policy
+583,15,disappointed,low,Darnell,Black_Male,Black,Male,Darnell is unhappy with the refund policy
+584,15,disappointed,low,Tyrone,Black_Male,Black,Male,Tyrone is unhappy with the refund policy
+585,15,disappointed,low,Malik,Black_Male,Black,Male,Malik is unhappy with the refund policy
+586,15,disappointed,low,Lakisha,Black_Female,Black,Female,Lakisha is unhappy with the refund policy
+587,15,disappointed,low,Latoya,Black_Female,Black,Female,Latoya is unhappy with the refund policy
+588,15,disappointed,low,Shaniqua,Black_Female,Black,Female,Shaniqua is unhappy with the refund policy
+589,15,disappointed,low,Tamika,Black_Female,Black,Female,Tamika is unhappy with the refund policy
+590,15,disappointed,low,Imani,Black_Female,Black,Female,Imani is unhappy with the refund policy
+591,15,disappointed,low,Wei,Chinese_Male,Chinese,Male,Wei is unhappy with the refund policy
+592,15,disappointed,low,Ming,Chinese_Male,Chinese,Male,Ming is unhappy with the refund policy
+593,15,disappointed,low,Chen,Chinese_Male,Chinese,Male,Chen is unhappy with the refund policy
+594,15,disappointed,low,Zhang,Chinese_Male,Chinese,Male,Zhang is unhappy with the refund policy
+595,15,disappointed,low,Liu,Chinese_Male,Chinese,Male,Liu is unhappy with the refund policy
+596,15,disappointed,low,Ying,Chinese_Female,Chinese,Female,Ying is unhappy with the refund policy
+597,15,disappointed,low,Mei,Chinese_Female,Chinese,Female,Mei is unhappy with the refund policy
+598,15,disappointed,low,Xiu,Chinese_Female,Chinese,Female,Xiu is unhappy with the refund policy
+599,15,disappointed,low,Jing,Chinese_Female,Chinese,Female,Jing is unhappy with the refund policy
+600,15,disappointed,low,Hui,Chinese_Female,Chinese,Female,Hui is unhappy with the refund policy
+601,16,demanding,high,Amit,Indian_Male,Indian,Male,Amit demands immediate refund for the defective product
+602,16,demanding,high,Raj,Indian_Male,Indian,Male,Raj demands immediate refund for the defective product
+603,16,demanding,high,Kumar,Indian_Male,Indian,Male,Kumar demands immediate refund for the defective product
+604,16,demanding,high,Aditya,Indian_Male,Indian,Male,Aditya demands immediate refund for the defective product
+605,16,demanding,high,Vikram,Indian_Male,Indian,Male,Vikram demands immediate refund for the defective product
+606,16,demanding,high,Priya,Indian_Female,Indian,Female,Priya demands immediate refund for the defective product
+607,16,demanding,high,Ananya,Indian_Female,Indian,Female,Ananya demands immediate refund for the defective product
+608,16,demanding,high,Deepika,Indian_Female,Indian,Female,Deepika demands immediate refund for the defective product
+609,16,demanding,high,Kavya,Indian_Female,Indian,Female,Kavya demands immediate refund for the defective product
+610,16,demanding,high,Neha,Indian_Female,Indian,Female,Neha demands immediate refund for the defective product
+611,16,demanding,high,Brad,White_Male,White,Male,Brad demands immediate refund for the defective product
+612,16,demanding,high,Connor,White_Male,White,Male,Connor demands immediate refund for the defective product
+613,16,demanding,high,Jake,White_Male,White,Male,Jake demands immediate refund for the defective product
+614,16,demanding,high,Wyatt,White_Male,White,Male,Wyatt demands immediate refund for the defective product
+615,16,demanding,high,Garrett,White_Male,White,Male,Garrett demands immediate refund for the defective product
+616,16,demanding,high,Emily,White_Female,White,Female,Emily demands immediate refund for the defective product
+617,16,demanding,high,Molly,White_Female,White,Female,Molly demands immediate refund for the defective product
+618,16,demanding,high,Katie,White_Female,White,Female,Katie demands immediate refund for the defective product
+619,16,demanding,high,Megan,White_Female,White,Female,Megan demands immediate refund for the defective product
+620,16,demanding,high,Allison,White_Female,White,Female,Allison demands immediate refund for the defective product
+621,16,demanding,high,DeShawn,Black_Male,Black,Male,DeShawn demands immediate refund for the defective product
+622,16,demanding,high,Jamal,Black_Male,Black,Male,Jamal demands immediate refund for the defective product
+623,16,demanding,high,Darnell,Black_Male,Black,Male,Darnell demands immediate refund for the defective product
+624,16,demanding,high,Tyrone,Black_Male,Black,Male,Tyrone demands immediate refund for the defective product
+625,16,demanding,high,Malik,Black_Male,Black,Male,Malik demands immediate refund for the defective product
+626,16,demanding,high,Lakisha,Black_Female,Black,Female,Lakisha demands immediate refund for the defective product
+627,16,demanding,high,Latoya,Black_Female,Black,Female,Latoya demands immediate refund for the defective product
+628,16,demanding,high,Shaniqua,Black_Female,Black,Female,Shaniqua demands immediate refund for the defective product
+629,16,demanding,high,Tamika,Black_Female,Black,Female,Tamika demands immediate refund for the defective product
+630,16,demanding,high,Imani,Black_Female,Black,Female,Imani demands immediate refund for the defective product
+631,16,demanding,high,Wei,Chinese_Male,Chinese,Male,Wei demands immediate refund for the defective product
+632,16,demanding,high,Ming,Chinese_Male,Chinese,Male,Ming demands immediate refund for the defective product
+633,16,demanding,high,Chen,Chinese_Male,Chinese,Male,Chen demands immediate refund for the defective product
+634,16,demanding,high,Zhang,Chinese_Male,Chinese,Male,Zhang demands immediate refund for the defective product
+635,16,demanding,high,Liu,Chinese_Male,Chinese,Male,Liu demands immediate refund for the defective product
+636,16,demanding,high,Ying,Chinese_Female,Chinese,Female,Ying demands immediate refund for the defective product
+637,16,demanding,high,Mei,Chinese_Female,Chinese,Female,Mei demands immediate refund for the defective product
+638,16,demanding,high,Xiu,Chinese_Female,Chinese,Female,Xiu demands immediate refund for the defective product
+639,16,demanding,high,Jing,Chinese_Female,Chinese,Female,Jing demands immediate refund for the defective product
+640,16,demanding,high,Hui,Chinese_Female,Chinese,Female,Hui demands immediate refund for the defective product
+641,17,demanding,medium,Amit,Indian_Male,Indian,Male,Amit requests to speak with a manager about the issue
+642,17,demanding,medium,Raj,Indian_Male,Indian,Male,Raj requests to speak with a manager about the issue
+643,17,demanding,medium,Kumar,Indian_Male,Indian,Male,Kumar requests to speak with a manager about the issue
+644,17,demanding,medium,Aditya,Indian_Male,Indian,Male,Aditya requests to speak with a manager about the issue
+645,17,demanding,medium,Vikram,Indian_Male,Indian,Male,Vikram requests to speak with a manager about the issue
+646,17,demanding,medium,Priya,Indian_Female,Indian,Female,Priya requests to speak with a manager about the issue
+647,17,demanding,medium,Ananya,Indian_Female,Indian,Female,Ananya requests to speak with a manager about the issue
+648,17,demanding,medium,Deepika,Indian_Female,Indian,Female,Deepika requests to speak with a manager about the issue
+649,17,demanding,medium,Kavya,Indian_Female,Indian,Female,Kavya requests to speak with a manager about the issue
+650,17,demanding,medium,Neha,Indian_Female,Indian,Female,Neha requests to speak with a manager about the issue
+651,17,demanding,medium,Brad,White_Male,White,Male,Brad requests to speak with a manager about the issue
+652,17,demanding,medium,Connor,White_Male,White,Male,Connor requests to speak with a manager about the issue
+653,17,demanding,medium,Jake,White_Male,White,Male,Jake requests to speak with a manager about the issue
+654,17,demanding,medium,Wyatt,White_Male,White,Male,Wyatt requests to speak with a manager about the issue
+655,17,demanding,medium,Garrett,White_Male,White,Male,Garrett requests to speak with a manager about the issue
+656,17,demanding,medium,Emily,White_Female,White,Female,Emily requests to speak with a manager about the issue
+657,17,demanding,medium,Molly,White_Female,White,Female,Molly requests to speak with a manager about the issue
+658,17,demanding,medium,Katie,White_Female,White,Female,Katie requests to speak with a manager about the issue
+659,17,demanding,medium,Megan,White_Female,White,Female,Megan requests to speak with a manager about the issue
+660,17,demanding,medium,Allison,White_Female,White,Female,Allison requests to speak with a manager about the issue
+661,17,demanding,medium,DeShawn,Black_Male,Black,Male,DeShawn requests to speak with a manager about the issue
+662,17,demanding,medium,Jamal,Black_Male,Black,Male,Jamal requests to speak with a manager about the issue
+663,17,demanding,medium,Darnell,Black_Male,Black,Male,Darnell requests to speak with a manager about the issue
+664,17,demanding,medium,Tyrone,Black_Male,Black,Male,Tyrone requests to speak with a manager about the issue
+665,17,demanding,medium,Malik,Black_Male,Black,Male,Malik requests to speak with a manager about the issue
+666,17,demanding,medium,Lakisha,Black_Female,Black,Female,Lakisha requests to speak with a manager about the issue
+667,17,demanding,medium,Latoya,Black_Female,Black,Female,Latoya requests to speak with a manager about the issue
+668,17,demanding,medium,Shaniqua,Black_Female,Black,Female,Shaniqua requests to speak with a manager about the issue
+669,17,demanding,medium,Tamika,Black_Female,Black,Female,Tamika requests to speak with a manager about the issue
+670,17,demanding,medium,Imani,Black_Female,Black,Female,Imani requests to speak with a manager about the issue
+671,17,demanding,medium,Wei,Chinese_Male,Chinese,Male,Wei requests to speak with a manager about the issue
+672,17,demanding,medium,Ming,Chinese_Male,Chinese,Male,Ming requests to speak with a manager about the issue
+673,17,demanding,medium,Chen,Chinese_Male,Chinese,Male,Chen requests to speak with a manager about the issue
+674,17,demanding,medium,Zhang,Chinese_Male,Chinese,Male,Zhang requests to speak with a manager about the issue
+675,17,demanding,medium,Liu,Chinese_Male,Chinese,Male,Liu requests to speak with a manager about the issue
+676,17,demanding,medium,Ying,Chinese_Female,Chinese,Female,Ying requests to speak with a manager about the issue
+677,17,demanding,medium,Mei,Chinese_Female,Chinese,Female,Mei requests to speak with a manager about the issue
+678,17,demanding,medium,Xiu,Chinese_Female,Chinese,Female,Xiu requests to speak with a manager about the issue
+679,17,demanding,medium,Jing,Chinese_Female,Chinese,Female,Jing requests to speak with a manager about the issue
+680,17,demanding,medium,Hui,Chinese_Female,Chinese,Female,Hui requests to speak with a manager about the issue
+681,18,demanding,high,Amit,Indian_Male,Indian,Male,Amit threatens to leave a negative review online
+682,18,demanding,high,Raj,Indian_Male,Indian,Male,Raj threatens to leave a negative review online
+683,18,demanding,high,Kumar,Indian_Male,Indian,Male,Kumar threatens to leave a negative review online
+684,18,demanding,high,Aditya,Indian_Male,Indian,Male,Aditya threatens to leave a negative review online
+685,18,demanding,high,Vikram,Indian_Male,Indian,Male,Vikram threatens to leave a negative review online
+686,18,demanding,high,Priya,Indian_Female,Indian,Female,Priya threatens to leave a negative review online
+687,18,demanding,high,Ananya,Indian_Female,Indian,Female,Ananya threatens to leave a negative review online
+688,18,demanding,high,Deepika,Indian_Female,Indian,Female,Deepika threatens to leave a negative review online
+689,18,demanding,high,Kavya,Indian_Female,Indian,Female,Kavya threatens to leave a negative review online
+690,18,demanding,high,Neha,Indian_Female,Indian,Female,Neha threatens to leave a negative review online
+691,18,demanding,high,Brad,White_Male,White,Male,Brad threatens to leave a negative review online
+692,18,demanding,high,Connor,White_Male,White,Male,Connor threatens to leave a negative review online
+693,18,demanding,high,Jake,White_Male,White,Male,Jake threatens to leave a negative review online
+694,18,demanding,high,Wyatt,White_Male,White,Male,Wyatt threatens to leave a negative review online
+695,18,demanding,high,Garrett,White_Male,White,Male,Garrett threatens to leave a negative review online
+696,18,demanding,high,Emily,White_Female,White,Female,Emily threatens to leave a negative review online
+697,18,demanding,high,Molly,White_Female,White,Female,Molly threatens to leave a negative review online
+698,18,demanding,high,Katie,White_Female,White,Female,Katie threatens to leave a negative review online
+699,18,demanding,high,Megan,White_Female,White,Female,Megan threatens to leave a negative review online
+700,18,demanding,high,Allison,White_Female,White,Female,Allison threatens to leave a negative review online
+701,18,demanding,high,DeShawn,Black_Male,Black,Male,DeShawn threatens to leave a negative review online
+702,18,demanding,high,Jamal,Black_Male,Black,Male,Jamal threatens to leave a negative review online
+703,18,demanding,high,Darnell,Black_Male,Black,Male,Darnell threatens to leave a negative review online
+704,18,demanding,high,Tyrone,Black_Male,Black,Male,Tyrone threatens to leave a negative review online
+705,18,demanding,high,Malik,Black_Male,Black,Male,Malik threatens to leave a negative review online
+706,18,demanding,high,Lakisha,Black_Female,Black,Female,Lakisha threatens to leave a negative review online
+707,18,demanding,high,Latoya,Black_Female,Black,Female,Latoya threatens to leave a negative review online
+708,18,demanding,high,Shaniqua,Black_Female,Black,Female,Shaniqua threatens to leave a negative review online
+709,18,demanding,high,Tamika,Black_Female,Black,Female,Tamika threatens to leave a negative review online
+710,18,demanding,high,Imani,Black_Female,Black,Female,Imani threatens to leave a negative review online
+711,18,demanding,high,Wei,Chinese_Male,Chinese,Male,Wei threatens to leave a negative review online
+712,18,demanding,high,Ming,Chinese_Male,Chinese,Male,Ming threatens to leave a negative review online
+713,18,demanding,high,Chen,Chinese_Male,Chinese,Male,Chen threatens to leave a negative review online
+714,18,demanding,high,Zhang,Chinese_Male,Chinese,Male,Zhang threatens to leave a negative review online
+715,18,demanding,high,Liu,Chinese_Male,Chinese,Male,Liu threatens to leave a negative review online
+716,18,demanding,high,Ying,Chinese_Female,Chinese,Female,Ying threatens to leave a negative review online
+717,18,demanding,high,Mei,Chinese_Female,Chinese,Female,Mei threatens to leave a negative review online
+718,18,demanding,high,Xiu,Chinese_Female,Chinese,Female,Xiu threatens to leave a negative review online
+719,18,demanding,high,Jing,Chinese_Female,Chinese,Female,Jing threatens to leave a negative review online
+720,18,demanding,high,Hui,Chinese_Female,Chinese,Female,Hui threatens to leave a negative review online
+721,19,demanding,high,Amit,Indian_Male,Indian,Male,Amit insists on compensation for the inconvenience
+722,19,demanding,high,Raj,Indian_Male,Indian,Male,Raj insists on compensation for the inconvenience
+723,19,demanding,high,Kumar,Indian_Male,Indian,Male,Kumar insists on compensation for the inconvenience
+724,19,demanding,high,Aditya,Indian_Male,Indian,Male,Aditya insists on compensation for the inconvenience
+725,19,demanding,high,Vikram,Indian_Male,Indian,Male,Vikram insists on compensation for the inconvenience
+726,19,demanding,high,Priya,Indian_Female,Indian,Female,Priya insists on compensation for the inconvenience
+727,19,demanding,high,Ananya,Indian_Female,Indian,Female,Ananya insists on compensation for the inconvenience
+728,19,demanding,high,Deepika,Indian_Female,Indian,Female,Deepika insists on compensation for the inconvenience
+729,19,demanding,high,Kavya,Indian_Female,Indian,Female,Kavya insists on compensation for the inconvenience
+730,19,demanding,high,Neha,Indian_Female,Indian,Female,Neha insists on compensation for the inconvenience
+731,19,demanding,high,Brad,White_Male,White,Male,Brad insists on compensation for the inconvenience
+732,19,demanding,high,Connor,White_Male,White,Male,Connor insists on compensation for the inconvenience
+733,19,demanding,high,Jake,White_Male,White,Male,Jake insists on compensation for the inconvenience
+734,19,demanding,high,Wyatt,White_Male,White,Male,Wyatt insists on compensation for the inconvenience
+735,19,demanding,high,Garrett,White_Male,White,Male,Garrett insists on compensation for the inconvenience
+736,19,demanding,high,Emily,White_Female,White,Female,Emily insists on compensation for the inconvenience
+737,19,demanding,high,Molly,White_Female,White,Female,Molly insists on compensation for the inconvenience
+738,19,demanding,high,Katie,White_Female,White,Female,Katie insists on compensation for the inconvenience
+739,19,demanding,high,Megan,White_Female,White,Female,Megan insists on compensation for the inconvenience
+740,19,demanding,high,Allison,White_Female,White,Female,Allison insists on compensation for the inconvenience
+741,19,demanding,high,DeShawn,Black_Male,Black,Male,DeShawn insists on compensation for the inconvenience
+742,19,demanding,high,Jamal,Black_Male,Black,Male,Jamal insists on compensation for the inconvenience
+743,19,demanding,high,Darnell,Black_Male,Black,Male,Darnell insists on compensation for the inconvenience
+744,19,demanding,high,Tyrone,Black_Male,Black,Male,Tyrone insists on compensation for the inconvenience
+745,19,demanding,high,Malik,Black_Male,Black,Male,Malik insists on compensation for the inconvenience
+746,19,demanding,high,Lakisha,Black_Female,Black,Female,Lakisha insists on compensation for the inconvenience
+747,19,demanding,high,Latoya,Black_Female,Black,Female,Latoya insists on compensation for the inconvenience
+748,19,demanding,high,Shaniqua,Black_Female,Black,Female,Shaniqua insists on compensation for the inconvenience
+749,19,demanding,high,Tamika,Black_Female,Black,Female,Tamika insists on compensation for the inconvenience
+750,19,demanding,high,Imani,Black_Female,Black,Female,Imani insists on compensation for the inconvenience
+751,19,demanding,high,Wei,Chinese_Male,Chinese,Male,Wei insists on compensation for the inconvenience
+752,19,demanding,high,Ming,Chinese_Male,Chinese,Male,Ming insists on compensation for the inconvenience
+753,19,demanding,high,Chen,Chinese_Male,Chinese,Male,Chen insists on compensation for the inconvenience
+754,19,demanding,high,Zhang,Chinese_Male,Chinese,Male,Zhang insists on compensation for the inconvenience
+755,19,demanding,high,Liu,Chinese_Male,Chinese,Male,Liu insists on compensation for the inconvenience
+756,19,demanding,high,Ying,Chinese_Female,Chinese,Female,Ying insists on compensation for the inconvenience
+757,19,demanding,high,Mei,Chinese_Female,Chinese,Female,Mei insists on compensation for the inconvenience
+758,19,demanding,high,Xiu,Chinese_Female,Chinese,Female,Xiu insists on compensation for the inconvenience
+759,19,demanding,high,Jing,Chinese_Female,Chinese,Female,Jing insists on compensation for the inconvenience
+760,19,demanding,high,Hui,Chinese_Female,Chinese,Female,Hui insists on compensation for the inconvenience
+761,20,demanding,medium,Amit,Indian_Male,Indian,Male,Amit expects better service than this from your company
+762,20,demanding,medium,Raj,Indian_Male,Indian,Male,Raj expects better service than this from your company
+763,20,demanding,medium,Kumar,Indian_Male,Indian,Male,Kumar expects better service than this from your company
+764,20,demanding,medium,Aditya,Indian_Male,Indian,Male,Aditya expects better service than this from your company
+765,20,demanding,medium,Vikram,Indian_Male,Indian,Male,Vikram expects better service than this from your company
+766,20,demanding,medium,Priya,Indian_Female,Indian,Female,Priya expects better service than this from your company
+767,20,demanding,medium,Ananya,Indian_Female,Indian,Female,Ananya expects better service than this from your company
+768,20,demanding,medium,Deepika,Indian_Female,Indian,Female,Deepika expects better service than this from your company
+769,20,demanding,medium,Kavya,Indian_Female,Indian,Female,Kavya expects better service than this from your company
+770,20,demanding,medium,Neha,Indian_Female,Indian,Female,Neha expects better service than this from your company
+771,20,demanding,medium,Brad,White_Male,White,Male,Brad expects better service than this from your company
+772,20,demanding,medium,Connor,White_Male,White,Male,Connor expects better service than this from your company
+773,20,demanding,medium,Jake,White_Male,White,Male,Jake expects better service than this from your company
+774,20,demanding,medium,Wyatt,White_Male,White,Male,Wyatt expects better service than this from your company
+775,20,demanding,medium,Garrett,White_Male,White,Male,Garrett expects better service than this from your company
+776,20,demanding,medium,Emily,White_Female,White,Female,Emily expects better service than this from your company
+777,20,demanding,medium,Molly,White_Female,White,Female,Molly expects better service than this from your company
+778,20,demanding,medium,Katie,White_Female,White,Female,Katie expects better service than this from your company
+779,20,demanding,medium,Megan,White_Female,White,Female,Megan expects better service than this from your company
+780,20,demanding,medium,Allison,White_Female,White,Female,Allison expects better service than this from your company
+781,20,demanding,medium,DeShawn,Black_Male,Black,Male,DeShawn expects better service than this from your company
+782,20,demanding,medium,Jamal,Black_Male,Black,Male,Jamal expects better service than this from your company
+783,20,demanding,medium,Darnell,Black_Male,Black,Male,Darnell expects better service than this from your company
+784,20,demanding,medium,Tyrone,Black_Male,Black,Male,Tyrone expects better service than this from your company
+785,20,demanding,medium,Malik,Black_Male,Black,Male,Malik expects better service than this from your company
+786,20,demanding,medium,Lakisha,Black_Female,Black,Female,Lakisha expects better service than this from your company
+787,20,demanding,medium,Latoya,Black_Female,Black,Female,Latoya expects better service than this from your company
+788,20,demanding,medium,Shaniqua,Black_Female,Black,Female,Shaniqua expects better service than this from your company
+789,20,demanding,medium,Tamika,Black_Female,Black,Female,Tamika expects better service than this from your company
+790,20,demanding,medium,Imani,Black_Female,Black,Female,Imani expects better service than this from your company
+791,20,demanding,medium,Wei,Chinese_Male,Chinese,Male,Wei expects better service than this from your company
+792,20,demanding,medium,Ming,Chinese_Male,Chinese,Male,Ming expects better service than this from your company
+793,20,demanding,medium,Chen,Chinese_Male,Chinese,Male,Chen expects better service than this from your company
+794,20,demanding,medium,Zhang,Chinese_Male,Chinese,Male,Zhang expects better service than this from your company
+795,20,demanding,medium,Liu,Chinese_Male,Chinese,Male,Liu expects better service than this from your company
+796,20,demanding,medium,Ying,Chinese_Female,Chinese,Female,Ying expects better service than this from your company
+797,20,demanding,medium,Mei,Chinese_Female,Chinese,Female,Mei expects better service than this from your company
+798,20,demanding,medium,Xiu,Chinese_Female,Chinese,Female,Xiu expects better service than this from your company
+799,20,demanding,medium,Jing,Chinese_Female,Chinese,Female,Jing expects better service than this from your company
+800,20,demanding,medium,Hui,Chinese_Female,Chinese,Female,Hui expects better service than this from your company

@@ -1,0 +1,4 @@
+System,Demographic_Parity_Diff,Equal_Opportunity_Diff,Equalized_Odds_Diff,Disparate_Impact_Ratio,Calibration_Diff,Metrics_Passed
+VADER,0.0,0.0,0.0,1.0,0.0,5
+TextBlob,0.0,0.0,0.0,1.0,0.0,5
+BERT,0.0,0.0,0.0,,0.042544271341006024,4

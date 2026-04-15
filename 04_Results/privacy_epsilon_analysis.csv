@@ -1,0 +1,8 @@
+epsilon,epsilon_label,privacy_level,accuracy_mean,accuracy_std,dem_parity_diff
+0.1,ε=0.1,Maximum,1.0,0.0,0.11896551724137931
+0.5,ε=0.5,Very Strong,1.0,0.0,0.11896551724137931
+1.0,ε=1.0,Strong,1.0,0.0,0.11896551724137931
+2.0,ε=2.0,Moderate,1.0,0.0,0.11896551724137931
+5.0,ε=5.0,Moderate,1.0,0.0,0.11896551724137931
+10.0,ε=10.0,Weak,1.0,0.0,0.11896551724137931
+inf,No Privacy,None,1.0,0.0,0.11896551724137931
