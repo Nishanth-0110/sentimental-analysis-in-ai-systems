@@ -542,8 +542,12 @@ def get_counterfactual_audit_names(max_per_group=2):
     return names_df[["Name", "Race", "Gender", "Demographic"]].reset_index(drop=True)
 
 
-def compute_counterfactual_table(bert_pipe, baseline_model, dp_post, known_groups, complaint_text):
-    """Compute counterfactual (name-swap) BERT scores + baseline/mitigated decisions."""
+def compute_counterfactual_table(bert_pipe, baseline_model, dp_post, known_groups, complaint_text, base_bert_score):
+    """Compute counterfactual (name-swap) BERT scores + baseline/mitigated decisions.
+
+    If `bert_pipe` is None (e.g., lightweight cloud deployment), scores are simulated as:
+    clip(base_bert_score + bias_factor(name), -1, 1).
+    """
     counterfactual_names = get_counterfactual_audit_names(max_per_group=2)
 
     rows = []
@@ -552,8 +556,13 @@ def compute_counterfactual_table(bert_pipe, baseline_model, dp_post, known_group
         race = item["Race"]
         gender = item["Gender"]
         demo = item["Demographic"]
-        cf_text = f"{name} {complaint_text}"
-        cf_bert = float(get_bert_score(bert_pipe, cf_text))
+
+        if bert_pipe is None:
+            cf_bert, _, _, _ = simulate_biased_score(float(base_bert_score), name)
+        else:
+            cf_text = f"{name} {complaint_text}"
+            cf_bert = float(get_bert_score(bert_pipe, cf_text))
+
         X_cf = np.array([[cf_bert]], dtype=float)
         base_cf = int(baseline_model.predict(X_cf)[0])
 
@@ -651,8 +660,7 @@ def main():
 
     st.markdown("---")
 
-    # Load analyzers
-    vader = load_vader()
+    # Optional: if Transformers is installed, use real BERT scores for counterfactuals
     bert_pipe = load_bert_pipeline()
 
     # Sidebar: Pre-loaded examples
@@ -712,10 +720,6 @@ def main():
         race = example_row["race"]
         gender = example_row["gender"]
 
-        if bert_pipe is None:
-            st.error("BERT model couldn't be loaded. Please check your environment and try again.")
-            return
-
         # Load mitigation models (trained from the project dataset)
         baseline_model, dp_post, known_groups = load_dp_mitigation_models()
 
@@ -768,7 +772,7 @@ def main():
         # Counterfactual summary for THIS complaint (same text, different names)
         with st.spinner("Computing counterfactual name-swap behavior..."):
             cf_df, _cf_group_df, cf_summary = compute_counterfactual_table(
-                bert_pipe, baseline_model, dp_post, known_groups, complaint_body
+                bert_pipe, baseline_model, dp_post, known_groups, complaint_body, bert_score
             )
         base_neg = cf_summary["baseline_negative"]
         mit_neg = cf_summary["mitigated_negative"]
@@ -779,6 +783,8 @@ def main():
         st.caption(
             "This audits the same complaint across a balanced set of names. It shows whether changing only the name changes routing decisions, and whether DP mitigation reduces that variability."
         )
+        if bert_pipe is None:
+            st.info("Lightweight deployment: counterfactual BERT scores are simulated (Transformers/Torch not installed).")
         c1, c2, c3, c4 = st.columns(4)
         c1.metric("Names Audited", str(cf_summary["names_audited"]))
         c2.metric(
