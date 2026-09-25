@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_div0W49QC9EOFJ5WQT"></div>
+        <div class="lime top_div" id="top_divCZNHPUJYVDD3B29"></div>
         
         <script>
-        var top_div = d3.select('#top_div0W49QC9EOFJ5WQT').classed('lime top_div', true);
+        var top_div = d3.select('#top_divCZNHPUJYVDD3B29').classed('lime top_div', true);
         
             var pp_div = top_div.append('div')
                                 .classed('lime predict_proba', true);
             var pp_svg = pp_div.append('svg').style('width', '100%');
-            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.8905986167756097, 0.1094013832243903]);
+            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.8952802464323022, 0.10471975356769783]);
             
         
         var exp_div;
             var exp = new lime.Explanation(["Negative", "Positive"]);
         
                 exp_div = top_div.append('div').classed('lime explanation', true);
-                exp.show([["performance", -0.10849052967990624], ["product", -0.10492643190127432], ["disappointed", -0.09690682407726939], ["Wyatt", 0.06458880924036428], ["the", -0.0034819041232028495], ["with", -0.0011049234696740163], ["is", 0.0003982181783655478]], 1, exp_div);
+                exp.show([["feels", -0.09784119580676656], ["Brad", 0.06183225316349261], ["misleading", -0.058016794834275756], ["cheated", -0.05633211919871099], ["description", -0.053354438778631115], ["by", -0.0028365862317541956], ["the", -0.00028774734655530814]], 1, exp_div);
                 
         var raw_div = top_div.append('div');
-            exp.show_raw_text([["performance", 39, -0.10849052967990624], ["product", 31, -0.10492643190127432], ["disappointed", 9, -0.09690682407726939], ["Wyatt", 0, 0.06458880924036428], ["the", 27, -0.0034819041232028495], ["with", 22, -0.0011049234696740163], ["is", 6, 0.0003982181783655478]], 1, "Wyatt is disappointed with the product performance", raw_div, true);
+            exp.show_raw_text([["feels", 5, -0.09784119580676656], ["Brad", 0, 0.06183225316349261], ["misleading", 26, -0.058016794834275756], ["cheated", 11, -0.05633211919871099], ["description", 37, -0.053354438778631115], ["by", 19, -0.0028365862317541956], ["the", 22, -0.00028774734655530814]], 1, "Brad feels cheated by the misleading description", raw_div, true);
             
         </script>
         </body></html>

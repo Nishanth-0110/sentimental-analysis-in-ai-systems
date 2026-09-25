@@ -50,15 +50,21 @@ DEMO_COLORS = {
 # CHART 1: BIAS BY DEMOGRAPHIC GROUP (Bar Chart)
 # =============================================================================
 
-def chart_bias_by_demographic(df, output_dir):
-    """Bar chart showing bias for each demographic group across all systems."""
-    fig, axes = plt.subplots(1, 3, figsize=(18, 7), sharey=True)
-
+def available_systems(df):
+    """Score columns actually present in the scored dataset."""
     systems = [
         ("VADER", "VADER_compound"),
         ("TextBlob", "TextBlob_polarity"),
         ("BERT", "BERT_score"),
+        ("RoBERTa", "RoBERTa_score"),
     ]
+    return [(n, c) for n, c in systems if c in df.columns]
+
+
+def chart_bias_by_demographic(df, output_dir):
+    """Bar chart showing bias for each demographic group across all systems."""
+    systems = available_systems(df)
+    fig, axes = plt.subplots(1, len(systems), figsize=(6 * len(systems), 7), sharey=True)
 
     for ax, (sys_name, col) in zip(axes, systems):
         group_means = df.groupby("Demographic_Group")[col].mean()
@@ -97,15 +103,11 @@ def chart_bias_by_race(df, output_dir):
     """Grouped bar chart comparing bias across systems by race."""
     fig, ax = plt.subplots(figsize=(12, 7))
 
-    systems = [
-        ("VADER", "VADER_compound"),
-        ("TextBlob", "TextBlob_polarity"),
-        ("BERT", "BERT_score"),
-    ]
+    systems = available_systems(df)
 
     races = ["White", "Indian", "Chinese", "Black"]
     x = np.arange(len(races))
-    width = 0.25
+    width = 0.8 / len(systems)
 
     for i, (sys_name, col) in enumerate(systems):
         race_means = df.groupby("Race")[col].mean()
@@ -122,7 +124,7 @@ def chart_bias_by_race(df, output_dir):
     ax.set_title("Sentiment Bias by Race Across AI Systems\n"
                  "(All systems show consistent bias patterns)",
                  fontweight="bold")
-    ax.set_xticks(x + width)
+    ax.set_xticks(x + width * (len(systems) - 1) / 2)
     ax.set_xticklabels(races)
     ax.legend()
     ax.axhline(y=0, color="black", linewidth=1, linestyle="--")
@@ -141,11 +143,6 @@ def chart_bias_by_race(df, output_dir):
 
 def chart_fairness_heatmap(output_dir):
     """Heatmap showing fairness metric results by system."""
-    metrics_data = {
-        "VADER": [0.172, 0.141, 0.156, 0.623, 0.134],
-        "TextBlob": [0.165, 0.138, 0.149, 0.641, 0.128],
-        "BERT": [0.158, 0.131, 0.142, 0.657, 0.121],
-    }
     thresholds = [0.10, 0.10, 0.10, 0.80, 0.10]
     metric_names = [
         "Demographic\nParity (<0.10)",
@@ -155,55 +152,67 @@ def chart_fairness_heatmap(output_dir):
         "Calibration\n(<0.10)",
     ]
 
-    # Try to load actual results
+    # Load actual results produced by step 4 (required for this chart)
     results_path = os.path.join(output_dir, "fairness_metrics_all_systems.csv")
-    if os.path.exists(results_path):
-        actual = pd.read_csv(results_path)
-        for _, row in actual.iterrows():
-            sys_name = row["System"]
-            if sys_name in metrics_data:
-                metrics_data[sys_name] = [
-                    row.get("Demographic_Parity_Diff", metrics_data[sys_name][0]),
-                    row.get("Equal_Opportunity_Diff", metrics_data[sys_name][1]),
-                    row.get("Equalized_Odds_Diff", metrics_data[sys_name][2]),
-                    row.get("Disparate_Impact_Ratio", metrics_data[sys_name][3]),
-                    row.get("Calibration_Diff", metrics_data[sys_name][4]),
-                ]
+    if not os.path.exists(results_path):
+        print("  Skipping chart3: fairness_metrics_all_systems.csv not found")
+        return
+
+    actual = pd.read_csv(results_path)
+    metrics_data = {}
+    di_degenerate = {}
+    for _, row in actual.iterrows():
+        sys_name = str(row["System"])
+        metrics_data[sys_name] = [
+            row.get("Demographic_Parity_Diff", 0.0),
+            row.get("Equal_Opportunity_Diff", 0.0),
+            row.get("Equalized_Odds_Diff", 0.0),
+            row.get("Disparate_Impact_Ratio", 0.0),
+            row.get("Calibration_Diff", 0.0),
+        ]
+        di_degenerate[sys_name] = bool(row.get("DI_Degenerate", False))
+    if not metrics_data:
+        print("  Skipping chart3: fairness_metrics_all_systems.csv is empty")
+        return
 
     data = pd.DataFrame(metrics_data, index=metric_names)
 
     fig, ax = plt.subplots(figsize=(10, 7))
 
-    # Create mask for pass/fail
+    # Create mask for pass/fail; degenerate DI cells are reported as N/A
     annot_data = data.copy().astype(str)
+    color_data = data.copy()  # -1 = FAIL (red), 0 = N/A (grey), +1 = PASS (green)
+    na_cells = 0
     for col in data.columns:
+        loc = data.columns.get_loc(col)
         for i, (val, thresh) in enumerate(zip(data[col], thresholds)):
+            if i == 3 and di_degenerate.get(col, False):
+                annot_data.iloc[i, loc] = "N/A"
+                color_data.iloc[i, loc] = 0.0
+                na_cells += 1
+                continue
             if i == 3:  # Disparate impact (higher is better)
                 status = "PASS" if val > thresh else "FAIL"
             else:
                 status = "PASS" if val < thresh else "FAIL"
-            annot_data.iloc[i, data.columns.get_loc(col)] = f"{val:.3f}\n({status})"
-
-    # Color: red for fail, green for pass
-    color_data = data.copy()
-    for col in data.columns:
-        for i, (val, thresh) in enumerate(zip(data[col], thresholds)):
-            if i == 3:
-                color_data.iloc[i, data.columns.get_loc(col)] = 1 if val > thresh else 0
-            else:
-                color_data.iloc[i, data.columns.get_loc(col)] = 1 if val < thresh else 0
-
-    colors = sns.color_palette(["#FFCDD2", "#C8E6C9"])
-    cmap = sns.color_palette(["#F44336", "#4CAF50"])
+            annot_data.iloc[i, loc] = f"{val:.3f}\n({status})"
+            color_data.iloc[i, loc] = 1.0 if status == "PASS" else -1.0
 
     sns.heatmap(color_data.astype(float), annot=annot_data.values, fmt="",
-                cmap=["#FFCDD2", "#C8E6C9"], ax=ax, linewidths=2,
+                cmap=sns.color_palette(["#F44336", "#9E9E9E", "#4CAF50"]),
+                vmin=-1, vmax=1, ax=ax, linewidths=2,
                 linecolor="white", cbar=False,
                 annot_kws={"size": 11, "fontweight": "bold"})
 
-    ax.set_title("Fairness Metrics Scorecard\n"
-                 "All Systems FAIL Standard Fairness Thresholds",
-                 fontweight="bold", fontsize=14, color="red")
+    total_cells = int(color_data.size) - na_cells
+    passed_cells = int((color_data.astype(float).to_numpy() > 0).sum())
+    subtitle = (
+        "All systems pass all thresholds" if passed_cells == total_cells
+        else f"{passed_cells}/{total_cells} checks passed across systems"
+    )
+    ax.set_title(f"Fairness Metrics Scorecard\n{subtitle}",
+                 fontweight="bold", fontsize=14,
+                 color="#2E7D32" if passed_cells == total_cells else "#C62828")
     ax.set_ylabel("")
 
     plt.tight_layout()
@@ -219,13 +228,8 @@ def chart_fairness_heatmap(output_dir):
 
 def chart_intersectionality(df, output_dir):
     """Heatmap showing intersectional effects (Race × Gender)."""
-    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
-
-    systems = [
-        ("VADER", "VADER_compound"),
-        ("TextBlob", "TextBlob_polarity"),
-        ("BERT", "BERT_score"),
-    ]
+    systems = available_systems(df)
+    fig, axes = plt.subplots(1, len(systems), figsize=(5.5 * len(systems), 5))
 
     for ax, (sys_name, col) in zip(axes, systems):
         pivot = df.pivot_table(
@@ -256,13 +260,8 @@ def chart_intersectionality(df, output_dir):
 
 def chart_box_plots(df, output_dir):
     """Box plots showing score distributions by demographic group."""
-    fig, axes = plt.subplots(1, 3, figsize=(20, 7))
-
-    systems = [
-        ("VADER", "VADER_compound"),
-        ("TextBlob", "TextBlob_polarity"),
-        ("BERT", "BERT_score"),
-    ]
+    systems = available_systems(df)
+    fig, axes = plt.subplots(1, len(systems), figsize=(5.5 * len(systems), 7))
 
     for ax, (sys_name, col) in zip(axes, systems):
         order = df.groupby("Demographic_Group")[col].mean().sort_values().index
@@ -334,31 +333,34 @@ def chart_bias_by_emotion(df, output_dir):
 
 def chart_mitigation_comparison(output_dir):
     """Before/after comparison of mitigation techniques."""
-    methods = ["Baseline\n(Biased)", "Reweighing\n(Pre)", "Adversarial\n(In)", "Cal. Eq. Odds\n(Post)"]
-    accuracy = [0.91, 0.89, 0.88, 0.90]
-    fairness = [0.172, 0.094, 0.051, 0.086]
-    di_ratio = [0.623, 0.812, 0.893, 0.827]
+    # Load actual results produced by step 5 (CDA pipeline). Fall back to the
+    # older filename if the deltas file is missing.
+    results_path = os.path.join(output_dir, "mitigation_comparison_cda_with_deltas.csv")
+    if not os.path.exists(results_path):
+        results_path = os.path.join(output_dir, "mitigation_comparison.csv")
 
-    # Try loading actual results
-    results_path = os.path.join(output_dir, "mitigation_comparison.csv")
     if os.path.exists(results_path):
         actual = pd.read_csv(results_path)
-        if len(actual) >= 4:
-            accuracy = actual["accuracy"].tolist()[:4]
-            fairness = actual["dem_parity_diff"].tolist()[:4]
-            di_ratio = actual["disparate_impact"].tolist()[:4]
+        actual = actual.head(4)
+        methods = [m.replace(" (", "\n(") for m in actual["method"].tolist()]
+        accuracy = actual["accuracy"].tolist()
+        fairness = actual["dem_parity_diff"].tolist()
+        di_ratio = actual["disparate_impact"].tolist()
+    else:
+        print("  Skipping chart7: no mitigation comparison CSV found")
+        return
 
     fig, axes = plt.subplots(1, 3, figsize=(18, 6))
 
     # Accuracy
-    colors_acc = ["#F44336"] + ["#4CAF50"] * 3
+    colors_acc = ["#F44336"] + ["#4CAF50"] * (len(methods) - 1)
     axes[0].bar(methods, accuracy, color=colors_acc, edgecolor="black", linewidth=0.5)
     axes[0].set_ylabel("Accuracy")
     axes[0].set_title("Model Accuracy", fontweight="bold")
-    axes[0].set_ylim(0.80, 0.95)
+    acc_margin = max(0.02, (max(accuracy) - min(accuracy)) * 0.3)
+    axes[0].set_ylim(max(0.0, min(accuracy) - acc_margin), min(1.0, max(accuracy) + acc_margin))
     for i, v in enumerate(accuracy):
         axes[0].text(i, v + 0.005, f"{v:.1%}", ha="center", fontweight="bold")
-    axes[0].axhline(y=0.85, color="gray", linestyle="--", alpha=0.5, label="Acceptable threshold")
 
     # Demographic Parity
     colors_dp = ["#F44336"] + ["#4CAF50" if f < 0.10 else "#FFC107" for f in fairness[1:]]
@@ -396,17 +398,18 @@ def chart_mitigation_comparison(output_dir):
 
 def chart_privacy_accuracy(output_dir):
     """Privacy budget (epsilon) vs accuracy tradeoff."""
-    epsilons = [0.1, 0.5, 1.0, 2.0, 5.0, 10.0]
-    accuracies = [0.82, 0.86, 0.88, 0.89, 0.90, 0.91]
-
-    # Try loading actual results
     results_path = os.path.join(output_dir, "privacy_epsilon_analysis.csv")
-    if os.path.exists(results_path):
-        actual = pd.read_csv(results_path)
-        actual_finite = actual[actual["epsilon"] < float("inf")]
-        if len(actual_finite) > 0:
-            epsilons = actual_finite["epsilon"].tolist()
-            accuracies = actual_finite["accuracy_mean"].tolist()
+    if not os.path.exists(results_path):
+        print("  Skipping chart8: privacy_epsilon_analysis.csv not found")
+        return
+
+    actual = pd.read_csv(results_path)
+    actual_finite = actual[actual["epsilon"] < float("inf")]
+    if len(actual_finite) == 0:
+        print("  Skipping chart8: no finite-epsilon rows in privacy CSV")
+        return
+    epsilons = actual_finite["epsilon"].tolist()
+    accuracies = actual_finite["accuracy_mean"].tolist()
 
     fig, ax = plt.subplots(figsize=(10, 7))
 
@@ -429,8 +432,13 @@ def chart_privacy_accuracy(output_dir):
 
     ax.set_xlabel("Privacy Budget (ε) — Lower = More Private", fontsize=12)
     ax.set_ylabel("Model Accuracy", fontsize=12)
-    ax.set_title("Privacy-Accuracy Tradeoff (Differential Privacy)\n"
-                 "ε=1.0 provides strong privacy with acceptable accuracy",
+    acc_span = max(accuracies) - min(accuracies)
+    title_note = (
+        "ε=1.0 provides strong privacy with acceptable accuracy"
+        if acc_span > 0.01 else
+        "on this near-separable dataset, DP noise costs ~0 accuracy at all tested ε"
+    )
+    ax.set_title(f"Privacy-Accuracy Tradeoff (Differential Privacy)\n{title_note}",
                  fontweight="bold")
     ax.set_xscale("log")
     ax.legend(loc="lower right")
@@ -455,7 +463,7 @@ def chart_responsible_ai_stack(output_dir):
     ax.axis("off")
 
     # Title
-    ax.text(5, 9.5, "The Responsible AI Stack", fontsize=18,
+    ax.text(5, 9.5, "The Responsible AI Stack (illustrative)", fontsize=18,
             fontweight="bold", ha="center", va="top")
 
     # Layers
@@ -552,7 +560,7 @@ def chart_impact_projection(output_dir):
     axes[1].legend()
     axes[1].grid(axis="x", alpha=0.3)
 
-    fig.suptitle("Real-World Impact: Why Fairness Matters",
+    fig.suptitle("Real-World Impact: Why Fairness Matters (illustrative projection)",
                  fontweight="bold", fontsize=15)
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, "chart10_impact_projection.png"),

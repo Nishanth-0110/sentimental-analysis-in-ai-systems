@@ -1,0 +1,13 @@
+# Streamlit configuration
+#
+# fileWatcherType = "none" is required here: the app imports `transformers`,
+# and Streamlit's default file watcher recursively imports every
+# transformers.models.* submodule looking for local files — that takes
+# minutes and makes the app appear "stuck". With the watcher off the app
+# starts in seconds. Re-run `streamlit run` manually after code edits.
+[server]
+fileWatcherType = "none"
+
+# Reduce noise in the demo browser tab
+[browser]
+gatherUsageStats = false

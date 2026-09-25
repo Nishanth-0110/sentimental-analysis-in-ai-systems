@@ -74,7 +74,7 @@ def _replace_name_once(text: str, old_name: str, new_name: str) -> str:
     if text.startswith(old_name + " "):
         return new_name + text[len(old_name):]
     # word boundary replace, first occurrence only
-    pattern = r"\\b" + re.escape(old_name) + r"\\b"
+    pattern = r"\b" + re.escape(old_name) + r"\b"
     replaced, n = re.subn(pattern, new_name, text, count=1)
     if n == 0:
         # last-resort: prefix replacement (keeps the rest of the sentence)
@@ -145,105 +145,6 @@ def train_baseline_model(X_train, y_train, X_test, y_test, sensitive_test):
 # =============================================================================
 # 3. MITIGATION #1 (REPLACEMENT): COUNTERFACTUAL DATA AUGMENTATION (CDA)
 # =============================================================================
-
-def apply_cda(X_train, y_train, sensitive_train, text_train, name_train,
-             X_test, y_test, sensitive_test, name_pool, name_to_race,
-             n_counterfactuals=3, seed=42):
-    """Pre-processing: Counterfactual Data Augmentation (CDA).
-
-    For each training example, create additional training examples by swapping
-    ONLY the customer name while keeping the rest of the complaint text fixed.
-    This pushes the classifier to learn that the name token should not change
-    the prediction.
-    """
-    from fairlearn.metrics import (
-        demographic_parity_difference,
-        equalized_odds_difference,
-    )
-
-    try:
-        from scipy.sparse import vstack as sp_vstack
-    except Exception as e:
-        raise RuntimeError("scipy is required for CDA augmentation (sparse vstack)") from e
-
-    rng = np.random.default_rng(seed)
-
-    augmented_texts = []
-    augmented_labels = []
-    augmented_sensitive = []
-
-    name_pool_arr = np.array(name_pool)
-
-    for t, old_name, label in zip(text_train, name_train, y_train):
-        # sample counterfactual names (exclude the original)
-        candidates = name_pool_arr[name_pool_arr != old_name]
-        if len(candidates) == 0:
-            continue
-        k = min(int(n_counterfactuals), len(candidates))
-        sampled = rng.choice(candidates, size=k, replace=False)
-
-        for new_name in sampled:
-            new_text = _replace_name_once(str(t), str(old_name), str(new_name))
-            augmented_texts.append(new_text)
-            augmented_labels.append(int(label))
-            augmented_sensitive.append(name_to_race.get(str(new_name), "Unknown"))
-
-    if len(augmented_texts) == 0:
-        # No augmentation possible; fall back to training on original data.
-        model = LogisticRegression(max_iter=1000, random_state=42)
-        model.fit(X_train, y_train)
-        y_pred = model.predict(X_test)
-    else:
-        # Transform augmented texts using the SAME TF-IDF vectorizer feature space
-        # (X_train/X_test were already created from that vectorizer).
-        # We reconstruct a vectorizer transform by reusing the fact that X_train
-        # was created by the caller; therefore, we must also receive the
-        # corresponding vectorizer externally. To keep changes minimal, we
-        # instead regenerate the TF-IDF space from X_train metadata is not
-        # possible. So we require X_train to be built with the module-level
-        # vectorizer in this pipeline; in our case, we use the existing
-        # `vectorizer` captured in `run_full_mitigation_pipeline`.
-        raise RuntimeError(
-            "CDA requires vectorizer access to transform augmented texts. "
-            "Use apply_cda_with_vectorizer(...) instead."
-        )
-
-    accuracy = accuracy_score(y_test, y_pred)
-    dp_diff = demographic_parity_difference(
-        y_true=y_test, y_pred=y_pred, sensitive_features=sensitive_test
-    )
-    try:
-        eo_diff = equalized_odds_difference(
-            y_true=y_test, y_pred=y_pred, sensitive_features=sensitive_test
-        )
-    except Exception:
-        eo_diff = dp_diff
-
-    groups_test = np.unique(sensitive_test)
-    rates = {}
-    for g in groups_test:
-        mask = sensitive_test == g
-        rates[g] = y_pred[mask].mean()
-    rate_values = [v for v in rates.values() if v > 0]
-    di_ratio = min(rate_values) / max(rate_values) if rate_values and max(rate_values) > 0 else 0
-
-    print(f"\n  CDA (Pre-processing - Counterfactual Name Swaps):")
-    print(f"    Accuracy:               {accuracy:.4f} ({accuracy*100:.1f}%)")
-    print(f"    Demographic Parity Diff: {dp_diff:.4f} "
-          f"({'FAIL' if abs(dp_diff) >= 0.10 else 'PASS'})")
-    print(f"    Equalized Odds Diff:     {eo_diff:.4f}")
-    print(f"    Disparate Impact Ratio:  {di_ratio:.4f} "
-          f"({'FAIL' if di_ratio < 0.80 else 'PASS'})")
-
-    return {
-        "method": "CDA (Name Swap Augmentation)",
-        "accuracy": accuracy,
-        "dem_parity_diff": abs(dp_diff),
-        "equalized_odds_diff": eo_diff,
-        "disparate_impact": di_ratio,
-        "predictions": y_pred,
-    }
-
 
 def apply_cda_with_vectorizer(vectorizer, X_train, y_train, sensitive_train,
                               text_train, name_train,
@@ -359,7 +260,7 @@ def apply_exponentiated_gradient(X_train, y_train, sensitive_train,
     X_test_dense = X_test.toarray() if hasattr(X_test, 'toarray') else X_test
     mitigator.fit(X_train_dense, y_train, sensitive_features=sensitive_train)
 
-    y_pred = mitigator.predict(X_test_dense)
+    y_pred = mitigator.predict(X_test_dense, random_state=42)
     accuracy = accuracy_score(y_test, y_pred)
 
     dp_diff = demographic_parity_difference(
@@ -425,7 +326,11 @@ def apply_threshold_optimizer(baseline_model, X_train, y_train, sensitive_train,
     X_test_dense = X_test.toarray() if hasattr(X_test, 'toarray') else X_test
     postprocessor.fit(X_train_dense, y_train, sensitive_features=sensitive_train)
 
-    y_pred = postprocessor.predict(X_test_dense, sensitive_features=sensitive_test)
+    y_pred = postprocessor.predict(
+        X_test_dense,
+        sensitive_features=sensitive_test,
+        random_state=42,
+    )
     accuracy = accuracy_score(y_test, y_pred)
 
     dp_diff = demographic_parity_difference(
@@ -500,9 +405,17 @@ def compare_methods(results_list):
     # Determine winner
     mitigated = [r for r in results_list if r["method"] != "Baseline"]
     best = min(mitigated, key=lambda x: x["dem_parity_diff"])
-    print(f"\n  RECOMMENDED METHOD: {best['method']}")
-    print(f"  Reason: Lowest Demographic Parity Difference ({best['dem_parity_diff']:.4f})")
-    print(f"  Accuracy cost: {(baseline_acc - best['accuracy'])*100:.1f}%")
+    improvement = baseline_dp - best["dem_parity_diff"]
+    if improvement > 0:
+        print(f"\n  RECOMMENDED METHOD: {best['method']}")
+        print(f"  Reason: Lowest Demographic Parity Difference ({best['dem_parity_diff']:.4f})")
+        print(f"  Bias reduction vs baseline: {improvement:.4f}")
+        print(f"  Accuracy cost: {(baseline_acc - best['accuracy'])*100:.1f}%")
+    else:
+        print(f"\n  HONEST RESULT: no mitigation method improved on the baseline")
+        print(f"  demographic parity difference ({baseline_dp:.4f}) on this dataset.")
+        print(f"  Best available: {best['method']} "
+              f"(dp={best['dem_parity_diff']:.4f}, delta={-improvement:+.4f})")
 
     return best
 

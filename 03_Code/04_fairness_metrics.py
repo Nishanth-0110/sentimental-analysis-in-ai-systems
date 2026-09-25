@@ -41,15 +41,26 @@ def load_scored_data(path=None):
 def prepare_binary_labels(df, score_col, threshold=0.0):
     """
     Convert continuous sentiment scores to binary labels for fairness metrics.
-    Positive (>= threshold) vs Negative (< threshold).
+
+    Two binary views are produced:
+    - ``predicted_label``: sign of the sentiment score (>= threshold). Used for
+      Demographic Parity and Disparate Impact, which only need predictions.
+    - ``true_label`` / ``predicted_severity``: severity split at the VADER
+      median (a name-agnostic reference) vs the system's own median split.
+      These are used for Equal Opportunity / Equalized Odds, which require a
+      non-degenerate ground-truth label. Using an all-zero ground truth would
+      make TPR/FPR undefined; the VADER median split is the same proxy label
+      used by the mitigation (05), privacy (07) and demo (07_Demo) code.
     """
     df = df.copy()
-    df["true_label"] = 0  # All complaints are actually negative
     df["predicted_label"] = (df[score_col] >= threshold).astype(int)
-    # Also create a "severity" classification
-    # High severity (very negative) vs Low severity
     median_score = df[score_col].median()
-    df["predicted_severity"] = (df[score_col] < median_score).astype(int)
+    df["predicted_severity"] = (df[score_col] >= median_score).astype(int)
+    # Proxy ground truth: VADER is rule-based and name-agnostic, so a
+    # VADER-median split is a fair reference severity label.
+    vader_median = df["VADER_compound"].median() if "VADER_compound" in df.columns else median_score
+    df["true_label"] = (df["VADER_compound"].to_numpy() >= vader_median).astype(int) \
+        if "VADER_compound" in df.columns else (df[score_col].to_numpy() >= median_score).astype(int)
     return df
 
 
@@ -100,26 +111,6 @@ def equalized_odds_difference(y_true, y_pred, sensitive_attr):
                sensitive_features=sensitive_attr)
 
 
-def equal_opportunity_difference_manual(y_true, y_pred, sensitive_attr):
-    """
-    Metric 2: Equal Opportunity Difference
-    Ensures equal true positive rates across groups.
-    Uses manual calculation since all true labels are 0 (negative).
-    """
-    groups = np.unique(sensitive_attr)
-    tpr_per_group = {}
-
-    for g in groups:
-        mask = sensitive_attr == g
-        g_true = y_true[mask]
-        g_pred = y_pred[mask]
-        # Use prediction rate as proxy since all true labels are negative
-        tpr_per_group[g] = g_pred.mean()
-
-    values = list(tpr_per_group.values())
-    return max(values) - min(values), tpr_per_group
-
-
 def calibration_by_group(scores, sensitive_attr, n_bins=5):
     """
     Metric 5: Calibration
@@ -160,6 +151,7 @@ def generate_fairness_report(df, score_col, system_name):
     # Prepare data
     prepped = prepare_binary_labels(df, score_col)
     y_pred = prepped["predicted_label"].values
+    y_true = prepped["true_label"].values          # VADER-median proxy labels
     y_severity = prepped["predicted_severity"].values
     scores = df[score_col].values
 
@@ -183,23 +175,31 @@ def generate_fairness_report(df, score_col, system_name):
     for race, rate in sorted(sel_rates.items()):
         print(f"       {race:10s}: {rate:.4f} ({rate*100:.1f}%)")
 
-    # Metric 2: Equal Opportunity
-    eo_diff, eo_groups = equal_opportunity_difference_manual(
-        prepped["true_label"].values, y_pred, race_attr
-    )
+    # Metric 2: Equal Opportunity (TPR parity on the severity task:
+    # proxy truth = VADER median split, prediction = system median split)
+    try:
+        from fairlearn.metrics import MetricFrame, true_positive_rate
+        eo_diff = float(MetricFrame(
+            metrics=true_positive_rate,
+            y_true=y_true,
+            y_pred=y_severity,
+            sensitive_features=race_attr,
+        ).difference())
+    except Exception:
+        eo_diff = float("nan")
     eo_status = "PASS" if eo_diff < 0.10 else "FAIL"
-    print(f"\n  2. Equal Opportunity Difference: {eo_diff:.4f}")
+    print(f"\n  2. Equal Opportunity Difference (TPR parity, severity task): {eo_diff:.4f}")
     print(f"     Threshold: < 0.10  |  Status: {eo_status}")
 
-    # Metric 3: Equalized Odds
+    # Metric 3: Equalized Odds (TPR + FPR parity on the severity task)
     try:
-        eod_val = equalized_odds_difference(
-            prepped["true_label"].values, y_pred, race_attr
-        )
+        eod_val = float(equalized_odds_difference(
+            y_true, y_severity, race_attr
+        ))
     except Exception:
         eod_val = eo_diff  # Fallback
     eod_status = "PASS" if eod_val < 0.10 else "FAIL"
-    print(f"\n  3. Equalized Odds Difference: {eod_val:.4f}")
+    print(f"\n  3. Equalized Odds Difference (severity task): {eod_val:.4f}")
     print(f"     Threshold: < 0.10  |  Status: {eod_status}")
 
     # Metric 4: Disparate Impact Ratio
@@ -209,10 +209,16 @@ def generate_fairness_report(df, score_col, system_name):
         # Manual calculation
         rates = list(sel_rates.values())
         di_ratio = min(rates) / max(rates) if max(rates) > 0 else 0
-    di_status = "PASS" if di_ratio > 0.80 else "FAIL"
+    # Degenerate case: if (almost) no group receives a positive prediction,
+    # the ratio is driven by rounding noise and is not a meaningful signal.
+    di_degenerate = max(sel_rates.values()) <= 0.01 if sel_rates else True
+    di_status = "PASS" if di_ratio > 0.80 else ("N/A" if di_degenerate else "FAIL")
     print(f"\n  4. Disparate Impact Ratio: {di_ratio:.4f}")
-    print(f"     Threshold: > 0.80  |  Status: {di_status}")
-    print(f"     Legal standard (80% rule): {'COMPLIANT' if di_status == 'PASS' else 'VIOLATION'}")
+    if di_degenerate:
+        print("     Threshold: > 0.80  |  Status: N/A (degenerate: ~0 positive selections in all groups)")
+    else:
+        print(f"     Threshold: > 0.80  |  Status: {di_status}")
+        print(f"     Legal standard (80% rule): {'COMPLIANT' if di_status == 'PASS' else 'VIOLATION'}")
 
     # Metric 5: Calibration
     cal_diff, cal_results = calibration_by_group(scores, race_attr)
@@ -224,22 +230,26 @@ def generate_fairness_report(df, score_col, system_name):
               f"std={stats_dict['std']:.4f}")
 
     # Summary
-    metrics_passed = sum([
+    checks = [
         abs(dp_diff) < 0.10,
         eo_diff < 0.10,
         eod_val < 0.10,
-        di_ratio > 0.80,
         cal_diff < 0.10,
-    ])
+    ]
+    if not di_degenerate:
+        checks.append(di_ratio > 0.80)
+    metrics_passed = sum(checks)
+    metrics_total = len(checks)
 
     print(f"\n  {'=' * 50}")
-    print(f"  OVERALL RESULT: {metrics_passed}/5 PASSED")
-    if metrics_passed <= 2:
-        print("  ASSESSMENT: SEVERELY BIASED SYSTEM")
-    elif metrics_passed <= 4:
-        print("  ASSESSMENT: PARTIALLY BIASED SYSTEM")
-    else:
+    print(f"  OVERALL RESULT: {metrics_passed}/{metrics_total} PASSED"
+          + (" (DI excluded: degenerate)" if di_degenerate else ""))
+    if metrics_passed == metrics_total:
         print("  ASSESSMENT: FAIR SYSTEM")
+    elif metrics_passed / metrics_total <= 0.4:
+        print("  ASSESSMENT: SEVERELY BIASED SYSTEM")
+    else:
+        print("  ASSESSMENT: PARTIALLY BIASED SYSTEM")
     print(f"  {'=' * 50}")
 
     results = {
@@ -248,8 +258,10 @@ def generate_fairness_report(df, score_col, system_name):
         "equal_opportunity_diff": eo_diff,
         "equalized_odds_diff": eod_val,
         "disparate_impact_ratio": di_ratio,
+        "disparate_impact_degenerate": di_degenerate,
         "calibration_diff": cal_diff,
         "metrics_passed": metrics_passed,
+        "metrics_total": metrics_total,
         "selection_rates": sel_rates,
     }
 
@@ -283,15 +295,19 @@ def generate_fairness_report(df, score_col, system_name):
 # =============================================================================
 
 def run_all_fairness_analyses(df):
-    """Run fairness analysis for all three sentiment systems."""
+    """Run fairness analysis for all available sentiment systems."""
     systems = [
         ("VADER", "VADER_compound"),
         ("TextBlob", "TextBlob_polarity"),
         ("BERT", "BERT_score"),
+        ("RoBERTa", "RoBERTa_score"),
     ]
 
     all_results = []
     for system_name, score_col in systems:
+        if score_col not in df.columns:
+            print(f"\n  Skipping {system_name}: column '{score_col}' not in dataset.")
+            continue
         result = generate_fairness_report(df, score_col, system_name)
         all_results.append(result)
 
@@ -299,8 +315,9 @@ def run_all_fairness_analyses(df):
     print("\n" + "=" * 70)
     print("  FAIRNESS COMPARISON ACROSS ALL SYSTEMS")
     print("=" * 70)
-    print(f"\n  {'Metric':<30s} {'VADER':>10s} {'TextBlob':>10s} {'BERT':>10s}")
-    print("  " + "-" * 60)
+    header = f"  {'Metric':<30s}" + "".join(f"{r['system']:>10s}" for r in all_results)
+    print(f"\n{header}")
+    print("  " + "-" * (30 + 10 * len(all_results)))
     metrics = [
         ("Dem. Parity Diff (<0.10)", "demographic_parity_diff"),
         ("Equal Opp. Diff (<0.10)", "equal_opportunity_diff"),
@@ -309,12 +326,11 @@ def run_all_fairness_analyses(df):
         ("Calibration Diff (<0.10)", "calibration_diff"),
     ]
     for label, key in metrics:
-        vals = [r[key] for r in all_results]
-        print(f"  {label:<30s} {vals[0]:>10.4f} {vals[1]:>10.4f} {vals[2]:>10.4f}")
+        row = f"  {label:<30s}" + "".join(f"{r[key]:>10.4f}" for r in all_results)
+        print(row)
 
-    passed = [r["metrics_passed"] for r in all_results]
-    print(f"  {'Tests Passed':<30s} {'%d/5' % passed[0]:>10s} "
-          f"{'%d/5' % passed[1]:>10s} {'%d/5' % passed[2]:>10s}")
+    passed = [f"{r['metrics_passed']}/{r['metrics_total']}" for r in all_results]
+    print(f"  {'Tests Passed':<30s}" + "".join(f"{p:>10s}" for p in passed))
 
     return all_results
 
@@ -337,6 +353,7 @@ if __name__ == "__main__":
             "Equal_Opportunity_Diff": r["equal_opportunity_diff"],
             "Equalized_Odds_Diff": r["equalized_odds_diff"],
             "Disparate_Impact_Ratio": r["disparate_impact_ratio"],
+            "DI_Degenerate": r.get("disparate_impact_degenerate", False),
             "Calibration_Diff": r["calibration_diff"],
             "Metrics_Passed": r["metrics_passed"],
         })

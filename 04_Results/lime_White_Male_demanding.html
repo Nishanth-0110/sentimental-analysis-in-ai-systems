@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_divYZ11UJ0OQ8EPWI6"></div>
+        <div class="lime top_div" id="top_div8LUPNU09AAVOTCN"></div>
         
         <script>
-        var top_div = d3.select('#top_divYZ11UJ0OQ8EPWI6').classed('lime top_div', true);
+        var top_div = d3.select('#top_div8LUPNU09AAVOTCN').classed('lime top_div', true);
         
             var pp_div = top_div.append('div')
                                 .classed('lime predict_proba', true);
             var pp_svg = pp_div.append('svg').style('width', '100%');
-            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.09943496199037238, 0.9005650380096276]);
+            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.14538197202331027, 0.8546180279766897]);
             
         
         var exp_div;
             var exp = new lime.Explanation(["Negative", "Positive"]);
         
                 exp_div = top_div.append('div').classed('lime explanation', true);
-                exp.show([["better", 0.07304974432761263], ["company", 0.07119204438938105], ["expects", 0.06850131069668003], ["service", 0.06076529962120119], ["Jake", -0.055872112303018015], ["this", 0.006038578642477824], ["your", 0.001550140536977015], ["than", -0.0014851485158356237], ["from", 0.0012792985881238496]], 1, exp_div);
+                exp.show([["refund", 0.14639274065534352], ["product", -0.11819337166364863], ["immediate", 0.08408526127381151], ["demands", 0.08336961625263223], ["defective", 0.07988667361326972], ["Jake", -0.039311817035559964], ["for", -0.0021670210558891105], ["the", 0.0013086247665367607]], 1, exp_div);
                 
         var raw_div = top_div.append('div');
-            exp.show_raw_text([["better", 13, 0.07304974432761263], ["company", 48, 0.07119204438938105], ["expects", 5, 0.06850131069668003], ["service", 20, 0.06076529962120119], ["Jake", 0, -0.055872112303018015], ["this", 33, 0.006038578642477824], ["your", 43, 0.001550140536977015], ["than", 28, -0.0014851485158356237], ["from", 38, 0.0012792985881238496]], 1, "Jake expects better service than this from your company", raw_div, true);
+            exp.show_raw_text([["refund", 23, 0.14639274065534352], ["product", 48, -0.11819337166364863], ["immediate", 13, 0.08408526127381151], ["demands", 5, 0.08336961625263223], ["defective", 38, 0.07988667361326972], ["Jake", 0, -0.039311817035559964], ["for", 30, -0.0021670210558891105], ["the", 34, 0.0013086247665367607]], 1, "Jake demands immediate refund for the defective product", raw_div, true);
             
         </script>
         </body></html>

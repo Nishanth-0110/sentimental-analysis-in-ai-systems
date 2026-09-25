@@ -1,8 +1,8 @@
 """
 ==============================================================================
-Step 2: Sentiment Analysis with VADER, TextBlob, and BERT
+Step 2: Sentiment Analysis with VADER, TextBlob, BERT, and RoBERTa
 ==============================================================================
-Runs all 800 sentences through three sentiment analysis systems and records
+Runs all 800 sentences through four sentiment analysis systems and records
 scores for each. This produces the raw data for bias detection.
 ==============================================================================
 """
@@ -124,11 +124,58 @@ def analyze_bert(texts, batch_size=16):
 
 
 # =============================================================================
+# 4b. RoBERTa SENTIMENT ANALYSIS (Twitter-trained)
+# =============================================================================
+
+def analyze_roberta(texts, batch_size=16):
+    """
+    RoBERTa-based sentiment analysis using HuggingFace pipeline.
+    - cardiffnlp/twitter-roberta-base-sentiment-latest (3-way: neg/neu/pos)
+    - Trained on Twitter text, where name-based stereotypes are most
+      plausibly learned — audited here as a second transformer system.
+    - Signed score = P(positive) - P(negative), in [-1, +1]
+    """
+    from transformers import pipeline
+
+    print("Loading RoBERTa-Twitter model (this may take a minute on first run)...")
+    sentiment_pipeline = pipeline(
+        "sentiment-analysis",
+        model="cardiffnlp/twitter-roberta-base-sentiment-latest",
+        device=-1,  # CPU
+        top_k=None,  # return all three label probabilities
+    )
+
+    scores = []
+    for i in tqdm(range(0, len(texts), batch_size), desc="RoBERTa Analysis"):
+        batch = texts[i:i + batch_size]
+        results = sentiment_pipeline(batch, truncation=True, max_length=512)
+        for result in results:
+            probs = {r["label"].lower(): r["score"] for r in result}
+            label = max(probs, key=probs.get)
+            scores.append({
+                "RoBERTa_score": probs.get("positive", 0.0) - probs.get("negative", 0.0),
+                "RoBERTa_label": label.upper(),
+                "RoBERTa_confidence": probs[label],
+            })
+
+    return pd.DataFrame(scores)
+
+
+# =============================================================================
 # 5. RUN ALL ANALYSES
 # =============================================================================
 
+# (display name, score column) used consistently across the pipeline
+SYSTEMS = [
+    ("VADER", "VADER_compound"),
+    ("TextBlob", "TextBlob_polarity"),
+    ("BERT", "BERT_score"),
+    ("RoBERTa", "RoBERTa_score"),
+]
+
+
 def run_all_sentiment_analyses(df):
-    """Run VADER, TextBlob, and BERT on all sentences."""
+    """Run VADER, TextBlob, BERT, and RoBERTa on all sentences."""
     texts = df["Full_Text"].tolist()
 
     print("\n" + "=" * 60)
@@ -147,12 +194,17 @@ def run_all_sentiment_analyses(df):
     print("\n--- BERT ---")
     bert_scores = analyze_bert(texts)
 
+    # RoBERTa (Twitter)
+    print("\n--- RoBERTa (Twitter) ---")
+    roberta_scores = analyze_roberta(texts)
+
     # Combine all results
     result_df = pd.concat([
         df.reset_index(drop=True),
         vader_scores.reset_index(drop=True),
         textblob_scores.reset_index(drop=True),
         bert_scores.reset_index(drop=True),
+        roberta_scores.reset_index(drop=True),
     ], axis=1)
 
     return result_df
@@ -172,9 +224,7 @@ def initial_exploration(df):
     print("\n1. AVERAGE SENTIMENT SCORES BY DEMOGRAPHIC GROUP:")
     print("-" * 60)
 
-    for system, col in [("VADER", "VADER_compound"),
-                        ("TextBlob", "TextBlob_polarity"),
-                        ("BERT", "BERT_score")]:
+    for system, col in SYSTEMS:
         print(f"\n  {system}:")
         group_means = df.groupby("Demographic_Group")[col].mean().sort_values()
         for group, score in group_means.items():
@@ -183,9 +233,7 @@ def initial_exploration(df):
     # Average by race
     print("\n2. AVERAGE SCORES BY RACE:")
     print("-" * 60)
-    for system, col in [("VADER", "VADER_compound"),
-                        ("TextBlob", "TextBlob_polarity"),
-                        ("BERT", "BERT_score")]:
+    for system, col in SYSTEMS:
         print(f"\n  {system}:")
         race_means = df.groupby("Race")[col].mean().sort_values()
         for race, score in race_means.items():
@@ -194,9 +242,7 @@ def initial_exploration(df):
     # Average by gender
     print("\n3. AVERAGE SCORES BY GENDER:")
     print("-" * 60)
-    for system, col in [("VADER", "VADER_compound"),
-                        ("TextBlob", "TextBlob_polarity"),
-                        ("BERT", "BERT_score")]:
+    for system, col in SYSTEMS:
         print(f"\n  {system}:")
         gender_means = df.groupby("Gender")[col].mean().sort_values()
         for gender, score in gender_means.items():
@@ -207,9 +253,7 @@ def initial_exploration(df):
     print("-" * 60)
     baseline_group = "White_Male"
 
-    for system, col in [("VADER", "VADER_compound"),
-                        ("TextBlob", "TextBlob_polarity"),
-                        ("BERT", "BERT_score")]:
+    for system, col in SYSTEMS:
         print(f"\n  {system}:")
         group_means = df.groupby("Demographic_Group")[col].mean()
         baseline = group_means.get(baseline_group, 0)

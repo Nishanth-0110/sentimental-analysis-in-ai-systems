@@ -91,7 +91,7 @@ def prepare_audit_data():
 
     audit_df = df.iloc[test_idx].copy()
     audit_df["baseline_pred"] = baseline.predict(X_test)
-    audit_df["mitigated_pred"] = mitigator.predict(X_test, sensitive_features=sens_test)
+    audit_df["mitigated_pred"] = mitigator.predict(X_test, sensitive_features=sens_test, random_state=42)
     return audit_df.reset_index(drop=True)
 
 

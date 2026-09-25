@@ -12,6 +12,7 @@ Run with:  streamlit run app.py
 
 import streamlit as st
 import streamlit.components.v1 as components
+import altair as alt
 import pandas as pd
 import numpy as np
 import os
@@ -21,6 +22,18 @@ st.set_page_config(
     page_icon="🔍",
     layout="wide",
 )
+
+MITIGATION_RANDOM_STATE = 42
+
+
+def decision_label(pred):
+    """Human-readable label for the routing classifier output.
+
+    pred == 0 means the router flagged the complaint as strongly negative,
+    which in this business scenario means it is escalated (urgent, human
+    agent). pred == 1 means it is deprioritized to the standard queue.
+    """
+    return "Escalated (urgent)" if int(pred) == 0 else "Standard queue"
 
 
 # =============================================================================
@@ -34,15 +47,14 @@ def load_vader():
 
 
 @st.cache_resource
-def load_textblob():
-    from textblob import TextBlob
-    return TextBlob
-
-
-@st.cache_resource
 def load_bert_pipeline():
+    """Load a lightweight HuggingFace sentiment pipeline.
+
+    Returns None if transformers/torch aren't available (demo can still run).
+    """
     try:
         from transformers import pipeline
+
         return pipeline(
             "sentiment-analysis",
             model="distilbert-base-uncased-finetuned-sst-2-english",
@@ -52,159 +64,203 @@ def load_bert_pipeline():
         return None
 
 
-def get_vader_score(analyzer, text):
-    scores = analyzer.polarity_scores(text)
-    return scores["compound"]
-
-
-def get_textblob_score(TextBlobClass, text):
-    from textblob import TextBlob
-    blob = TextBlob(text)
-    return blob.sentiment.polarity
-
-
-def get_bert_score(pipe, text):
-    if pipe is None:
-        return 0
-    result = pipe(text, truncation=True, max_length=512)[0]
-    return -result["score"] if result["label"] == "NEGATIVE" else result["score"]
-
-
-@st.cache_resource
-def load_lime_explainer():
-    from lime.lime_text import LimeTextExplainer
-
-    return LimeTextExplainer(class_names=["NEGATIVE", "POSITIVE"])
-
-
 def bert_predict_proba(pipe, texts):
-    """Return [P(negative), P(positive)] for LIME."""
-    text_list = [str(text) for text in texts]
-    results = pipe(text_list, truncation=True, max_length=512, batch_size=min(16, max(1, len(text_list))))
+    """Return 2-class probabilities [P(NEGATIVE), P(POSITIVE)] for each text."""
+    texts = list(texts)
+    if pipe is None:
+        return np.tile(np.array([[0.5, 0.5]], dtype=float), (len(texts), 1))
+
+    outputs = pipe(texts, truncation=True)
     probs = []
-    for result in results:
-        score = float(result["score"])
-        if result["label"] == "NEGATIVE":
-            probs.append([score, 1.0 - score])
+    for out in outputs:
+        label = str(out.get("label", ""))
+        score = float(out.get("score", 0.5))
+        score = float(np.clip(score, 0.0, 1.0))
+        if label.upper() == "NEGATIVE":
+            p_neg = score
+            p_pos = 1.0 - score
         else:
-            probs.append([1.0 - score, score])
+            p_pos = score
+            p_neg = 1.0 - score
+        probs.append([p_neg, p_pos])
     return np.array(probs, dtype=float)
 
 
-# =============================================================================
-# DEMOGRAPHIC PARITY MITIGATION (ThresholdOptimizer on BERT outputs)
-# =============================================================================
+class _BaselinePostProcessor:
+    """Fallback post-processor with ThresholdOptimizer-like predict signature."""
+
+    def __init__(self, baseline_model):
+        self._baseline_model = baseline_model
+
+    def predict(self, X, sensitive_features=None, random_state=None):
+        return self._baseline_model.predict(X)
 
 
 @st.cache_resource
 def load_dp_mitigation_models():
-    """Train baseline + Demographic Parity post-processor from the project dataset.
+    """Train (and cache) baseline + DP mitigators used by the routing demo.
 
-    This mirrors the project mitigation experiment: learn a simple 1-D decision rule
-    on `BERT_score`, then apply Fairlearn ThresholdOptimizer with a Demographic
-    Parity constraint.
+    Baseline model: LogisticRegression on 1-D feature [BERT_score].
+    Target label: y_true = 1 if VADER_compound >= dataset median else 0.
+    Sensitive attribute: Race.
     """
-
-    from sklearn.linear_model import LogisticRegression
     from sklearn.model_selection import train_test_split
-    from fairlearn.postprocessing import ThresholdOptimizer
+    from sklearn.linear_model import LogisticRegression
 
-    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    data_path = os.path.join(repo_root, "02_Data", "sentiment_scores_all_systems.csv")
-
-    df = pd.read_csv(data_path)
-    df = df.dropna(subset=["VADER_compound", "BERT_score", "Race"]).copy()
+    df = load_project_dataset().dropna(subset=["BERT_score", "VADER_compound", "Race"]).copy()
+    df["Race"] = df["Race"].astype(str)
 
     vader_median = float(df["VADER_compound"].median())
-    y_true = (df["VADER_compound"].to_numpy() >= vader_median).astype(int)
+    y = (df["VADER_compound"].to_numpy(dtype=float) >= vader_median).astype(int)
     X = df[["BERT_score"]].to_numpy().astype(float)
-    sensitive = df["Race"].astype(str).to_numpy()
+    sensitive = df["Race"].to_numpy()
 
-    X_train, _, y_train, _, sens_train, _ = train_test_split(
+    X_train, _X_test, y_train, _y_test, sens_train, _sens_test = train_test_split(
         X,
-        y_true,
+        y,
         sensitive,
         test_size=0.30,
-        random_state=42,
-        stratify=y_true,
+        random_state=MITIGATION_RANDOM_STATE,
+        stratify=y,
     )
 
-    baseline = LogisticRegression(max_iter=1000, random_state=42)
+    baseline = LogisticRegression(max_iter=1000, random_state=MITIGATION_RANDOM_STATE)
     baseline.fit(X_train, y_train)
 
-    post = ThresholdOptimizer(
-        estimator=baseline,
-        constraints="demographic_parity",
-        objective="accuracy_score",
-        prefit=True,
-    )
-    post.fit(X_train, y_train, sensitive_features=sens_train)
+    post = None
+    eg = None
+    try:
+        from fairlearn.postprocessing import ThresholdOptimizer
+        from fairlearn.reductions import DemographicParity, ExponentiatedGradient
+
+        post = ThresholdOptimizer(
+            estimator=baseline,
+            constraints="demographic_parity",
+            objective="accuracy_score",
+            prefit=True,
+        )
+        post.fit(X_train, y_train, sensitive_features=sens_train)
+
+        eg = ExponentiatedGradient(
+            estimator=LogisticRegression(max_iter=1000, random_state=MITIGATION_RANDOM_STATE),
+            constraints=DemographicParity(),
+            max_iter=50,
+        )
+        eg.fit(X_train, y_train, sensitive_features=sens_train)
+    except Exception:
+        post = _BaselinePostProcessor(baseline)
+        eg = None
 
     known_groups = set(pd.Series(sensitive).unique().tolist())
-    return baseline, post, known_groups
+    return baseline, post, eg, known_groups
+
+
+def _predict_mitigated_label(
+    mitigation_method: str,
+    *,
+    X_one: np.ndarray,
+    race: str,
+    baseline_model,
+    dp_post,
+    dp_eg,
+    known_groups: set,
+):
+    """Return (pred_int, method_display_name) for the chosen mitigation method."""
+    if mitigation_method == "In-processing: Exponentiated Gradient (DP)":
+        if dp_eg is None:
+            return int(baseline_model.predict(X_one)[0]), "Exponentiated Gradient (unavailable; fallback baseline)"
+        return int(dp_eg.predict(X_one, random_state=MITIGATION_RANDOM_STATE)[0]), "Exponentiated Gradient (DP)"
+
+    # Default: post-processing ThresholdOptimizer
+    if race in known_groups:
+        return (
+            int(
+                dp_post.predict(
+                    X_one,
+                    sensitive_features=np.array([race]),
+                    random_state=MITIGATION_RANDOM_STATE,
+                )[0]
+            ),
+            "ThresholdOptimizer (DP)",
+        )
+    return int(baseline_model.predict(X_one)[0]), "ThresholdOptimizer (DP; fallback baseline)"
+
+
+def _disparate_impact_from_predictions(y_pred: np.ndarray, sensitive_features: np.ndarray) -> float:
+    """Compute disparate impact as min(selection_rate)/max(selection_rate) across groups.
+
+    This is equivalent to the common 80% rule ratio when selection_rate is defined
+    as the fraction of positive predictions (label 1) per group.
+    """
+    df = pd.DataFrame({"y": np.asarray(y_pred, dtype=float), "s": np.asarray(sensitive_features)})
+    rates = df.groupby("s")["y"].mean()
+    if rates.empty:
+        return float("nan")
+    max_rate = float(rates.max())
+    min_rate = float(rates.min())
+    if np.isclose(max_rate, 0.0):
+        return float("nan")
+    return float(min_rate / max_rate)
 
 
 @st.cache_data
-def load_mitigation_summary():
-    """Load the latest dataset-level mitigation comparison (baseline vs DP mitigation)."""
-    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    csv_path = os.path.join(
-        repo_root,
-        "04_Results",
-        "mitigation_comparison_bert_score_constraints_with_deltas.csv",
+def compute_dataset_level_fairness_summary(mitigation_method: str):
+    """Compute dataset-level fairness metrics for the selected mitigation method.
+
+    Uses the same dataset + target definition as the routing demo:
+    - y_true: VADER_compound >= dataset median
+    - feature: BERT_score
+    - sensitive attribute: Race
+    """
+    from sklearn.metrics import accuracy_score
+    from fairlearn.metrics import (
+        demographic_parity_difference,
+        equalized_odds_difference,
     )
 
-    if not os.path.exists(csv_path):
-        return None
+    df = load_project_dataset().dropna(subset=["BERT_score", "VADER_compound", "Race"]).copy()
+    df["Race"] = df["Race"].astype(str)
 
-    df = pd.read_csv(csv_path)
-    if "method" not in df.columns:
-        return None
+    vader_median = float(df["VADER_compound"].median())
+    y_true = (df["VADER_compound"].to_numpy(dtype=float) >= vader_median).astype(int)
+    X = df[["BERT_score"]].to_numpy().astype(float)
+    sensitive = df["Race"].to_numpy()
 
-    keep = df[
-        df["method"].isin(
-            [
-                "Baseline (BERT_score -> LR)",
-                "ThresholdOptimizer (Demographic Parity)",
-            ]
+    baseline_model, dp_post, dp_eg, known_groups = load_dp_mitigation_models()
+    y_base = baseline_model.predict(X)
+
+    if mitigation_method == "In-processing: Exponentiated Gradient (DP)":
+        if dp_eg is None:
+            y_mit = y_base
+            method_label = "After Mitigation: Exponentiated Gradient (unavailable; baseline shown)"
+        else:
+            y_mit = dp_eg.predict(X, random_state=MITIGATION_RANDOM_STATE)
+            method_label = "After Mitigation: Exponentiated Gradient (DP)"
+    else:
+        # Post-processing ThresholdOptimizer
+        y_mit = dp_post.predict(
+            X,
+            sensitive_features=sensitive,
+            random_state=MITIGATION_RANDOM_STATE,
         )
-    ].copy()
+        method_label = "After Mitigation: ThresholdOptimizer (DP)"
 
-    if keep.empty:
-        return None
+    baseline_row = {
+        "method": "Baseline (BERT output decision)",
+        "accuracy": float(accuracy_score(y_true, y_base)),
+        "dem_parity_diff": float(demographic_parity_difference(y_true, y_base, sensitive_features=sensitive)),
+        "equalized_odds_diff": float(equalized_odds_difference(y_true, y_base, sensitive_features=sensitive)),
+        "disparate_impact": float(_disparate_impact_from_predictions(y_base, sensitive)),
+    }
+    mitigated_row = {
+        "method": method_label,
+        "accuracy": float(accuracy_score(y_true, y_mit)),
+        "dem_parity_diff": float(demographic_parity_difference(y_true, y_mit, sensitive_features=sensitive)),
+        "equalized_odds_diff": float(equalized_odds_difference(y_true, y_mit, sensitive_features=sensitive)),
+        "disparate_impact": float(_disparate_impact_from_predictions(y_mit, sensitive)),
+    }
 
-    baseline_row = keep.loc[keep["method"] == "Baseline (BERT_score -> LR)"]
-    mitigated_row = keep.loc[keep["method"] == "ThresholdOptimizer (Demographic Parity)"]
-    if baseline_row.empty or mitigated_row.empty:
-        return None
-
-    baseline_row = baseline_row.iloc[0]
-    mitigated_row = mitigated_row.iloc[0]
-
-    # Friendly labels
-    keep["method"] = keep["method"].replace(
-        {
-            "Baseline (BERT_score -> LR)": "Baseline (BERT output decision)",
-            "ThresholdOptimizer (Demographic Parity)": "After Mitigation: ThresholdOptimizer (DP)",
-        }
-    )
-
-    cols = [
-        c
-        for c in [
-            "method",
-            "accuracy",
-            "dem_parity_diff",
-            "equalized_odds_diff",
-            "disparate_impact",
-            "delta_accuracy",
-            "delta_dem_parity_diff",
-            "delta_equalized_odds_diff",
-            "delta_disparate_impact",
-        ]
-        if c in keep.columns
-    ]
-    keep = keep[cols]
+    summary = pd.DataFrame([baseline_row, mitigated_row])
 
     metric_specs = [
         ("accuracy", "Accuracy", "higher"),
@@ -215,9 +271,6 @@ def load_mitigation_summary():
 
     diff_rows = []
     for column, label, direction in metric_specs:
-        if column not in df.columns:
-            continue
-
         before = float(baseline_row[column])
         after = float(mitigated_row[column])
         change = after - before
@@ -240,7 +293,7 @@ def load_mitigation_summary():
         )
 
     diff_df = pd.DataFrame(diff_rows)
-    return keep, diff_df
+    return summary, diff_df
 
 
 @st.cache_data
@@ -285,16 +338,52 @@ def extract_complaint_body(name, full_text):
 
 
 @st.cache_data
-def load_preloaded_examples():
-    """Build the sidebar examples directly from exact dataset rows."""
+def load_preloaded_examples(mitigation_method: str):
+    """Build the sidebar examples directly from exact dataset rows.
+
+    Sentence_IDs are chosen so that the mitigation method actually flips the
+    routing decision for several of them (verified against the current
+    02_Data/sentiment_scores_all_systems.csv). The last three IDs are control
+    examples whose decisions do NOT change.
+    """
     df = load_project_dataset().copy()
-    sentence_ids = [142, 131, 226, 216, 682, 562, 437, 732]
+    if str(mitigation_method) == "In-processing: Exponentiated Gradient (DP)":
+        sentence_ids = [
+            174,  # White Male: Standard queue -> Escalated (flips)
+            199,  # Chinese Female: Standard queue -> Escalated (flips)
+            736,  # White Female: Standard queue -> Escalated (flips)
+            162,  # Indian Male: no change under EG (flips under TO)
+            181,  # Black Male: no change under EG (flips under TO)
+            186,  # Black Female: no change under EG (flips under TO)
+            17,   # control: no change
+            131,  # control: no change
+            732,  # control: no change
+        ]
+    else:
+        sentence_ids = [
+            162,  # Indian Male: Standard queue -> Escalated (flips)
+            166,  # Indian Female: Standard queue -> Escalated (flips)
+            174,  # White Male: Standard queue -> Escalated (flips)
+            181,  # Black Male: Standard queue -> Escalated (flips)
+            186,  # Black Female: Standard queue -> Escalated (flips)
+            193,  # Chinese Male: Standard queue -> Escalated (flips)
+            198,  # Chinese Female: Standard queue -> Escalated (flips)
+            736,  # White Female: Standard queue -> Escalated (flips)
+            744,  # Black Male: Standard queue -> Escalated (flips)
+            17,   # control: no change
+            131,  # control: no change
+            732,  # control: no change
+        ]
     selected = df[df["Sentence_ID"].isin(sentence_ids)].copy()
     selected = selected.set_index("Sentence_ID").loc[sentence_ids].reset_index()
 
     examples = {}
     for row in selected.to_dict("records"):
         label = f"{row['Race']} {row['Gender']} - {row['Template_Category'].title()}"
+        # Disambiguate duplicate group/category labels (e.g., two different
+        # White-Male "angry" examples) so dict keys stay unique.
+        if label in examples:
+            label = f"{label} ({row['Name']})"
         examples[label] = {
             "name": str(row["Name"]),
             "full_text": str(row["Full_Text"]),
@@ -328,93 +417,8 @@ def load_precomputed_lime_html(race, gender, template_category):
 
     with open(html_path, "r", encoding="utf-8", errors="ignore") as f:
         return f.read(), filename
-
-
-@st.cache_data
-def build_showcase_template():
-    """Pick a dataset template where DP mitigation changes outcomes most visibly.
-
-    Uses precomputed BERT scores in the dataset (fast + deterministic).
-    """
-    from sklearn.linear_model import LogisticRegression
-    from sklearn.model_selection import train_test_split
-    from fairlearn.postprocessing import ThresholdOptimizer
-
-    df = load_project_dataset().dropna(subset=["BERT_score", "VADER_compound", "Race", "Template_Number"]).copy()
-    df["Race"] = df["Race"].astype(str)
-
-    vader_median = float(df["VADER_compound"].median())
-    y_true = (df["VADER_compound"].to_numpy() >= vader_median).astype(int)
-    X = df[["BERT_score"]].to_numpy().astype(float)
-    sensitive = df["Race"].to_numpy()
-
-    X_train, _, y_train, _, sens_train, _ = train_test_split(
-        X,
-        y_true,
-        sensitive,
-        test_size=0.30,
-        random_state=42,
-        stratify=y_true,
-    )
-
-    baseline = LogisticRegression(max_iter=1000, random_state=42)
-    baseline.fit(X_train, y_train)
-    post = ThresholdOptimizer(
-        estimator=baseline,
-        constraints="demographic_parity",
-        objective="accuracy_score",
-        prefit=True,
-    )
-    post.fit(X_train, y_train, sensitive_features=sens_train)
-
-    # Predict on full dataset
-    df["baseline_pred"] = baseline.predict(X)
-    df["mitigated_pred"] = post.predict(X, sensitive_features=sensitive)
-
-    # For each template, compute race-wise positive rate gap (DP-like) before/after
-    # (Positive = label 1)
-    rows = []
-    for template_num, g in df.groupby("Template_Number"):
-        base_rates = g.groupby("Race")["baseline_pred"].mean()
-        mit_rates = g.groupby("Race")["mitigated_pred"].mean()
-        if len(base_rates) < 2:
-            continue
-        base_gap = float(base_rates.max() - base_rates.min())
-        mit_gap = float(mit_rates.max() - mit_rates.min())
-        improvement = base_gap - mit_gap
-        rows.append((template_num, base_gap, mit_gap, improvement))
-
-    if not rows:
-        return None
-
-    best_template, base_gap, mit_gap, improvement = sorted(rows, key=lambda x: (x[3], x[1]), reverse=True)[0]
-    best = df[df["Template_Number"] == best_template].copy()
-
-    # Pick one representative row per race for display
-    display = (
-        best.sort_values(["Race", "Gender", "Name"])
-        .groupby("Race", as_index=False)
-        .head(1)
-        .copy()
-    )
-
-    display["Baseline"] = np.where(display["baseline_pred"] == 0, "Negative", "Not Negative")
-    display["After DP Mitigation"] = np.where(display["mitigated_pred"] == 0, "Negative", "Not Negative")
-
-    out = display[["Race", "Name", "Full_Text", "BERT_score", "Baseline", "After DP Mitigation"]].copy()
-    out["BERT_score"] = out["BERT_score"].astype(float).round(3)
-
-    summary = {
-        "template_number": int(best_template),
-        "baseline_gap": round(base_gap, 3),
-        "mitigated_gap": round(mit_gap, 3),
-        "improvement": round(improvement, 3),
-    }
-    return summary, out
-
-
 # =============================================================================
-# BIAS SIMULATION (demonstrates the concept)
+# DEMOGRAPHIC DETECTION (name -> race/gender signal for custom input)
 # =============================================================================
 
 # Name-to-demographic mapping
@@ -449,22 +453,10 @@ NAME_DEMOGRAPHICS = {
     "hui": ("Chinese", "Female"), "mei chen": ("Chinese", "Female"),
 }
 
-# Bias factors (simulated based on research findings)
-BIAS_FACTORS = {
-    ("Black", "Male"): -0.15,
-    ("Black", "Female"): -0.12,
-    ("Indian", "Male"): -0.07,
-    ("Indian", "Female"): -0.04,
-    ("Chinese", "Male"): -0.06,
-    ("Chinese", "Female"): -0.03,
-    ("White", "Male"): 0.00,
-    ("White", "Female"): 0.02,
-}
-
 
 def detect_demographic(name):
-    """Detect demographic from name."""
-    lower = name.lower().strip()
+    """Detect demographic from a customer name (used for custom input)."""
+    lower = str(name).lower().strip()
     if lower in NAME_DEMOGRAPHICS:
         return NAME_DEMOGRAPHICS[lower]
     # Check first name
@@ -474,173 +466,402 @@ def detect_demographic(name):
     return ("Unknown", "Unknown")
 
 
-def simulate_biased_score(base_score, name):
-    """Simulate what a biased system would return."""
-    race, gender = detect_demographic(name)
-    bias = BIAS_FACTORS.get((race, gender), 0)
-    return np.clip(base_score + bias, -1, 1), race, gender, bias
+# =============================================================================
+# PRIVACY DEMO (Differential Privacy)
+# =============================================================================
+
+@st.cache_data
+def load_privacy_artifact_csv(filename: str):
+    """Load a saved privacy analysis CSV from 04_Results (if present)."""
+    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    csv_path = os.path.join(repo_root, "04_Results", filename)
+    if not os.path.exists(csv_path):
+        return None
+    return pd.read_csv(csv_path)
 
 
-def simulate_fair_score(base_score):
-    """Fair system returns the same score regardless of name."""
-    return base_score
+def _prepare_privacy_split(max_features: int = 200, random_state: int = 42):
+    """Prepare a small text classification task used only for DP demos.
+
+    Label: whether VADER_compound is above the dataset median.
+    Sensitive attribute: Race.
+    """
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.model_selection import train_test_split
+
+    df = load_project_dataset().dropna(subset=["Full_Text", "VADER_compound", "Race"]).copy()
+    median_score = float(df["VADER_compound"].median())
+
+    y = (df["VADER_compound"].to_numpy(dtype=float) >= median_score).astype(int)
+    sensitive = df["Race"].astype(str).to_numpy()
+
+    vectorizer = TfidfVectorizer(max_features=int(max_features), stop_words="english")
+    X = vectorizer.fit_transform(df["Full_Text"].astype(str))
+
+    X_train, X_test, y_train, y_test, sens_train, sens_test = train_test_split(
+        X,
+        y,
+        sensitive,
+        test_size=0.30,
+        random_state=int(random_state),
+        stratify=y,
+    )
+
+    return X_train, X_test, y_train, y_test, sens_train, sens_test
+
+
+def _train_lr_output_perturbation(
+    X_train,
+    y_train,
+    X_test,
+    y_test,
+    sensitive_test,
+    epsilon: float,
+    seed: int,
+):
+    """Logistic regression with coefficient noise (output perturbation)."""
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.metrics import accuracy_score
+    from fairlearn.metrics import demographic_parity_difference
+
+    model = LogisticRegression(max_iter=1000, random_state=int(seed), C=1.0)
+    model.fit(X_train, y_train)
+
+    if np.isfinite(float(epsilon)):
+        rng = np.random.default_rng(int(seed))
+        sensitivity = 2.0 / (len(y_train) * model.C)
+        scale = sensitivity / float(epsilon)
+        model.coef_ = model.coef_ + rng.laplace(0.0, scale, size=model.coef_.shape)
+        model.intercept_ = model.intercept_ + rng.laplace(0.0, scale, size=model.intercept_.shape)
+
+    y_pred = model.predict(X_test)
+    try:
+        y_prob = model.predict_proba(X_test)[:, 1]
+    except Exception:
+        y_prob = None
+    acc = float(accuracy_score(y_test, y_pred))
+    dp_diff = float(
+        abs(
+            demographic_parity_difference(
+                y_true=y_test,
+                y_pred=y_pred,
+                sensitive_features=sensitive_test,
+            )
+        )
+    )
+    return acc, dp_diff, y_prob
+
+
+def run_output_perturbation_sweep(
+    epsilons,
+    n_seeds: int = 5,
+    max_features: int = 200,
+    random_state: int = 42,
+):
+    X_train, X_test, y_train, y_test, _sens_train, sens_test = _prepare_privacy_split(
+        max_features=max_features,
+        random_state=random_state,
+    )
+
+    # Baseline (no privacy) probability scores for drift metrics
+    from sklearn.linear_model import LogisticRegression
+    base = LogisticRegression(max_iter=1000, random_state=int(random_state), C=1.0)
+    base.fit(X_train, y_train)
+    base_prob = base.predict_proba(X_test)[:, 1]
+
+    def _score_gap_by_group(probs, sensitive):
+        df_tmp = pd.DataFrame({"p": probs, "g": sensitive})
+        means = df_tmp.groupby("g")["p"].mean()
+        if means.empty:
+            return 0.0
+        return float(means.max() - means.min())
+
+    rows = []
+    for eps in epsilons:
+        accs = []
+        dps = []
+        drifts = []
+        score_gaps = []
+        for seed in range(int(n_seeds)):
+            acc, dp, y_prob = _train_lr_output_perturbation(
+                X_train,
+                y_train,
+                X_test,
+                y_test,
+                sens_test,
+                epsilon=float(eps),
+                seed=seed,
+            )
+            accs.append(acc)
+            dps.append(dp)
+            if y_prob is not None:
+                drifts.append(float(np.mean(np.abs(y_prob - base_prob))))
+                score_gaps.append(_score_gap_by_group(y_prob, sens_test))
+
+        rows.append(
+            {
+                "epsilon": float(eps),
+                "accuracy_mean": float(np.mean(accs)),
+                "accuracy_std": float(np.std(accs)),
+                "dem_parity_diff_mean": float(np.mean(dps)),
+                "dem_parity_diff_std": float(np.std(dps)),
+                "prob_drift_mean": float(np.mean(drifts)) if drifts else 0.0,
+                "prob_drift_std": float(np.std(drifts)) if drifts else 0.0,
+                "score_gap_mean": float(np.mean(score_gaps)) if score_gaps else 0.0,
+                "score_gap_std": float(np.std(score_gaps)) if score_gaps else 0.0,
+            }
+        )
+
+    out = pd.DataFrame(rows)
+    out["epsilon_label"] = out["epsilon"].apply(lambda x: "∞ (no privacy)" if not np.isfinite(x) else f"ε={x:g}")
+    return out.sort_values("epsilon", key=lambda s: s.replace({np.inf: 1e18}))
 
 
 # =============================================================================
-# LIME EXPLANATION
+# EXPLAINABILITY (SHAP)
 # =============================================================================
+
+
+@st.cache_data
+def load_shap_feature_importance(top_k: int = 30):
+    """Load global (dataset-level) SHAP feature importance computed offline."""
+    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    csv_path = os.path.join(repo_root, "04_Results", "shap_feature_importance.csv")
+    if not os.path.exists(csv_path):
+        return None
+    df = pd.read_csv(csv_path)
+    if df.empty or "feature" not in df.columns or "mean_shap" not in df.columns:
+        return None
+    df = df.copy()
+    df["mean_shap"] = pd.to_numeric(df["mean_shap"], errors="coerce")
+    df = df.dropna(subset=["mean_shap"]).sort_values("mean_shap", ascending=False)
+    return df.head(int(top_k)).reset_index(drop=True)
+
 
 @st.cache_data(show_spinner=False)
-def generate_lime_explanation(text, num_features=6, num_samples=60):
-    """Generate a real LIME explanation for the BERT sentiment model."""
+def generate_shap_text_explanation(text: str, max_evals: int = 200):
+    """Generate a SHAP text explanation for the BERT sentiment model.
+
+    Returns:
+        (html, token_df, error)
+
+    Notes:
+        - We embed `shap.getjs()` to make Streamlit rendering reliable.
+        - We also return a token importance table as a robust fallback if HTML rendering is blocked.
+    """
+    try:
+        import shap
+    except Exception as exc:
+        return None, None, f"SHAP unavailable: {exc}"
+
     pipe = load_bert_pipeline()
     if pipe is None:
-        return None, None
+        return None, None, "BERT pipeline unavailable. Install `transformers` + `torch` to enable SHAP."
 
-    explainer = load_lime_explainer()
-    explanation = explainer.explain_instance(
-        str(text),
-        classifier_fn=lambda texts: bert_predict_proba(pipe, texts),
-        num_features=num_features,
-        num_samples=num_samples,
-        top_labels=2,
+    tokenizer = getattr(pipe, "tokenizer", None)
+    if tokenizer is None:
+        return None, None, "Tokenizer unavailable on the BERT pipeline."
+
+    masker = shap.maskers.Text(tokenizer)
+
+    def _predict(texts):
+        return bert_predict_proba(pipe, texts)
+
+    explainer = shap.Explainer(
+        _predict,
+        masker,
+        output_names=["NEGATIVE", "POSITIVE"],
+        algorithm="partition",
     )
 
-    available_labels = []
+    shap_values = explainer([str(text)], max_evals=int(max_evals))
+
+    token_df = None
     try:
-        available_labels = list(explanation.available_labels())
+        sv0 = shap_values[0]
+        raw_tokens = getattr(sv0, "data", None)
+        if raw_tokens is None:
+            tokens = []
+        elif isinstance(raw_tokens, (list, tuple, np.ndarray)):
+            tokens = [str(t) for t in list(raw_tokens)]
+        else:
+            # Fallback: if SHAP returns a single string, approximate tokens by whitespace.
+            tokens = str(raw_tokens).split()
+
+        values = np.array(getattr(sv0, "values", []), dtype=float)
+        if tokens and values.size:
+            if values.ndim == 2 and values.shape[1] == 2:
+                neg = values[:, 0]
+                pos = values[:, 1]
+            else:
+                neg = values.reshape(-1)
+                pos = np.zeros_like(neg)
+
+            # Align token/value lengths if needed.
+            n = int(min(len(tokens), len(neg)))
+            tokens = tokens[:n]
+            neg = neg[:n]
+            pos = pos[:n]
+
+            token_df = pd.DataFrame(
+                {
+                    "token": tokens,
+                    "shap_NEGATIVE": neg,
+                    "shap_POSITIVE": pos,
+                    "abs_total": np.abs(neg) + np.abs(pos),
+                }
+            ).sort_values("abs_total", ascending=False)
     except Exception:
-        available_labels = []
+        token_df = None
 
-    label_to_use = 0 if 0 in available_labels else (available_labels[0] if available_labels else None)
-    if label_to_use is None:
-        return explanation, []
-
-    return explanation.as_list(label=label_to_use), explanation.as_html()
-
-
-def get_counterfactual_audit_names(max_per_group=2):
-    """Build a balanced set of names for counterfactual auditing."""
-    rows = []
-    for raw_name, (race, gender) in NAME_DEMOGRAPHICS.items():
-        rows.append(
-            {
-                "Name": raw_name.title(),
-                "Race": race,
-                "Gender": gender,
-                "WordCount": len(raw_name.split()),
-            }
-        )
-
-    names_df = pd.DataFrame(rows)
-    names_df = names_df.sort_values(
-        ["Race", "Gender", "WordCount", "Name"],
-        ascending=[True, True, False, True],
-    )
-    names_df = names_df.groupby(["Race", "Gender"], as_index=False).head(max_per_group)
-    names_df["Demographic"] = names_df["Race"] + " " + names_df["Gender"]
-    return names_df[["Name", "Race", "Gender", "Demographic"]].reset_index(drop=True)
-
-
-def compute_counterfactual_table(bert_pipe, baseline_model, dp_post, known_groups, complaint_text, base_bert_score):
-    """Compute counterfactual (name-swap) BERT scores + baseline/mitigated decisions.
-
-    If `bert_pipe` is None (e.g., lightweight cloud deployment), scores are simulated as:
-    clip(base_bert_score + bias_factor(name), -1, 1).
-    """
-    counterfactual_names = get_counterfactual_audit_names(max_per_group=2)
-
-    rows = []
-    for item in counterfactual_names.to_dict("records"):
-        name = item["Name"]
-        race = item["Race"]
-        gender = item["Gender"]
-        demo = item["Demographic"]
-
-        if bert_pipe is None:
-            cf_bert, _, _, _ = simulate_biased_score(float(base_bert_score), name)
+    try:
+        html_obj = shap.plots.text(shap_values[0])
+        if html_obj is None:
+            plot_html = None
         else:
-            cf_text = f"{name} {complaint_text}"
-            cf_bert = float(get_bert_score(bert_pipe, cf_text))
+            plot_html = getattr(html_obj, "data", None)
+            if plot_html is None:
+                plot_html = str(html_obj)
 
-        X_cf = np.array([[cf_bert]], dtype=float)
-        base_cf = int(baseline_model.predict(X_cf)[0])
+        if plot_html is not None and str(plot_html).strip().lower() == "none":
+            plot_html = None
 
-        if race in known_groups:
-            mit_cf = int(dp_post.predict(X_cf, sensitive_features=np.array([race]))[0])
-        else:
-            mit_cf = base_cf
+        if plot_html is None:
+            return None, token_df, None
 
-        baseline_label = "Negative" if base_cf == 0 else "Not Negative"
-        mitigated_label = "Negative" if mit_cf == 0 else "Not Negative"
-        changed = baseline_label != mitigated_label
-        baseline_wait = "2-4 hours" if base_cf == 0 else "8+ hours"
-        mitigated_wait = "2-4 hours" if mit_cf == 0 else "8+ hours"
+        js = shap.getjs()
+        html = f"""
+        <html>
+            <head>{js}</head>
+            <body style="margin:0; padding:0;">{plot_html}</body>
+        </html>
+        """
+    except Exception as exc:
+        return None, token_df, f"Failed to render SHAP HTML: {exc}"
 
-        rows.append(
-            {
-                "Name": name,
-                "Race": race,
-                "Gender": gender,
-                "Demographic": demo,
-                "BERT Score": round(float(cf_bert), 3),
-                "Baseline": baseline_label,
-                "After DP Mitigation": mitigated_label,
-                "Baseline Response Time": baseline_wait,
-                "After Mitigation Response Time": mitigated_wait,
-                "Mitigation Changed?": "Yes" if changed else "No",
-                "Decision Shift": f"{baseline_label} -> {mitigated_label}" if changed else "No change",
-            }
-        )
+    return html, token_df, None
 
-    df = pd.DataFrame(rows)
-    df = df.sort_values(["Race", "Gender", "Name"]).reset_index(drop=True)
 
-    # Summary: how inconsistent are decisions across the same complaint?
-    baseline_negative = int((df["Baseline"] == "Negative").sum())
-    mitigated_negative = int((df["After DP Mitigation"] == "Negative").sum())
-    baseline_unique = int(df["Baseline"].nunique())
-    mitigated_unique = int(df["After DP Mitigation"].nunique())
-    changed_count = int((df["Mitigation Changed?"] == "Yes").sum())
+# =============================================================================
+# NAME-SWAP COMPARISON (same complaint, 40 different names)
+# =============================================================================
 
-    by_demo = (
-        df.groupby("Demographic")
-        .agg(
-            Names_Audited=("Name", "count"),
-            Baseline_Negative=("Baseline", lambda s: int((s == "Negative").sum())),
-            Mitigated_Negative=("After DP Mitigation", lambda s: int((s == "Negative").sum())),
-        )
-        .reset_index()
+NAME_SWAP_SYSTEMS = [
+    ("RoBERTa (Twitter)", "RoBERTa_score"),
+    ("DistilBERT", "BERT_score"),
+    ("VADER", "VADER_compound"),
+    ("TextBlob", "TextBlob_polarity"),
+]
+
+
+def name_swap_section():
+    """Visualize the core research question: does changing only the customer's
+    name change the sentiment score? Every variant shares identical complaint
+    wording, so score differences are attributable to the name alone."""
+    df = load_project_dataset()
+    available = [(n, c) for n, c in NAME_SWAP_SYSTEMS if c in df.columns]
+    if not available:
+        return
+
+    st.markdown("---")
+    st.markdown("## 🔄 Same Complaint, Different Names")
+    st.caption(
+        "Each bar is the same complaint text with a different customer name "
+        "(Bertrand & Mullainathan–style controlled comparison). Any score "
+        "difference is caused by the name alone."
     )
-    by_demo["Baseline Negative Rate"] = (by_demo["Baseline_Negative"] / by_demo["Names_Audited"]).round(3)
-    by_demo["Mitigated Negative Rate"] = (by_demo["Mitigated_Negative"] / by_demo["Names_Audited"]).round(3)
-    by_demo["Rate Change"] = (
-        by_demo["Mitigated Negative Rate"] - by_demo["Baseline Negative Rate"]
-    ).round(3)
-    by_demo = by_demo[
-        [
-            "Demographic",
-            "Names_Audited",
-            "Baseline_Negative",
-            "Mitigated_Negative",
-            "Baseline Negative Rate",
-            "Mitigated Negative Rate",
-            "Rate Change",
-        ]
-    ]
 
-    summary = {
-        "names_audited": int(len(df)),
-        "baseline_negative": baseline_negative,
-        "mitigated_negative": mitigated_negative,
-        "baseline_unique": baseline_unique,
-        "mitigated_unique": mitigated_unique,
-        "changed_count": changed_count,
-        "baseline_fast_responses": baseline_negative,
-        "mitigated_fast_responses": mitigated_negative,
-    }
+    templates = (
+        df.drop_duplicates("Template_Number")
+          .sort_values("Template_Number")[
+              ["Template_Number", "Template_Category", "Name", "Full_Text"]
+          ]
+          .set_index("Template_Number")
+    )
 
-    return df, by_demo, summary
+    def _template_label(tmpl_num):
+        row = templates.loc[tmpl_num]
+        body = extract_complaint_body(row["Name"], row["Full_Text"])
+        return f"{str(row['Template_Category']).title()} — '{body}'"
+
+    c1, c2 = st.columns([2, 1])
+    with c1:
+        tmpl_num = st.selectbox(
+            "Complaint template",
+            options=templates.index.tolist(),
+            format_func=_template_label,
+            key="name_swap_template",
+        )
+    with c2:
+        sys_label = st.selectbox(
+            "Scoring system",
+            options=[n for n, _ in available],
+            index=0,
+            key="name_swap_system",
+        )
+
+    score_col = dict(available)[sys_label]
+    sub = df[df["Template_Number"] == tmpl_num].copy()
+
+    max_i = sub[score_col].idxmax()
+    min_i = sub[score_col].idxmin()
+    spread = sub.loc[max_i, score_col] - sub.loc[min_i, score_col]
+
+    m1, m2, m3 = st.columns(3)
+    m1.metric("Score spread (max − min)", f"{spread:.4f}")
+    m2.metric(
+        "Most negative",
+        f"{sub.loc[min_i, 'Name']}",
+        f"{sub.loc[min_i, score_col]:.4f}",
+    )
+    m3.metric(
+        "Least negative",
+        f"{sub.loc[max_i, 'Name']}",
+        f"{sub.loc[max_i, score_col]:.4f}",
+    )
+
+    chart = (
+        alt.Chart(sub)
+        .mark_bar()
+        .encode(
+            x=alt.X("Name:N", sort="-y", title=None,
+                    axis=alt.Axis(labelAngle=-45)),
+            y=alt.Y(f"{score_col}:Q", title="Sentiment score",
+                    scale=alt.Scale(zero=False)),
+            color=alt.Color("Demographic_Group:N", title="Demographic"),
+            tooltip=[
+                "Name", "Demographic_Group",
+                alt.Tooltip(f"{score_col}:Q", format=".4f"),
+            ],
+        )
+        .properties(height=380)
+    )
+    st.altair_chart(chart, width="stretch")
+
+    table_cols = ["Name", "Demographic_Group", score_col]
+    display = sub.sort_values(score_col).copy()
+    if score_col == "BERT_score":
+        baseline_model, *_ = load_dp_mitigation_models()
+        display["Baseline routing"] = np.where(
+            baseline_model.predict(
+                display["BERT_score"].to_numpy().reshape(-1, 1)
+            ) == 1,
+            "Standard queue",
+            "Escalated (urgent)",
+        )
+        table_cols.append("Baseline routing")
+        n_dep = int((display["Baseline routing"] == "Standard queue").sum())
+        st.caption(
+            f"Under the baseline routing model, **{n_dep}/40** names are "
+            "deprioritized to the standard queue for this exact complaint — "
+            "the rest get escalated. This is how a small per-score difference "
+            "becomes a categorical routing difference at a decision threshold."
+        )
+    st.dataframe(
+        display[table_cols].rename(columns={score_col: "Score"}),
+        width="stretch",
+        hide_index=True,
+    )
 
 
 # =============================================================================
@@ -660,76 +881,225 @@ def main():
 
     st.markdown("---")
 
-    # Optional: if Transformers is installed, use real BERT scores for counterfactuals
     bert_pipe = load_bert_pipeline()
 
     # Sidebar: Pre-loaded examples
     st.sidebar.header("📋 Pre-loaded Examples")
     st.sidebar.markdown("Click to load an example:")
 
-    examples = load_preloaded_examples()
+    mitigation_method = st.session_state.get(
+        "mitigation_method",
+        "Post-processing: ThresholdOptimizer (DP)",
+    )
+    examples = load_preloaded_examples(str(mitigation_method))
 
     selected_example = st.sidebar.radio(
         "Choose example:", list(examples.keys()), index=0
     )
 
+    st.sidebar.subheader("⚖️ Mitigation technique")
+    mitigation_method = st.sidebar.selectbox(
+        "Choose mitigation method",
+        options=[
+            "Post-processing: ThresholdOptimizer (DP)",
+            "In-processing: Exponentiated Gradient (DP)",
+        ],
+        index=0,
+        key="mitigation_method",
+    )
+
+    input_mode = st.sidebar.radio(
+        "Input source",
+        ["Pre-loaded dataset example", "Custom input"],
+        index=0,
+    )
+    custom_mode = input_mode == "Custom input"
+
+    if "analysis" not in st.session_state:
+        st.session_state.analysis = None
+    if "analysis_example_key" not in st.session_state:
+        st.session_state.analysis_example_key = None
+
     # Input section
     col1, col2 = st.columns([1, 2])
 
     with col1:
-        default_name = examples[selected_example]["name"]
-        default_text = examples[selected_example]["full_text"]
+        if custom_mode:
+            customer_name = st.text_input(
+                "👤 Customer Name",
+                value="Jamal",
+                help="Names are mapped to demographic signals using the project's 40-name dictionary; unrecognised names use the neutral baseline.",
+            )
+            complaint_text = st.text_area(
+                "💬 Complaint Text",
+                value="Jamal is angry about the delayed delivery",
+                height=120,
+            )
+        else:
+            default_name = examples[selected_example]["name"]
+            default_text = examples[selected_example]["full_text"]
 
-        customer_name = st.text_input(
-            "👤 Customer Name",
-            value=default_name,
-            disabled=True,
-        )
-        complaint_text = st.text_area(
-            "💬 Complaint Text",
-            value=default_text,
-            height=120,
-            disabled=True,
-        )
+            customer_name = st.text_input(
+                "👤 Customer Name",
+                value=default_name,
+                disabled=True,
+            )
+            complaint_text = st.text_area(
+                "💬 Complaint Text",
+                value=default_text,
+                height=120,
+                disabled=True,
+            )
 
     with col2:
-        st.info("""
-        **How this works:**
-        1. Choose one of the pre-loaded dataset examples
-        2. The app uses the stored BERT score from `sentiment_scores_all_systems.csv`
-        3. It shows the **baseline decision** vs the **post-processed mitigation**
-           (ThresholdOptimizer with Demographic Parity)
-        4. The explanation highlights which complaint words push sentiment
+        if custom_mode:
+            st.info("""
+            **How this works (custom input):**
+                    1. Enter any customer name and complaint text
+                    2. The app scores the text live with DistilBERT (VADER fallback if unavailable)
+                    3. It shows a **routing decision** (a small classifier trained on the project dataset)
+                       and then applies a fairness mitigation method:
+                       - **Post-processing:** ThresholdOptimizer (Demographic Parity)
+                       - **In-processing:** Exponentiated Gradient (Demographic Parity)
+                    4. The explanation highlights which complaint words push sentiment
 
-        The inputs are locked so the demo always uses exact dataset rows.
-        """)
+            The name only affects the sensitive feature used by the fairness mitigator —
+            it does not change the sentiment score itself.
+            """)
+        else:
+            st.info("""
+            **How this works:**
+                    1. Choose one of the pre-loaded dataset examples
+                    2. The app uses the stored BERT score from `sentiment_scores_all_systems.csv`
+                        3. It shows a **routing decision** (a small classifier trained on the project dataset)
+                                and then applies a fairness mitigation method:
+                                - **Post-processing:** ThresholdOptimizer (Demographic Parity)
+                                - **In-processing:** Exponentiated Gradient (Demographic Parity)
+                  *Note:* `Escalated (urgent)` means the complaint is flagged negative and sent to a
+                  human — the better outcome for the customer. `Standard queue` means deprioritized.
+            4. The explanation highlights which complaint words push sentiment
+
+            The inputs are locked so the demo always uses exact dataset rows.
+            """)
+
+    # Persist analysis results across Streamlit reruns so other UI interactions
+    # (e.g., privacy sweep button clicks) don't make results disappear.
+    if custom_mode:
+        current_example_key = (
+            "custom",
+            str(customer_name),
+            str(complaint_text),
+            str(mitigation_method),
+        )
+    else:
+        current_example_key = (
+            str(examples[selected_example]["name"]),
+            str(examples[selected_example]["full_text"]),
+            str(mitigation_method),
+        )
+    if st.session_state.analysis_example_key != current_example_key:
+        st.session_state.analysis = None
+        st.session_state.analysis_example_key = None
 
     # Analyze button
-    if st.button("🔍 Analyze Sentiment", type="primary", use_container_width=True):
-        example_row = get_dataset_example(
-            examples[selected_example]["name"],
-            examples[selected_example]["full_text"],
-        )
-        if example_row is None:
-            st.error("Couldn't find the selected pre-loaded example in sentiment_scores_all_systems.csv.")
-            return
+    analyze_clicked = st.button("🔍 Analyze Sentiment", type="primary", width="stretch")
+    if analyze_clicked:
+        if custom_mode:
+            full_text = str(complaint_text).strip()
+            if not full_text:
+                st.error("Please enter a complaint text to analyze.")
+                st.stop()
 
-        full_text = example_row["full_text"]
+            race, gender = detect_demographic(customer_name)
+            example_row = {
+                "name": str(customer_name),
+                "sentence_id": None,
+                "template_category": "custom",
+                "emotion_intensity": "",
+                "full_text": full_text,
+                "race": race,
+                "gender": gender,
+            }
+
+            if bert_pipe is not None:
+                probs = bert_predict_proba(bert_pipe, [full_text])[0]
+                p_neg, p_pos = float(probs[0]), float(probs[1])
+                bert_score = float(p_pos - p_neg)
+                bert_label = "NEGATIVE" if p_neg >= p_pos else "POSITIVE"
+                bert_confidence = float(max(p_neg, p_pos))
+                score_source = "Live DistilBERT prediction"
+            else:
+                vs = load_vader().polarity_scores(full_text)
+                bert_score = float(vs["compound"])
+                bert_label = "NEGATIVE" if vs["compound"] < 0 else "POSITIVE"
+                bert_confidence = float(abs(vs["compound"]))
+                score_source = "VADER compound (transformers unavailable)"
+        else:
+            example_row = get_dataset_example(
+                examples[selected_example]["name"],
+                examples[selected_example]["full_text"],
+            )
+            if example_row is None:
+                st.error("Couldn't find the selected pre-loaded example in sentiment_scores_all_systems.csv.")
+                st.stop()
+
+            full_text = example_row["full_text"]
+            bert_score = float(example_row["bert_score"])
+            bert_label = str(example_row.get("bert_label", ""))
+            bert_confidence = float(example_row.get("bert_confidence", 0.0))
+            race = example_row["race"]
+            gender = example_row["gender"]
+            score_source = "Stored dataset BERT score"
+
         complaint_body = extract_complaint_body(customer_name, full_text)
-        bert_score = float(example_row["bert_score"])
-        race = example_row["race"]
-        gender = example_row["gender"]
 
         # Load mitigation models (trained from the project dataset)
-        baseline_model, dp_post, known_groups = load_dp_mitigation_models()
+        baseline_model, dp_post, dp_eg, known_groups = load_dp_mitigation_models()
 
         X_one = np.array([[bert_score]], dtype=float)
         baseline_pred = int(baseline_model.predict(X_one)[0])
-        if race in known_groups:
-            mitigated_pred = int(dp_post.predict(X_one, sensitive_features=np.array([race]))[0])
-        else:
-            mitigated_pred = baseline_pred
+        mitigated_pred, mitigation_method_label = _predict_mitigated_label(
+            mitigation_method,
+            X_one=X_one,
+            race=str(race),
+            baseline_model=baseline_model,
+            dp_post=dp_post,
+            dp_eg=dp_eg,
+            known_groups=known_groups,
+        )
 
+        st.session_state.analysis = {
+            "example_row": example_row,
+            "complaint_body": complaint_body,
+            "bert_score": bert_score,
+            "bert_label": bert_label,
+            "bert_confidence": bert_confidence,
+            "race": race,
+            "gender": gender,
+            "baseline_pred": baseline_pred,
+            "mitigated_pred": mitigated_pred,
+            "mitigation_method": mitigation_method,
+            "mitigation_method_label": mitigation_method_label,
+            "bert_pipe_is_none": (bert_pipe is None),
+            "score_source": score_source,
+            "custom": custom_mode,
+        }
+        st.session_state.analysis_example_key = current_example_key
+
+    analysis = st.session_state.analysis
+    if analysis is not None and st.session_state.analysis_example_key == current_example_key:
+        example_row = analysis["example_row"]
+        bert_score = float(analysis["bert_score"])
+        bert_label = str(analysis.get("bert_label", ""))
+        bert_confidence = float(analysis.get("bert_confidence", 0.0))
+        race = str(analysis["race"])
+        gender = str(analysis["gender"])
+        baseline_pred = int(analysis["baseline_pred"])
+        mitigated_pred = int(analysis["mitigated_pred"])
+        mitigation_method = str(analysis.get("mitigation_method", "Post-processing: ThresholdOptimizer (DP)"))
+        mitigation_method_label = str(analysis.get("mitigation_method_label", "ThresholdOptimizer (DP)"))
+        score_source = str(analysis.get("score_source", "Stored dataset BERT score"))
+        is_custom = bool(analysis.get("custom", False))
         # Detected demographic
         st.markdown("---")
         if race != "Unknown":
@@ -741,16 +1111,54 @@ def main():
         # Results: Side by side
         st.markdown("## 📊 Results")
 
-        summary_bundle = load_mitigation_summary()
-        if summary_bundle is not None:
-            summary, diff_df = summary_bundle
-            st.markdown("### 📈 Dataset-Level Fairness (Baseline vs DP Mitigation)")
-            st.caption(
-                "These values come from the saved project audit CSV over the full dataset. "
-                "They stay fixed even when you change a single person name in the demo input."
-            )
+        st.markdown("### 🧾 Sentiment score")
+        st.caption(
+            f"Score source: {score_source}. "
+            "Some words can push towards POSITIVE in local explanations while the overall prediction remains NEGATIVE."
+        )
+        s1, s2, s3 = st.columns(3)
+        s1.metric("BERT Label", bert_label if bert_label else "(missing)")
+        s2.metric("BERT Confidence", f"{bert_confidence:.3f}")
+        s3.metric("BERT Score", f"{bert_score:.3f}")
+
+        st.markdown("### 🚦 Routing decision (baseline vs fairness mitigation)")
+        st.caption(
+            "This routing model is trained on the project dataset using a VADER-derived target label. "
+            "**Escalated (urgent)** = flagged as strongly negative and sent to a human — the better outcome for the customer. "
+            "**Standard queue** = deprioritized. Mitigation changes the *decision*, not the sentiment score."
+        )
+
+        r0, r1, r2 = st.columns(3)
+        r0.metric("Mitigation method", mitigation_method_label)
+        baseline_decision_label = decision_label(baseline_pred)
+        mitigated_decision_label = decision_label(mitigated_pred)
+        decision_shift = f"{baseline_decision_label} -> {mitigated_decision_label}"
+        r1.metric("Baseline decision", baseline_decision_label)
+        r2.metric("After mitigation", mitigated_decision_label)
+        if baseline_pred != mitigated_pred:
+            if mitigated_pred == 0:
+                st.success(
+                    f"Mitigation changed this routing decision: {decision_shift}. "
+                    "The baseline was deprioritizing this complaint — mitigation restored urgent treatment."
+                )
+            else:
+                st.success(
+                    f"Mitigation changed this routing decision: {decision_shift}. "
+                    "The baseline was escalating this complaint — mitigation moved it to the standard queue."
+                )
+        elif race == "White" and baseline_pred == 1:
+            st.info(f"White reference example: {decision_shift} after mitigation.")
+        else:
+            st.info(f"No routing change for this example: {decision_shift}.")
+
+        st.markdown("### 📈 Dataset-Level Fairness (Baseline vs Mitigation)")
+        st.caption(
+            "These values are computed over the full dataset (not just this one example). "
+            "They stay fixed even when you change a single person name in the demo input."
+        )
+        try:
+            summary, diff_df = compute_dataset_level_fairness_summary(mitigation_method)
             if not diff_df.empty:
-                st.markdown("#### Dataset-Level Before vs After Mitigation")
                 metric_cols = st.columns(len(diff_df))
                 for col, row in zip(metric_cols, diff_df.to_dict("records")):
                     change_value = float(row["Change"])
@@ -763,234 +1171,209 @@ def main():
                         f"Before: {row['Before Mitigation']:.3f} | {row['Impact']}"
                     )
 
-                with st.expander("Show fixed dataset audit tables"):
+                with st.expander("Show dataset audit tables"):
                     st.dataframe(diff_df, width="stretch", hide_index=True)
-                    st.markdown("##### Raw audited rows from the CSV")
+                    st.markdown("##### Raw audited rows")
                     st.dataframe(summary, width="stretch", hide_index=True)
-            st.markdown("---")
+        except Exception as exc:
+            st.warning(f"Dataset-level fairness summary unavailable: {exc}")
 
-        # Counterfactual summary for THIS complaint (same text, different names)
-        with st.spinner("Computing counterfactual name-swap behavior..."):
-            cf_df, _cf_group_df, cf_summary = compute_counterfactual_table(
-                bert_pipe, baseline_model, dp_post, known_groups, complaint_body, bert_score
-            )
-        base_neg = cf_summary["baseline_negative"]
-        mit_neg = cf_summary["mitigated_negative"]
-        base_unique = cf_summary["baseline_unique"]
-        mit_unique = cf_summary["mitigated_unique"]
-
-        st.markdown("### 🔄 Counterfactual Spread (Same Complaint, Different Names)")
+        # Explainability
+        st.markdown("## 🧠 Explainability")
         st.caption(
-            "This audits the same complaint across a balanced set of names. It shows whether changing only the name changes routing decisions, and whether DP mitigation reduces that variability."
-        )
-        if bert_pipe is None:
-            st.info("Lightweight deployment: counterfactual BERT scores are simulated (Transformers/Torch not installed).")
-        c1, c2, c3, c4 = st.columns(4)
-        c1.metric("Names Audited", str(cf_summary["names_audited"]))
-        c2.metric(
-            "Baseline: # Negative",
-            str(cf_summary["baseline_negative"]),
-            delta=f"{cf_summary['mitigated_negative'] - cf_summary['baseline_negative']:+d} after mitigation",
-        )
-        c3.metric("Decision Variability", f"{base_unique}→{mit_unique} unique decisions")
-
-        c4.metric("Names With Decision Change", str(cf_summary["changed_count"]))
-
-        if mit_unique < base_unique:
-            st.success("Mitigation reduced decision variability across names for this complaint.")
-        elif mit_unique == base_unique:
-            st.info("For this complaint, mitigation did not reduce variability across the audited names.")
-        else:
-            st.warning("Mitigation increased variability for this audited set (rare; verify with dataset-level table above).")
-
-        if cf_summary["changed_count"] > 0:
-            st.caption("Rows marked `Yes` in `Mitigation Changed?` are the names where post-processing changed the final routing decision.")
-
-        st.markdown("#### Response Time Impact")
-        st.caption(
-            "In this demo, complaints routed as `Negative` are treated as faster-priority cases."
-        )
-        r1, r2, r3 = st.columns(3)
-        r1.metric(
-            "Baseline: Faster Responses",
-            str(cf_summary["baseline_fast_responses"]),
-        )
-        r2.metric(
-            "After Mitigation: Faster Responses",
-            str(cf_summary["mitigated_fast_responses"]),
-            delta=f"{cf_summary['mitigated_fast_responses'] - cf_summary['baseline_fast_responses']:+d}",
-        )
-        r3.metric(
-            "Longer-Wait Cases",
-            str(cf_summary["names_audited"] - cf_summary["mitigated_fast_responses"]),
+            "SHAP attributes how much each word/token pushes the BERT sentiment prediction towards NEGATIVE vs POSITIVE. "
+            "LIME views come from pre-computed explanations of the project's TF-IDF model."
         )
 
-        st.markdown("#### By Name")
-        st.dataframe(cf_df, width="stretch", hide_index=True)
-        st.markdown("---")
+        tabs = st.tabs([
+            "Local explanation (selected text)",
+            "Global importance (saved)",
+            "Saved LIME example",
+        ])
 
-        # If the user example doesn't show a change, show a guaranteed dataset-based example
-        if mit_unique == base_unique:
-            st.markdown("### ✅ Showcase Example (Guaranteed Visible Mitigation Effect)")
-            st.caption(
-                "This example is automatically selected from the project dataset to show the largest reduction in race-wise outcome gap "
-                "after Demographic Parity mitigation."
-            )
-            showcase = build_showcase_template()
-            if showcase is None:
-                st.warning("Couldn't find a showcase template. (This is unexpected.)")
+        with tabs[0]:
+            pipe = load_bert_pipeline()
+            if pipe is None:
+                st.info(
+                    "Local SHAP needs the Transformers BERT pipeline. Install `transformers` + `torch` to enable it."
+                )
             else:
-                showcase_summary, showcase_df = showcase
-                s1, s2, s3 = st.columns(3)
-                s1.metric("Template #", str(showcase_summary["template_number"]))
-                s2.metric("Race-wise outcome gap", f"{showcase_summary['baseline_gap']} → {showcase_summary['mitigated_gap']}")
-                s3.metric("Gap reduction", f"-{showcase_summary['improvement']}")
-                st.dataframe(showcase_df, width="stretch", hide_index=True)
-                st.markdown("---")
+                probs = bert_predict_proba(pipe, [str(example_row["full_text"])])[0]
+                p_neg, p_pos = float(probs[0]), float(probs[1])
+                live_label = "NEGATIVE" if p_neg >= p_pos else "POSITIVE"
 
+                l1, l2, l3 = st.columns(3)
+                l1.metric("Live BERT Label", live_label)
+                l2.metric("P(NEGATIVE)", f"{p_neg:.3f}")
+                l3.metric("P(POSITIVE)", f"{p_pos:.3f}")
 
-        if False:
-            st.markdown("""
-            <div style='background-color: #FFCDD2; padding: 1.5rem; 
-                        border-radius: 10px; border: 2px solid #F44336;'>
-                <h3 style='color: #C62828; text-align: center;'>
-                    ⚠️ BASELINE AI (Before Mitigation)
-                </h3>
-            </div>
-            """, unsafe_allow_html=True)
+                c1, c2 = st.columns([1, 1])
+                with c1:
+                    max_evals = st.slider(
+                        "SHAP max evaluations",
+                        min_value=50,
+                        max_value=600,
+                        value=200,
+                        step=50,
+                        help="Lower = faster, higher = more accurate attribution (but slower).",
+                    )
+                with c2:
+                    run_shap = st.button("Generate SHAP explanation", width="stretch")
 
-            # Severity/urgency derived from baseline negative probability
-            severity_biased = (
-                "Very Negative 🔴" if baseline_proba_neg >= 0.85 else
-                "Negative 🟠" if baseline_proba_neg >= 0.70 else
-                "Slightly Negative 🟡" if baseline_proba_neg >= 0.50 else
-                "Neutral/Positive 🟢"
-            )
-            urgency_biased = (
-                "CRITICAL" if baseline_proba_neg >= 0.85 else
-                "HIGH" if baseline_proba_neg >= 0.70 else
-                "MEDIUM" if baseline_proba_neg >= 0.50 else
-                "LOW"
-            )
-            wait_biased = (
-                "1-2 hours" if baseline_proba_neg >= 0.85 else
-                "2-4 hours" if baseline_proba_neg >= 0.70 else
-                "4-8 hours" if baseline_proba_neg >= 0.50 else
-                "8+ hours"
-            )
+                shap_key = (
+                    st.session_state.get("analysis_example_key"),
+                    int(max_evals),
+                )
+                if "shap_local" not in st.session_state:
+                    st.session_state.shap_local = {}
 
-            st.metric("BERT Score", f"{bert_score:.3f}")
-            st.write(f"**Baseline Decision:** {'Negative' if baseline_pred == 0 else 'Not Negative'}")
-            st.write(f"**Severity:** {severity_biased}")
-            st.write(f"**Urgency Level:** {urgency_biased}")
-            st.write(f"**Est. Response Time:** {wait_biased}")
-            st.error("No fairness constraint applied")
+                if run_shap:
+                    with st.spinner("Computing SHAP attributions..."):
+                        shap_html, token_df, shap_error = generate_shap_text_explanation(
+                            str(example_row["full_text"]),
+                            max_evals=int(max_evals),
+                        )
+                    st.session_state.shap_local[shap_key] = {
+                        "html": shap_html,
+                        "token_df": token_df,
+                        "error": shap_error,
+                    }
 
-        if False:
-            st.markdown("""
-            <div style='background-color: #C8E6C9; padding: 1.5rem; 
-                        border-radius: 10px; border: 2px solid #4CAF50;'>
-                <h3 style='color: #2E7D32; text-align: center;'>
-                    ✅ MITIGATED AI (After Mitigation)
-                </h3>
-            </div>
-            """, unsafe_allow_html=True)
+                cached = st.session_state.shap_local.get(shap_key)
+                if cached is None:
+                    st.info("Click **Generate SHAP explanation** to compute attributions.")
+                else:
+                    shap_err = cached.get("error")
+                    shap_html = cached.get("html")
+                    token_df = cached.get("token_df")
 
-            # After mitigation: decision may change due to group-conditional thresholding
-            severity_fair = "Negative 🟠" if mitigated_pred == 0 else "Neutral/Positive 🟢"
-            urgency_fair = "HIGH" if mitigated_pred == 0 else "LOW"
-            wait_fair = "2-4 hours" if mitigated_pred == 0 else "8+ hours"
+                    if shap_html:
+                        components.html(shap_html, height=650, scrolling=True)
+                    if token_df is not None:
+                        st.markdown("#### Token contributions (fallback view)")
+                        st.dataframe(
+                            token_df.head(40),
+                            width="stretch",
+                            hide_index=True,
+                        )
+                    if shap_err:
+                        with st.expander("SHAP render details", expanded=False):
+                            st.caption("The interactive HTML view could not be rendered, but the fallback token table may still be available.")
+                            st.code(str(shap_err))
 
-            st.metric("BERT Score", f"{bert_score:.3f}")
-            st.write(f"**Mitigated Decision:** {'Negative' if mitigated_pred == 0 else 'Not Negative'}")
-            st.write(f"**Severity:** {severity_fair}")
-            st.write(f"**Urgency Level:** {urgency_fair}")
-            st.write(f"**Est. Response Time:** {wait_fair}")
-            st.success("Mitigation applied: ThresholdOptimizer (Demographic Parity) ✓")
+                    if (not shap_html) and (token_df is None) and (not shap_err):
+                        st.warning(
+                            "SHAP ran but returned no renderable output. Try increasing **SHAP max evaluations** or rerun."
+                        )
 
-        # Mitigation alert
-        if race != "Unknown":
-            st.markdown("---")
-            changed = (baseline_pred != mitigated_pred)
-            st.markdown(f"""
-            
-            """, unsafe_allow_html=True)
+        with tabs[1]:
+            imp = load_shap_feature_importance(top_k=40)
+            if imp is None:
+                st.info("No saved SHAP table found at `04_Results/shap_feature_importance.csv`.")
+            else:
+                st.markdown("### Top features by mean |SHAP|")
+                st.dataframe(imp, width="stretch", hide_index=True)
 
-        # Explanation
-        st.markdown("## 🔬 LIME Explanation")
+        with tabs[2]:
+            if is_custom:
+                st.info("Saved LIME explanations exist only for pre-generated dataset examples.")
+            else:
+                lime_html, lime_file = load_precomputed_lime_html(
+                    race, gender, example_row.get("template_category", "")
+                )
+                if lime_html is None:
+                    st.info(
+                        "No pre-computed LIME explanation for this example. "
+                        "Saved LIME files exist for a fixed set of (race, gender, category) pairs."
+                    )
+                else:
+                    st.caption(
+                        f"Pre-computed LIME explanation (`{lime_file}`) — explains the project's "
+                        "TF-IDF + Logistic Regression model, not the BERT score above. "
+                        "Loaded on demand (the file is ~1.3 MB of interactive HTML)."
+                    )
+                    if st.button("Load saved LIME explanation", key="load_lime_btn"):
+                        components.html(lime_html, height=600, scrolling=True)
+    else:
+        st.info("Click **Analyze Sentiment** to generate results.")
+
+    name_swap_section()
+
+    st.markdown("---")
+    with st.expander("🔒 Privacy: Differential Privacy (DP)", expanded=False):
         st.caption(
-            "This demo uses precomputed LIME explanations from the project results so the UI stays responsive. "
-            "Mitigation changes the final decision rule, not the word-level explanation."
-        )
-        lime_html, lime_filename = load_precomputed_lime_html(
-            example_row["race"],
-            example_row["gender"],
-            example_row["template_category"],
+            "Note: in this app, 'DP mitigation' above refers to Demographic Parity. "
+            "This section is about Differential Privacy (ε, δ)."
         )
 
-        if lime_html is None:
-            st.info(
-                "A precomputed LIME explanation is not available for this exact demo example. "
-                "Use one of the angry/frustrated examples to see the full LIME view."
-            )
+        st.markdown("### Saved project outputs")
+        eps_df = load_privacy_artifact_csv("privacy_epsilon_analysis.csv")
+        if eps_df is None:
+            st.info("No saved privacy sweep found at `04_Results/privacy_epsilon_analysis.csv`.")
         else:
-            st.success(f"Loaded precomputed explanation: `{lime_filename}`")
-            styled_lime_html = f"""
-            <html>
-                <head>
-                    <style>
-                        body {{
-                            margin: 0;
-                            padding: 20px;
-                            background: linear-gradient(180deg, #fffaf2 0%, #fffdf8 100%) !important;
-                            color: #1f2937 !important;
-                            font-family: Georgia, "Times New Roman", serif;
-                        }}
-                        html, body {{
-                            color: #1f2937 !important;
-                        }}
-                        * {{
-                            color: #1f2937 !important;
-                        }}
-                        svg, div, p, span, text, h1, h2, h3, h4, h5, h6, td, th {{
-                            color: #1f2937 !important;
-                        }}
-                        .lime-wrap {{
-                            background: rgba(255, 255, 255, 0.96);
-                            border: 1px solid #e5d9c5;
-                            border-radius: 18px;
-                            box-shadow: 0 12px 30px rgba(120, 98, 62, 0.10);
-                            padding: 20px 24px;
-                        }}
-                        .lime-wrap svg {{
-                            background: transparent !important;
-                        }}
-                        .lime-wrap text {{
-                            fill: #1f2937 !important;
-                        }}
-                        .lime-wrap rect {{
-                            stroke: rgba(96, 72, 36, 0.35) !important;
-                        }}
-                        a {{
-                            color: #8b4513 !important;
-                        }}
-                        table {{
-                            border-collapse: collapse !important;
-                        }}
-                        td, th {{
-                            border-color: #eadfcd !important;
-                        }}
-                    </style>
-                </head>
-                <body>
-                    <div class="lime-wrap">
-                        {lime_html}
-                    </div>
-                </body>
-            </html>
-            """
-            components.html(styled_lime_html, height=900, scrolling=True)
-         
+            st.dataframe(eps_df, width="stretch", hide_index=True)
+
+        st.markdown("---")
+        st.markdown("### Run a Differential Privacy sweep (output perturbation)")
+        st.caption(
+            "This trains a small TF-IDF + Logistic Regression model and adds Laplace noise to the learned coefficients. "
+            "Lower ε means stronger privacy and typically more score drift."
+        )
+
+        eps_options = [0.001, 0.01, 0.1, 0.5, 1.0, 2.0, 5.0, 10.0, float("inf")]
+        default_eps = [0.01, 0.1, 1.0, 10.0, float("inf")]
+
+        def _fmt_eps(v):
+            return "∞ (no privacy)" if not np.isfinite(float(v)) else f"ε={float(v):g}"
+
+        selected_eps = st.multiselect(
+            "Epsilon values (ε)",
+            options=eps_options,
+            default=default_eps,
+            format_func=_fmt_eps,
+        )
+
+        c1, c2, c3 = st.columns(3)
+        with c1:
+            n_seeds = st.number_input("Random seeds", min_value=1, max_value=15, value=5, step=1)
+        with c2:
+            max_features = st.number_input("TF-IDF max features", min_value=50, max_value=2000, value=200, step=50)
+        with c3:
+            run_sweep = st.button("Run DP sweep", width="stretch")
+
+        if run_sweep:
+            if not selected_eps:
+                st.error("Select at least one ε value.")
+            else:
+                with st.spinner("Training models and applying DP noise..."):
+                    sweep_df = run_output_perturbation_sweep(
+                        epsilons=selected_eps,
+                        n_seeds=int(n_seeds),
+                        max_features=int(max_features),
+                        random_state=42,
+                    )
+
+                st.dataframe(
+                    sweep_df[[
+                        "epsilon_label",
+                        "accuracy_mean",
+                        "accuracy_std",
+                        "dem_parity_diff_mean",
+                        "dem_parity_diff_std",
+                        "prob_drift_mean",
+                        "prob_drift_std",
+                        "score_gap_mean",
+                        "score_gap_std",
+                    ]],
+                    width="stretch",
+                    hide_index=True,
+                )
+
+                chart_df = sweep_df.set_index("epsilon_label")[
+                    ["accuracy_mean", "dem_parity_diff_mean", "prob_drift_mean", "score_gap_mean"]
+                ]
+                st.line_chart(chart_df)
+
     # Footer
     st.markdown("---")
     st.markdown("""

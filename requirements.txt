@@ -1,35 +1,42 @@
+# CPU-only PyTorch (avoids multi-GB CUDA wheels on Linux)
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 # Sentiment Analysis
-vaderSentiment>=3.3.2
-textblob>=0.17.1
-transformers>=4.30.0
-torch>=2.0.0
+vaderSentiment==3.3.2
+textblob==0.20.1
+transformers==5.17.0
+torch==2.14.0+cpu
 
 # Data Processing
-pandas>=2.0.0
-numpy>=1.24.0
-scikit-learn>=1.3.0
+pandas==3.0.6
+numpy==2.4.6
+scikit-learn==1.9.1
 
 # Fairness & Bias
-fairlearn>=0.9.0
+fairlearn==0.14.0
 
 # Explainability
-shap>=0.42.0
-lime>=0.2.0
+shap==0.51.0
+lime==0.2.0.1
 
 # Privacy
-opacus>=1.4.0
+opacus==1.6.0
 
 # Visualization
-matplotlib>=3.7.0
-seaborn>=0.12.0
-plotly>=5.15.0
+matplotlib==3.11.2
+seaborn==0.13.2
+plotly==7.1.0
 
 # Demo App
-streamlit>=1.28.0
+streamlit==1.64.0
 
 # Statistical Testing
-scipy>=1.11.0
+scipy==1.17.1
 
 # Utilities
-tqdm>=4.65.0
-joblib>=1.3.0
+tqdm==4.70.1
+joblib==1.6.0
+
+# Optional: only needed for the report/ generators (gitignored, local only)
+# fpdf2>=2.8
+# python-pptx>=1.0

@@ -232,12 +232,16 @@ def run_full_analysis(df):
         ("VADER", "VADER_compound"),
         ("TextBlob", "TextBlob_polarity"),
         ("BERT", "BERT_score"),
+        ("RoBERTa", "RoBERTa_score"),
     ]
 
     all_bias_results = {}
     all_stat_results = {}
 
     for system_name, score_col in systems:
+        if score_col not in df.columns:
+            print(f"\n  Skipping {system_name}: column '{score_col}' not in dataset.")
+            continue
         print("\n" + "=" * 60)
         print(f"  ANALYSIS FOR: {system_name}")
         print("=" * 60)

@@ -353,8 +353,8 @@ if __name__ == "__main__":
 
     vectorizer = TfidfVectorizer(max_features=200, stop_words="english")
     X = vectorizer.fit_transform(df["Full_Text"])
-    y = df["label"].values
-    sensitive = df["Race"].values
+    y = df["label"].to_numpy()
+    sensitive = df["Race"].to_numpy()
 
     X_train, X_test, y_train, y_test, sens_train, sens_test = train_test_split(
         X, y, sensitive, test_size=0.3, random_state=42, stratify=y

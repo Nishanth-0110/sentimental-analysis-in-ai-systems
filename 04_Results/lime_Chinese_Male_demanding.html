@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_div8XXXSY4Y05KE6SP"></div>
+        <div class="lime top_div" id="top_divIS7D6B0Q4F4CC6M"></div>
         
         <script>
-        var top_div = d3.select('#top_div8XXXSY4Y05KE6SP').classed('lime top_div', true);
+        var top_div = d3.select('#top_divIS7D6B0Q4F4CC6M').classed('lime top_div', true);
         
             var pp_div = top_div.append('div')
                                 .classed('lime predict_proba', true);
             var pp_svg = pp_div.append('svg').style('width', '100%');
-            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.11631385079900436, 0.8836861492009956]);
+            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.14320947787574423, 0.8567905221242558]);
             
         
         var exp_div;
             var exp = new lime.Explanation(["Negative", "Positive"]);
         
                 exp_div = top_div.append('div').classed('lime explanation', true);
-                exp.show([["insists", 0.10247293335034446], ["compensation", 0.10008457633855992], ["inconvenience", 0.09846682914344133], ["Liu", -0.06258674362636536], ["on", 0.0012512706035189248], ["for", 0.0008564322956948157], ["the", 0.0005639696320557289]], 1, exp_div);
+                exp.show([["refund", 0.145418790419693], ["product", -0.11629090413868552], ["immediate", 0.08834691743211946], ["demands", 0.0875524883725205], ["defective", 0.08082332814054705], ["Ming", -0.035337654192052266], ["for", -0.007875366966810066], ["the", 0.0017046245233842939]], 1, exp_div);
                 
         var raw_div = top_div.append('div');
-            exp.show_raw_text([["insists", 4, 0.10247293335034446], ["compensation", 15, 0.10008457633855992], ["inconvenience", 36, 0.09846682914344133], ["Liu", 0, -0.06258674362636536], ["on", 12, 0.0012512706035189248], ["for", 28, 0.0008564322956948157], ["the", 32, 0.0005639696320557289]], 1, "Liu insists on compensation for the inconvenience", raw_div, true);
+            exp.show_raw_text([["refund", 23, 0.145418790419693], ["product", 48, -0.11629090413868552], ["immediate", 13, 0.08834691743211946], ["demands", 5, 0.0875524883725205], ["defective", 38, 0.08082332814054705], ["Ming", 0, -0.035337654192052266], ["for", 30, -0.007875366966810066], ["the", 34, 0.0017046245233842939]], 1, "Ming demands immediate refund for the defective product", raw_div, true);
             
         </script>
         </body></html>

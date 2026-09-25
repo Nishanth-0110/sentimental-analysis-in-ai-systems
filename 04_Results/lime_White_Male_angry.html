@@ -37097,17 +37097,17 @@
             var pp_div = top_div.append('div')
                                 .classed('lime predict_proba', true);
             var pp_svg = pp_div.append('svg').style('width', '100%');
-            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.8592602638137798, 0.1407397361862201]);
+            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.8876471843166583, 0.11235281568334163]);
             
         
         var exp_div;
             var exp = new lime.Explanation(["Negative", "Positive"]);
         
                 exp_div = top_div.append('div').classed('lime explanation', true);
-                exp.show([["outraged", -0.20869887474759533], ["product", -0.13596467816488272], ["Connor", 0.0528629583388665], ["quality", 0.03432402162793618], ["by", -0.0063692683604642105], ["is", -0.005955895608220432], ["the", -0.0023283747217856653]], 1, exp_div);
+                exp.show([["delayed", -0.10297657399873472], ["delivery", -0.10176849217464283], ["angry", -0.09865202096875779], ["Garrett", 0.06807463935179003], ["about", -0.008946037877793007], ["the", -0.006082028858251107], ["is", -0.00556453435318319]], 1, exp_div);
                 
         var raw_div = top_div.append('div');
-            exp.show_raw_text([["outraged", 10, -0.20869887474759533], ["product", 26, -0.13596467816488272], ["Connor", 0, 0.0528629583388665], ["quality", 34, 0.03432402162793618], ["by", 19, -0.0063692683604642105], ["is", 7, -0.005955895608220432], ["the", 22, -0.0023283747217856653]], 1, "Connor is outraged by the product quality", raw_div, true);
+            exp.show_raw_text([["delayed", 27, -0.10297657399873472], ["delivery", 35, -0.10176849217464283], ["angry", 11, -0.09865202096875779], ["Garrett", 0, 0.06807463935179003], ["about", 17, -0.008946037877793007], ["the", 23, -0.006082028858251107], ["is", 8, -0.00556453435318319]], 1, "Garrett is angry about the delayed delivery", raw_div, true);
             
         </script>
         </body></html>

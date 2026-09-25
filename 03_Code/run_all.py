@@ -26,6 +26,14 @@ import os
 import time
 import argparse
 
+# The banner prints Unicode block characters; make stdout robust on Windows
+# consoles that default to cp1252 instead of UTF-8.
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+except Exception:
+    pass
+
 # Add code directory to path
 CODE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, CODE_DIR)
@@ -60,8 +68,8 @@ def step1_generate_dataset():
     return dataset
 
 
-def step2_sentiment_analysis(skip_bert=False):
-    """Run VADER, TextBlob, and optionally BERT on all sentences."""
+def step2_sentiment_analysis(skip_transformers=False):
+    """Run VADER, TextBlob, and optionally the transformer models (BERT + RoBERTa)."""
     print_banner(2, "SENTIMENT ANALYSIS")
     mod = load_module("02_sentiment_analysis")
 
@@ -78,25 +86,41 @@ def step2_sentiment_analysis(skip_bert=False):
     print("\n--- Running TextBlob ---")
     textblob_scores = mod.analyze_textblob(texts)
 
-    # BERT
-    if not skip_bert:
+    extra_frames = []
+    if not skip_transformers:
         print("\n--- Running BERT ---")
         bert_scores = mod.analyze_bert(texts)
+        extra_frames.append(bert_scores.reset_index(drop=True))
+
+        print("\n--- Running RoBERTa (Twitter) ---")
+        roberta_scores = mod.analyze_roberta(texts)
+        extra_frames.append(roberta_scores.reset_index(drop=True))
     else:
-        print("\n--- Skipping BERT (use --skip-bert flag) ---")
+        print("\n--- Skipping transformer models (--skip-bert) ---")
+        print("WARNING: synthetic placeholder BERT/RoBERTa columns are being written.")
+        print("         Downstream analyses on those columns are NOT real results.")
+        print("         Re-run step 2 without --skip-bert to produce real scores.")
         import numpy as np
         bert_scores = pd.DataFrame({
             "BERT_score": np.random.uniform(-0.9, -0.3, len(texts)),
             "BERT_label": ["NEGATIVE"] * len(texts),
             "BERT_confidence": np.random.uniform(0.7, 0.95, len(texts)),
+            "BERT_synthetic": [True] * len(texts),
         })
+        roberta_scores = pd.DataFrame({
+            "RoBERTa_score": np.random.uniform(-0.9, -0.3, len(texts)),
+            "RoBERTa_label": ["NEGATIVE"] * len(texts),
+            "RoBERTa_confidence": np.random.uniform(0.7, 0.95, len(texts)),
+            "RoBERTa_synthetic": [True] * len(texts),
+        })
+        extra_frames = [bert_scores.reset_index(drop=True),
+                        roberta_scores.reset_index(drop=True)]
 
     result_df = pd.concat([
         df.reset_index(drop=True),
         vader_scores.reset_index(drop=True),
         textblob_scores.reset_index(drop=True),
-        bert_scores.reset_index(drop=True),
-    ], axis=1)
+    ] + extra_frames, axis=1)
 
     mod.initial_exploration(result_df)
 
@@ -140,6 +164,7 @@ def step4_fairness_metrics():
             "Equal_Opportunity_Diff": r["equal_opportunity_diff"],
             "Equalized_Odds_Diff": r["equalized_odds_diff"],
             "Disparate_Impact_Ratio": r["disparate_impact_ratio"],
+            "DI_Degenerate": r.get("disparate_impact_degenerate", False),
             "Calibration_Diff": r["calibration_diff"],
             "Metrics_Passed": r["metrics_passed"],
         })
@@ -159,7 +184,7 @@ def step5_bias_mitigation():
     df = pd.read_csv(
         os.path.join(DATA_DIR, "sentiment_scores_all_systems.csv")
     )
-    results_list, baseline, reweigh, eg, vec = mod.run_full_mitigation_pipeline(df)
+    results_list, baseline, cda_model, eg_model, vec = mod.run_full_mitigation_pipeline(df)
     print(f"\n Mitigation complete")
     return results_list
 

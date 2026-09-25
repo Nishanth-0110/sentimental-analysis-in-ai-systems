@@ -1,0 +1,12 @@
+# Local-run config (this file is picked up when you run `streamlit run`
+# from inside 07_Demo/). The repo-root .streamlit/config.toml covers runs
+# from the repo root and Streamlit Community Cloud.
+#
+# fileWatcherType = "none" prevents Streamlit from recursively importing
+# every transformers.models.* submodule to watch for changes — that scan
+# takes minutes and makes the app look frozen.
+[server]
+fileWatcherType = "none"
+
+[browser]
+gatherUsageStats = false

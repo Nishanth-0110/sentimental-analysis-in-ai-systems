@@ -1,7 +1,24 @@
-# Pinned versions to ensure Linux wheels exist on Streamlit Community Cloud
-streamlit==1.37.1
-numpy==1.26.4
-pandas==2.2.2
-scikit-learn==1.4.2
-scipy==1.11.4
-fairlearn==0.10.0
+# Pinned dependencies for 07_Demo/app.py + app2.py on Streamlit Community Cloud
+# Verified end-to-end on Python 3.11 (see README "Deployment" section).
+#
+# IMPORTANT: streamlit must be >= 1.49 because the apps use width="stretch".
+# torch is installed from the PyTorch CPU index so Linux deploys don't pull
+# multi-GB CUDA wheels.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+streamlit==1.64.0
+numpy==2.4.6
+pandas==3.0.6
+scikit-learn==1.9.1
+scipy==1.17.1
+fairlearn==0.14.0
+transformers==5.17.0
+torch==2.14.0+cpu
+vaderSentiment==3.3.2
+
+# Explainability (live SHAP text explanations in app.py)
+shap==0.51.0
+ipython>=8.0.0
+
+# Charts (app2.py fairness dashboard)
+plotly==7.1.0

@@ -1,4 +1,5 @@
-System,Demographic_Parity_Diff,Equal_Opportunity_Diff,Equalized_Odds_Diff,Disparate_Impact_Ratio,Calibration_Diff,Metrics_Passed
-VADER,0.0,0.0,0.0,1.0,0.0,5
-TextBlob,0.0,0.0,0.0,1.0,0.0,5
-BERT,0.0,0.0,0.0,,0.042544271341006024,4
+System,Demographic_Parity_Diff,Equal_Opportunity_Diff,Equalized_Odds_Diff,Disparate_Impact_Ratio,DI_Degenerate,Calibration_Diff,Metrics_Passed
+VADER,0.0,0.0,0.0,1.0,False,0.0,5
+TextBlob,0.0,0.0,0.0,1.0,False,0.0,5
+BERT,0.005,0.15999999999999998,0.15999999999999998,0.0,True,0.015229799747467077,2
+RoBERTa,0.005,0.25,0.25,0.0,True,0.04860920954728498,2

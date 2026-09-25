@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_divSH61Y9QXUB463LL"></div>
+        <div class="lime top_div" id="top_div9VMGH1IYPJK4L4N"></div>
         
         <script>
-        var top_div = d3.select('#top_divSH61Y9QXUB463LL').classed('lime top_div', true);
+        var top_div = d3.select('#top_div9VMGH1IYPJK4L4N').classed('lime top_div', true);
         
             var pp_div = top_div.append('div')
                                 .classed('lime predict_proba', true);
             var pp_svg = pp_div.append('svg').style('width', '100%');
-            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.8790405594422671, 0.12095944055773293]);
+            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.9040255195363573, 0.09597448046364268]);
             
         
         var exp_div;
             var exp = new lime.Explanation(["Negative", "Positive"]);
         
                 exp_div = top_div.append('div').classed('lime explanation', true);
-                exp.show([["staff", -0.09420020591007963], ["unhelpful", -0.09302146250671746], ["irritated", -0.09229900515994922], ["Molly", 0.060930442176153655], ["by", -0.004312151863866075], ["is", -0.003604584618115652], ["the", -0.0026056887554141706]], 1, exp_div);
+                exp.show([["feels", -0.08879497353806849], ["wait", -0.041406956952909635], ["time", -0.04087875360313817], ["frustrated", -0.04068578357410404], ["long", -0.04012282088090871], ["Molly", 0.03630577585073849], ["with", -0.0005807516660486954], ["the", 0.00035892105369869]], 1, exp_div);
                 
         var raw_div = top_div.append('div');
-            exp.show_raw_text([["staff", 36, -0.09420020591007963], ["unhelpful", 26, -0.09302146250671746], ["irritated", 9, -0.09229900515994922], ["Molly", 0, 0.060930442176153655], ["by", 19, -0.004312151863866075], ["is", 6, -0.003604584618115652], ["the", 22, -0.0026056887554141706]], 1, "Molly is irritated by the unhelpful staff", raw_div, true);
+            exp.show_raw_text([["feels", 6, -0.08879497353806849], ["wait", 37, -0.041406956952909635], ["time", 42, -0.04087875360313817], ["frustrated", 12, -0.04068578357410404], ["long", 32, -0.04012282088090871], ["Molly", 0, 0.03630577585073849], ["with", 23, -0.0005807516660486954], ["the", 28, 0.00035892105369869]], 1, "Molly feels frustrated with the long wait time", raw_div, true);
             
         </script>
         </body></html>

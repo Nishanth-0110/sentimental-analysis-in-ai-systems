@@ -224,11 +224,20 @@ def run_lime_analysis(model, vectorizer, test_df, X_test, output_dir):
     lime_results = []
 
     for demo_a, demo_b, category in comparison_pairs:
-        # Get examples from the same template category
+        # Get examples from the same template category AND the same template
+        # number, so the two texts differ ONLY by the customer name.
         cat_df = test_df[test_df["Template_Category"] == category]
 
-        example_a = cat_df[cat_df["Demographic_Group"] == demo_a]
-        example_b = cat_df[cat_df["Demographic_Group"] == demo_b]
+        common_templates = sorted(
+            set(cat_df.loc[cat_df["Demographic_Group"] == demo_a, "Template_Number"])
+            & set(cat_df.loc[cat_df["Demographic_Group"] == demo_b, "Template_Number"])
+        )
+        template_num = common_templates[0] if common_templates else None
+
+        pair_df = cat_df[cat_df["Template_Number"] == template_num] \
+            if template_num is not None else cat_df.iloc[0:0]
+        example_a = pair_df[pair_df["Demographic_Group"] == demo_a]
+        example_b = pair_df[pair_df["Demographic_Group"] == demo_b]
 
         if len(example_a) > 0 and len(example_b) > 0:
             text_a = example_a.iloc[0]["Full_Text"]

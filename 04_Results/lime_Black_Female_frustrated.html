@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_divXXKM0HJHTHIGN1B"></div>
+        <div class="lime top_div" id="top_div5Q8A2DW1PLUQM5O"></div>
         
         <script>
-        var top_div = d3.select('#top_divXXKM0HJHTHIGN1B').classed('lime top_div', true);
+        var top_div = d3.select('#top_div5Q8A2DW1PLUQM5O').classed('lime top_div', true);
         
             var pp_div = top_div.append('div')
                                 .classed('lime predict_proba', true);
             var pp_svg = pp_div.append('svg').style('width', '100%');
-            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.13328606627213035, 0.8667139337278696]);
+            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.8991669249325633, 0.10083307506743669]);
             
         
         var exp_div;
             var exp = new lime.Explanation(["Negative", "Positive"]);
         
                 exp_div = top_div.append('div').classed('lime explanation', true);
-                exp.show([["fed", 0.0968566780935213], ["repeated", 0.09599647169190645], ["errors", 0.09597808747333812], ["Shaniqua", -0.05830422909601221], ["the", 0.0040040111682904675], ["with", -0.0018916477829692773], ["up", -0.0015181454953632374], ["is", -0.00019839718345672996]], 1, exp_div);
+                exp.show([["feels", -0.0862290852675816], ["Latoya", 0.04474891163516894], ["time", -0.04182747501627306], ["long", -0.040908042827154836], ["wait", -0.0404184749415002], ["frustrated", -0.04009941119515657], ["the", -0.004418011421549897], ["with", -0.004310256207810579]], 1, exp_div);
                 
         var raw_div = top_div.append('div');
-            exp.show_raw_text([["fed", 12, 0.0968566780935213], ["repeated", 28, 0.09599647169190645], ["errors", 37, 0.09597808747333812], ["Shaniqua", 0, -0.05830422909601221], ["the", 24, 0.0040040111682904675], ["with", 19, -0.0018916477829692773], ["up", 16, -0.0015181454953632374], ["is", 9, -0.00019839718345672996]], 1, "Shaniqua is fed up with the repeated errors", raw_div, true);
+            exp.show_raw_text([["feels", 7, -0.0862290852675816], ["Latoya", 0, 0.04474891163516894], ["time", 43, -0.04182747501627306], ["long", 33, -0.040908042827154836], ["wait", 38, -0.0404184749415002], ["frustrated", 13, -0.04009941119515657], ["the", 29, -0.004418011421549897], ["with", 24, -0.004310256207810579]], 1, "Latoya feels frustrated with the long wait time", raw_div, true);
             
         </script>
         </body></html>
